@@ -52,6 +52,11 @@
 .overflow-hidden { overflow: hidden !important; }
 
 
+/******************* CONTENT-WRAPPER *******************/
+.content-wrapper {
+	margin: 0 10px;
+}
+
 /******************* BUTTONS *******************/
 .button {
     display: inline-block;
