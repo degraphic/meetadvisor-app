@@ -1,0 +1,59 @@
+var MeetAdvisor = function MeetAdvisor() {};
+
+MeetAdvisor.prototype = {
+
+    current_template: null,
+    current_page: null,
+    current_template_src: null,
+	current_page_src: null,
+    view: null,
+
+    init: function () {
+	
+        this.api = new MeetAdvisorApi();
+        this.view = new MeetAdvisorView();
+        this.navigation_config = MEET_ADVISOR_NAVIGATION;
+    },
+
+    navigate: function (uri) {
+	
+        uri_base = uri.replace(/^#/, '');
+        nav = this.navigation_config[uri_base];
+		
+        if (!nav) {
+            uri_base = 'welcome';
+            nav = this.navigation_config[uri_base];
+        }
+		
+        var view_data = new MeetAdvisorViewData();
+        view_data.template.file = nav.template;
+        view_data.page.file = nav.page;        
+		view_data = this.view[uri_base](view_data);
+		
+        //TODO ne charger le HTML que quand on change par rapport au precedent  
+        //TODO ne charger le HTML que quand le _data est vide
+        //TODO handle le _src avec mustache + le _data
+		
+        $.ajax({
+            
+			url: "templates/" + view_data.template.file + ".html",
+            dataType: 'html',
+			
+        }).done(function(html) { 
+           
+		   $("body").html(html);
+            
+			$.ajax({
+			
+                url: "pages/" + view_data.page.file + ".html",
+                dataType:'html',
+				
+            }).done(function(html) { 
+                $("#content").html(html);
+            });
+			
+        });
+    },
+};
+
+

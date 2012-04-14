@@ -1,0 +1,250 @@
+/**************************** RESET ****************************/
+body, div, span, form, h1, h2, h3, h4, h5, h6, p, ul, li, img, header, section, aside, footer, button {
+	margin:0; 
+	padding:0; 
+	border:0;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+}
+
+html {
+	 /* Solve the rerender display issue on guest list search */ 
+	-webkit-font-smoothing: antialiased; 
+}
+
+a {
+	border: 0;
+	color: #049BDC;
+	text-decoration: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+}
+
+a img {
+	border: 0;
+}
+
+label {
+	font-weight: bold;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	position: relative;
+}
+
+input[type="radio"] {
+	margin: 0;
+}
+
+input, select, textarea {
+	font-family: inherit;	
+}
+
+
+/******************* STRUCTURE *******************/
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2a2a2a;
+    background: #f5f5f5;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+}
+
+header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    vertical-align: middle;
+    background: #404345;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#404345), to(#282b2c));
+    background-image: -webkit-linear-gradient(top, #404345, #282b2c);
+    background-image: -moz-linear-gradient(top, #404345, #282b2c);
+    background-image: -ms-linear-gradient(top, #404345, #282b2c);
+    background-image: -o-linear-gradient(top, #404345, #282b2c);
+    background-image: linear-gradient(top, #404345, #282b2c);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#404345', EndColorStr='#282B2C');
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #202020;
+    color: #FCFCFC;
+    font-weight: bold;
+    text-shadow: #000 0 1px 1px;
+    box-shadow: rgba(125, 125, 125, 0.4) 0 1px 0 inset, rgba(255, 255, 255, 0.2) 0 1px 0;
+}
+
+header a {
+    display: inline-block;
+    color: #FCFCFC;
+}
+
+footer {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+/* tab bar */
+footer .tab-bar {
+	width: 100%;
+    height: 42px;
+    vertical-align: middle;
+	
+    background: #d0d4da;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d0d4da), to(#afb3bc));
+    background-image: -webkit-linear-gradient(top, #d0d4da, #afb3bc);
+    background-image: -moz-linear-gradient(top, #d0d4da, #afb3bc);
+    background-image: -ms-linear-gradient(top, #d0d4da, #afb3bc);
+    background-image: -o-linear-gradient(top, #d0d4da, #afb3bc);
+    background-image: linear-gradient(top, #d0d4da, #afb3bc);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#d0d4da', EndColorStr='#afb3bc');
+    
+	border-top: 1px solid #848f90;
+   	box-shadow: rgba(255, 255, 255, 0.945) 0 1px 0px inset;
+	
+	text-align: center;
+}
+
+footer .tab-bar a {
+	position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+	color: #5d6570;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: rgba(255,255,255, 0.4) 0 1px 1px;
+}
+
+footer .tab-bar ul {
+	display: table;
+	table-layout:fixed;
+	width: 100%;
+	height: 100%;
+}
+
+footer .tab-bar li {
+	display: table-cell;
+	height: 100%;
+	padding: 4px;
+}
+
+footer .tab-bar .label {
+	position: absolute;
+	bottom: -3px;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+/* icons */
+footer .tab-bar .item-meetspots {
+	background: url(../img/radar.png) center 3px no-repeat;
+}
+
+footer .tab-bar .item-checkin {
+	background: url(../img/map-marker.png) center 3px no-repeat;
+}
+
+footer .tab-bar .item-profile {
+	background: url(../img/user.png) center 3px no-repeat;
+}
+
+
+/******************* TITLES *******************/
+h1 {
+    font-size: 24px;
+    color: #FCFCFC;
+}
+
+h2 {
+    padding: 10px 0 10px 5px;
+    background: #2a2a2a;
+    font-size: 17px;
+    text-align: center;
+}
+
+h2, h2 a {
+    color: #fcfcfc;
+    font-size: 17px;
+    text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+}
+
+h3 {
+    margin-bottom: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2e719f;
+    text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+}
+
+
+/**************************** INPUTS ****************************/
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+	padding: 2px;
+	background-color: #FCFCFC;
+	border: 1px solid #AAAAAA;
+
+	font-size: 14px;
+
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.2) 1px 1px 3px inset;
+}
+
+
+/******************* LINKS *******************/
+a {
+	color: #049bdc;
+}
+
+
+/******************* MISCS *******************/
+/* selection */
+::-moz-selection, ::-webkit-selection, ::selection {
+    background-color: #d587fd;
+    color: #fcfcfc;
+    text-shadow: none;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 12px
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+	
+::-webkit-scrollbar-thumb {
+	background-color: rgba(75, 75, 75, 0.2);
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,0.10),inset 0 -1px 0 rgba(0,0,0,0.07);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
