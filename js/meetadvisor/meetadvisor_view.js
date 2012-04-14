@@ -3,6 +3,10 @@ var MeetAdvisorViewData = function MeetAdvisorViewData() {};
 
 MeetAdvisorView.prototype = {
 
+    _404: function(data) {
+        return data;
+    },
+
     login: function(data) {
         return data;
     },
@@ -21,8 +25,7 @@ MeetAdvisorView.prototype = {
 
     profile: function(data) {
         return data;
-    }
-
+    },
 };
 
 MeetAdvisorViewData.prototype = {
