@@ -54,7 +54,12 @@ MeetAdvisor.prototype = {
 							
 							// Set active tab
 							that._set_active_nav_css(uri_base);
-
+							
+							// Bind content position on window resize / used only for desktop version
+							$(window).resize(function() {
+								that._set_content_position()
+							});
+								
 					});
 					
 			});
