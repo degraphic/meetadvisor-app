@@ -212,6 +212,12 @@
 */
 
 
+/******************* BUTTONS ACTION CONTAINER *******************/
+.buttons-action-container {
+	margin-top: 20px;
+}
+
+
 /******************* LISTS *******************/
 .list a {
     display: block;
@@ -610,11 +616,11 @@
     text-align: left;
 }
 
-[data-role="fieldcontain"].fieldcontain-group-first-item {
+[data-role="fieldcontain"]:first-child {
     border-radius: 3px 3px 0 0;
 }
 
-[data-role="fieldcontain"].fieldcontain-group-last-item {
+[data-role="fieldcontain"]:last-child {
     border: 0;
     border-radius: 0 0 3px 3px;
 }
