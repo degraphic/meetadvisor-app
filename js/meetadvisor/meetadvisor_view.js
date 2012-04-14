@@ -11,7 +11,7 @@ MeetAdvisorView.prototype = {
         return data;
     },
 
-    createaccount: function(data) {
+    createAccount: function(data) {
         return data;
     },
 

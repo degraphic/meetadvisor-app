@@ -57,7 +57,7 @@ MeetAdvisor.prototype = {
 				that._set_content_position();
 				
 				// Set active tab
-				that._set_active_nav_css(uri_base);
+				that._set_active_nav_css(uri_base, $("footer"));
 				
 				// Bind content position on window resize / used only for desktop version
 				$(window).resize(function() {
@@ -79,8 +79,8 @@ MeetAdvisor.prototype = {
 		
 	},
     
-	_set_active_nav_css: function (page) {
-		$('li').removeClass('active');
-		$('#' + page).addClass('active');
+	_set_active_nav_css: function (page, footerEl) {
+		$('li', footerEl).removeClass('active');
+		$('#' + page, footerEl).addClass('active');
 	}
 };
