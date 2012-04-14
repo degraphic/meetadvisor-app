@@ -1,3 +1,6 @@
+
+MEET_ADVISOR_NAVIGATION_DEFAULT = "start";
+
 MEET_ADVISOR_NAVIGATION = {
     login: {
         template: "simple",
@@ -21,4 +24,3 @@ MEET_ADVISOR_NAVIGATION = {
     },
 };
 
-MEET_ADVISOR_NAVIGATION_DEFAULT = "login";

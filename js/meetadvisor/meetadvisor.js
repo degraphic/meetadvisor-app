@@ -21,7 +21,7 @@ MeetAdvisor.prototype = {
         nav = this.navigation_config[uri_base];
 		
         if (!nav) {
-            uri_base = 'welcome';
+            uri_base = MEET_ADVISOR_NAVIGATION_DEFAULT;
             nav = this.navigation_config[uri_base];
         }
 		
@@ -34,25 +34,26 @@ MeetAdvisor.prototype = {
         //TODO ne charger le HTML que quand le _data est vide
         //TODO handle le _src avec mustache + le _data
 		
+        that = this;
+
         $.ajax({
-            
 			url: "templates/" + view_data.template.file + ".html",
             dataType: 'html',
-			
         }).done(function(html) { 
-           
-		   $("body").html(html);
-            
-			$.ajax({
-			
+		    $("body").html(html);
+			$.ajax({			
                 url: "pages/" + view_data.page.file + ".html",
                 dataType:'html',
-				
             }).done(function(html) { 
                 $("#content").html(html);
+                that._set_active_nav_css(uri_base);
             });
-			
         });
+    },
+
+    _set_active_nav_css: function (page) {
+        $('.js-nav').removeClass('active');
+        $('.js-nav.js-nav-' + page).addClass('active');
     },
 };
 
