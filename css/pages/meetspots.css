@@ -1,0 +1,14 @@
+/**************************** LIST ****************************/
+.meetspot-avatar.table-cell {
+	width: 60px;
+}
+
+.meetspot-details .name {
+	display: block;
+	width: 100%;
+	margin-top: 3px;
+}
+
+.meetspot-details .type {
+	font-size: 10px;
+}

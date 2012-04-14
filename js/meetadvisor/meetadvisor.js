@@ -80,5 +80,3 @@ MeetAdvisor.prototype = {
 			$('#' + page).addClass('active');
 	}
 };
-
-

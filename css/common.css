@@ -1,57 +1,55 @@
 /******************* TEXT *******************/
-.text-italic { font-style: italic; }
-.w-space-nowrap { white-space: nowrap; }
-.w-space-normal { white-space: normal; }
-.weight-600 { font-weight: 600; }
-.weight-800 { font-weight: 800; }
+.text-italic { font-style: italic !important; }
+.w-space-nowrap { white-space: nowrap !important; }
+.w-space-normal { white-space: normal !important; }
 
 
 /******************* ALIGN *******************/
-.align-left { text-align: left; }
-.align-right { text-align: right; }
-.align-center { text-align: center; }
-.align-justify { text-align: justify; }
+.align-left { text-align: left !important; }
+.align-right { text-align: right !important; }
+.align-center { text-align: center !important; }
+.align-justify { text-align: justify !important; }
 
 
 /******************* V ALIGN *******************/
-.v-align-top { vertical-align: top; }
-.v-align-middle { vertical-align: middle; }
-.v-align-bottom { vertical-align: bottom; }
+.v-align-top { vertical-align: top !important; }
+.v-align-middle { vertical-align: middle !important; }
+.v-align-bottom { vertical-align: bottom !important; }
 
 
 /******************* DISPLAY *******************/
-.display-none { display: none; }
-.block { display: block; }
-.inline { display: inline; }
-.inline-block { display: inline-block;}
+.display-none { display: none !important; }
+.block { display: block !important; }
+.inline { display: inline !important; }
+.inline-block { display: inline-block !important;}
 
 /******************* POSITION *******************/
-.relative { position: relative; }
-.absolute { position: absolute; }
-.fixed { position: fixed;}
+.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed { position: fixed !important;}
 
 
 /******************* FLOAT *******************/
-.float-left { float: left; }
-.float-right { float: right; }
+.float-left { float: left !important; }
+.float-right { float: right !important; }
 
 
 /******************* BORDER COLLAPSE *******************/
-.border-collapse { border-collapse: collapse; }
+.border-collapse { border-collapse: collapse !important; }
 
 
 /******************* CURSORS *******************/
-.cursor-default { cursor: default; }
-.cursor-pointer { cursor: pointer; }
-.cursor-move { cursor: move; }
-.cursor-help { cursor: pointer; }
-.cursor-not-allowed { cursor: not-allowed; }
+.cursor-default { cursor: default !important; }
+.cursor-pointer { cursor: pointer !important; }
+.cursor-move { cursor: move !important; }
+.cursor-help { cursor: pointer !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
 
 
 /******************* OVERFLOW *******************/
-.overflow-auto { overflow: auto; }
-.overflow-scroll { overflow: scroll; }
-.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }
+.overflow-hidden { overflow: hidden !important; }
 
 
 /******************* BUTTONS *******************/
