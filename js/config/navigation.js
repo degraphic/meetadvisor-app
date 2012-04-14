@@ -1,15 +1,15 @@
 
-MEET_ADVISOR_NAVIGATION_DEFAULT = "start";
+MEET_ADVISOR_NAVIGATION_DEFAULT = "login";
 
 MEET_ADVISOR_NAVIGATION = {
     login: {
         template: "simple",
         page : "login"
     },
-    start: {
-        template: "default",
-        page : "start"
-    },
+    createacount: {
+        template: "simple",
+        page : "createAccount"
+    },	
     meetspots: {
         template: "default",
         page: "meetspots"
