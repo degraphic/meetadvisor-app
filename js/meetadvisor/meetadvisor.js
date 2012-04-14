@@ -21,11 +21,15 @@ MeetAdvisor.prototype = {
 	    
 
         if (uri_base == '') {
-			uri_base = MEET_ADVISOR_NAVIGATION_404;
-			nav = this.navigation_config['_404'];            
+            location.hash = '#' + MEET_ADVISOR_NAVIGATION_DEFAULT;
+            return ;
+			//uri_base = MEET_ADVISOR_NAVIGATION_DEFAULT;
+			//nav = this.navigation_config[uri_base];
         } else if (!nav) {
-			uri_base = MEET_ADVISOR_NAVIGATION_DEFAULT;
-			nav = this.navigation_config[uri_base];
+            location.hash = '#' + MEET_ADVISOR_NAVIGATION_404;
+            return ;
+			//uri_base = MEET_ADVISOR_NAVIGATION_404;
+			//nav = this.navigation_config['_404'];            
 		}
 	    
 		var view_data = new MeetAdvisorViewData();
