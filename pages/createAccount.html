@@ -1,1 +1,30 @@
-! LOGIN !
+<form id="createAccountForm">
+
+	<div class="spacer-bottom">
+		<select name="gender" id="gender">
+			<option value="M">Homme</option>
+			<option value="F">Femme</option>
+		</select>
+	</div>
+
+	<div data-role="ev-fields-group">
+		
+		<div data-role="ev-fieldcontain">
+			<label for="login">
+				Login
+			</label>
+			<input type="text" id="login" name="login" value="" />
+		</div>
+		
+		<div data-role="ev-fieldcontain>
+			<label for="pwd">
+				Password
+			</label>
+			<input type="password" id="pwd" name="pwd" value="" />
+		</div>
+		
+	</div>
+	
+	<input type="submit" class="button action-default block" name="submit" id="submit" value="Valider" />
+
+</form>
