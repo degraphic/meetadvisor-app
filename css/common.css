@@ -607,6 +607,13 @@
     margin-top: 10px;
 }
 
+/******************* 404 Page *******************/
+.404-container {
+	font-size: 25px;
+	font-weight: bold;
+	color: #AAA;
+	text-shadow: #FFFFFF 0 1px 0; 
+}
 
 /******************* COMPONENT - FIELD GROUP *******************/
 [data-role="fields-group"] {
