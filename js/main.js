@@ -3,7 +3,6 @@ $(document).ready(function () {
     meetadvisor.init();
 
     $(window).hashchange(function () { meetadvisor.navigate(location.hash) });
-    meetadvisor.navigate(location.hash);
-		
+    meetadvisor.navigate(location.hash);		
 });
 
