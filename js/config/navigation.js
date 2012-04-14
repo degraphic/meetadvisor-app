@@ -1,4 +1,4 @@
-MEET_ADVISOR_NAVIGATION_DEFAULT = "start";
+MEET_ADVISOR_NAVIGATION_DEFAULT = "login";
 MEET_ADVISOR_NAVIGATION_404 = "_404";
 
 MEET_ADVISOR_NAVIGATION = {
@@ -6,10 +6,10 @@ MEET_ADVISOR_NAVIGATION = {
         template: "simple",
         page : "login"
     },
-    start: {
-        template: "default",
-        page : "start"
-    },
+    createaccount: {
+        template: "simple",	
+        page : "createAccount"
+    },	
     meetspots: {
         template: "default",
         page: "meetspots"

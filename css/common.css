@@ -100,7 +100,7 @@
     text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
 }
 
-.button.action-default {
+.button.action-cancel {
     background: #f4f4f4;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#ccc));
     background-image: -webkit-linear-gradient(top, #f4f4f4, #ccc);
