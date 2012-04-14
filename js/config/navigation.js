@@ -6,9 +6,9 @@ MEET_ADVISOR_NAVIGATION = {
         template: "simple",
         page : "login"
     },
-    createaccount: {
+    createAccount: {
         template: "simple",	
-        page : "createAccount"
+        page : "create-account"
     },	
     meetspots: {
         template: "default",

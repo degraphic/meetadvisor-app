@@ -8,10 +8,10 @@ MeetAdvisorView.prototype = {
     },
 
     login: function(data) {
-        return data;
+        return data;	
     },
 
-    createaccount: function(data) {
+    createAccount: function(data) {
         return data;
     },
 
@@ -29,8 +29,8 @@ MeetAdvisorView.prototype = {
 };
 
 MeetAdvisorViewData.prototype = {
-	
-    template: {
+
+	template: {
 		file: null, 
 		src: null,
 		data: null
