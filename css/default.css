@@ -14,6 +14,16 @@ html {
 	-webkit-font-smoothing: antialiased; 
 }
 
+body {
+	overflow: hidden;
+	-webkit-text-size-adjust: none;
+	-webkit-user-select: none;
+}
+
+#content {
+	overflow: auto;
+}
+
 a {
 	border: 0;
 	color: #049BDC;
@@ -51,18 +61,18 @@ input, select, textarea {
 
 /******************* STRUCTURE *******************/
 body {
-    overflow-x: hidden;
-    overflow-y: auto;
     font-family: Helvetica, Arial, Verdana, sans-serif;
     font-size: 12px;
     font-weight: 500;
     color: #2a2a2a;
     background: #f5f5f5;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
 }
 
 header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
     height: 40px;
     line-height: 40px;
     padding: 0 5px;
@@ -129,7 +139,7 @@ footer .tab-bar a {
 
 footer .tab-bar ul {
 	display: table;
-	table-layout:fixed;
+	table-layout:fixed;	
 	width: 100%;
 	height: 100%;
 }
@@ -138,6 +148,12 @@ footer .tab-bar li {
 	display: table-cell;
 	height: 100%;
 	padding: 4px;
+	border: 1px solid transparents;
+}
+
+footer .tab-bar  li.active {
+	background-color: #d0d4da;
+	box-shadow: rgba(0,0,0,0.35) 1px 1px 3px inset; 
 }
 
 footer .tab-bar .label {

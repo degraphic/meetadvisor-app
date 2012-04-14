@@ -4,5 +4,6 @@ $(document).ready(function () {
 
     $(window).hashchange(function () { meetadvisor.navigate(location.hash) });
     meetadvisor.navigate(location.hash);
+		
 });
 
