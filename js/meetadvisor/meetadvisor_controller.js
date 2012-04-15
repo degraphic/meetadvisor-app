@@ -49,7 +49,7 @@ MeetAdvisorController.prototype = {
 					if ($("#gender").val() == "F") {
 						isfemale = true;
 					}
-				    meetadvisor.api.register($("#login").val(), $("#pwd").val(), $("#login").val(), "pomme2terre", isfemale);
+				    meetadvisor.api.register($("#login").val(), $("#pwd").val(), $("#login").val(), $("#login").val(), isfemale);
 			    }
             });
 

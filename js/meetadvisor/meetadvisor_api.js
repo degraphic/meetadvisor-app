@@ -18,7 +18,7 @@ MeetAdvisorApi.prototype = {
 				success: function(data) {
 					if (data.Result == true) {
 						window.localStorage.setItem("key", data.isfemale);
-						location.hash = "#meetspotsList";
+						location.hash = "#meetspotsMap";
 					}
 					else {
 						alert("Login error");
@@ -40,7 +40,7 @@ MeetAdvisorApi.prototype = {
 			success: function(data) {
 				if (data.Result == true) {
 					window.localStorage.setItem("key", true);
-					location.hash = "#meetspotsList";
+					location.hash = "#meetspotsMap";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
 					alert("Un compte est déja associé à cet email.");
