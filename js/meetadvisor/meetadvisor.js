@@ -44,6 +44,8 @@ MeetAdvisor.prototype = {
     
 	navigate: function (uri) {
 	
+        this.loader_overlay(true);
+
 		var page = uri.replace(/^#/, '');
 		var instance = this;
 	    
@@ -59,7 +61,6 @@ MeetAdvisor.prototype = {
 		render_data.init();
 		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
 		
-        this.loader_overlay(true);
 		this.controller[page](render_data);			
 	},
 
@@ -110,8 +111,8 @@ MeetAdvisor.prototype = {
         }
 
         // Everything is loaded, let's actually render it :        
-        $("#body").html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
-        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
+        $(document.getElementById('body')).html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
+        $(document.getElementById('content')).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
 
 		// Set content position
 		meetadvisor._set_content_position();
@@ -133,7 +134,7 @@ MeetAdvisor.prototype = {
     },
 
     loader_overlay: function(is_active) {
-        $(document.getElementById('loading-overlay')).style('display', is_active ? 'block' : 'none');
+        document.getElementById('loading-overlay').style.display = is_active ? 'block' : 'none';
     },
 	
 	_set_content_position: function() {
