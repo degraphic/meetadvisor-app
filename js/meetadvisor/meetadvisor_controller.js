@@ -38,6 +38,17 @@ MeetAdvisorController.prototype = {
 
 		meetadvisor.render(data, function() {
 			new uiFieldsGroup();
+			
+			$("#submit").click(function() {		
+            
+			    if ($("#login").val() == "" || $("#pwd").val() == "") {
+				    alert("Merci de choisir un login et un mot de passe.");
+			    }
+			    else {
+				    meetadvisor.api.register($("#login").val(), $("#pwd").val(), $("#email").val(), "pomme2terre", isfemale);
+			    }
+            });
+			
         });
 
     },
