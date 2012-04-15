@@ -1,4 +1,4 @@
-var MeetAdvisorApi = function MeetAdvisorApi () {};
+var MeetAdvisorApi = function MeetAdvisorApi() {};
 
 MeetAdvisorApi.prototype = {
 

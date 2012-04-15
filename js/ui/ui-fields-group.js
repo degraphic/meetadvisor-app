@@ -1,6 +1,6 @@
-var uiFieldsGroup = function uiFieldsGroup() { this.init(); };
+var UiFieldsGroup = function UiFieldsGroup() { this.init(); };
 
-uiFieldsGroup.prototype = {
+UiFieldsGroup.prototype = {
 
 	init: function() {
 	
