@@ -4,30 +4,39 @@ MeetAdvisorController.prototype = {
 
     _404: function(data) {
         data.page.file = "404";
-
-        // on fait un callback de "post-render"
-        meetadvisor.render(data, function(){alert('404')});
     },
 
     login: function(data) {
+		data.template.file = "simple";
         data.page.file = "login";
+        
         meetadvisor.render(data, function() {
-			$("#submit").click(function() {		
+            
+            new uiFieldsGroup();
+        
+            // Bind connect button
+            $("#submit").click(function() {		
+            
 			    if ($("#login").val() == "" || $("#pwd").val() == "") {
 				    alert("Merci d'entrer un login et un mot de passe.");
 			    }
 			    else {
-				    //alert ($("#login").val()+ $("#pwd").val());
 				    var ws = new MeetAdvisorApi();
-				    ws.login($("#login").val(),$("#pwd").val());
+				    wsws.login($("#login").val(),$("#pwd").val());
 			    }
             });
+			
         });
     },
 
     createAccount: function(data) {
-        data.page.file = "create-account";
-        meetadvisor.render(data);
+		data.template.file = "simple";
+		data.page.file = "create-account";
+
+		meetadvisor.render(data, function() {
+			new uiFieldsGroup();
+        });
+
     },
 
     meetspots: function(data) {
