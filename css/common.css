@@ -76,8 +76,10 @@
     border-radius: 5px;
 }
 
-.button.icon  img {
+.button.icon-inside  img {
 	display: block;
+	padding: 5px 0;
+	vertical-align: middle;
 }
 
 /* colors */

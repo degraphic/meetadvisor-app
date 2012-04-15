@@ -42,18 +42,28 @@ MeetAdvisorController.prototype = {
 
     },
 
-    meetspots: function(data) {
-        data.page.file = "meetspots";
+    meetspotsList: function(data) {
+        data.page.file = "meetspots-list";
 		
-		data.addPartial('header', 'header/meetspots');
+		data.addPartial('header', 'header/meetspots-list');
 		data.addPartial('meetspotItem', 'list/item-meetspot');
 		data.addPartial('footer', 'footer/tab-bar');
 		
-        meetadvisor.api.venue(0, 0, function (meetspots) {
-            data.data.meetspots = meetspots;
-            console.log(meetspots);
+        meetadvisor.api.venue(0, 0, function (meetspotsList) {
+            data.data.meetspots = meetspotsList;
+            console.log(meetspotsList);
             meetadvisor.render(data);            
         });
+
+    },
+	
+	meetspotsMap: function(data) {
+        data.page.file = "meetspots-map";
+		
+		data.addPartial('header', 'header/meetspots-map');
+		data.addPartial('footer', 'footer/tab-bar');
+
+		meetadvisor.render(data);            
 
     },
 

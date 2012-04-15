@@ -5,7 +5,8 @@ MEET_ADVISOR_404_PAGE = '_404';
 MEET_ADVISOR_VALID_PAGES = {
     login: true,
     createAccount: true,	
-    meetspots: true,
+    meetspotsList: true,
+	meetspotsMap: true,
     checkin: true,
     profile: true,
     _404: true,
@@ -25,9 +26,13 @@ MEET_ADVISOR_NAVIGATION = {
         template: "simple",	
         page : "create-account"
     },	
-    meetspots: {
+    meetspotsList: {
         template: "default",
-        page: "meetspots"
+        page: "meetspots-list"
+    },
+	meetspotsMap: {
+        template: "default",
+        page: "meetspots-map"
     },
     checkin: {
         template: "default",

@@ -17,9 +17,9 @@ MeetAdvisorApi.prototype = {
 				dataType: 'json',
 				success: function(data) {
 					console.log(data);
-					if(data.Result == true){
+					if (data.Result == true) {
 						window.localStorage.setItem("key", data.isfemale);
-						location.hash = "#meetspots";
+						location.hash = "#meetspotsList";
 					}
 					else {
 						alert("Login error");
