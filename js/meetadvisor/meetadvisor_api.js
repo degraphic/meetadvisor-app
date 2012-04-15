@@ -13,31 +13,21 @@ MeetAdvisorApi.prototype = {
 		
 		$.ajax({
 				url: wsUrl,
-					dataType: 'json',
-					success: function(data) {
-						console.log(data);
-						if(data.Result == true){
-							window.localStorage.setItem("key", data.isfemale);
-							location.hash = "#meetspots";
-						}
-						else {
-							alert("Login error");
-						}
-					},
-					error:function (xhr, ajaxOptions, thrownError){
-						alert(xhr.status);
-						alert(thrownError);
-					},  
-					
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					if(data.Result == true){
+						window.localStorage.setItem("key", data.isfemale);
+						location.hash = "#meetspots";
+					}
+					else {
+						alert("Login error");
+					}
+				},
 				error:function (xhr, ajaxOptions, thrownError){
 					console.log('error', xhr.status);
 					console.log('error', thrownError);
-				},  
-					
-			}).done(function(data) { 
-					
-				console.log('retrieve data', data);
-					
+				}
 			});
     },
 	
