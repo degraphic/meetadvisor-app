@@ -9,7 +9,7 @@ MeetAdvisorController.prototype = {
     login: function(data) {
 		data.template.file = "simple";
         data.page.file = "login";
-        
+		
         meetadvisor.render(data, function() {
             
             new uiFieldsGroup();
@@ -30,8 +30,12 @@ MeetAdvisorController.prototype = {
     },
 
     createAccount: function(data) {
+
 		data.template.file = "simple";
 		data.page.file = "create-account";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('header', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
 			new uiFieldsGroup();
@@ -41,22 +45,40 @@ MeetAdvisorController.prototype = {
 
     meetspots: function(data) {
         data.page.file = "meetspots";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('meetspotItem', 'list/item-meetspot');
+		data.addPartial('header', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     checkin: function(data) {
         data.page.file = "checkin";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('header', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     profile: function(data) {
         data.page.file = "profile";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('header', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     testMustache: function(data) {
         data.page.file = "test-mustache";
 
+        // on ajoute un partial qui sera appelable par mustache dans le template
+		data.addPartial('header', 'header/default');
+		data.addPartial('meetspotItem', 'list/item-meetspot');
+		data.addPartial('footer', 'footer/tab-bar');
+		
         // on determine la data qui sera utilisee par mustache pour aficher le template
         data.data = {
             bars : [
@@ -71,9 +93,6 @@ MeetAdvisorController.prototype = {
                 number_of_fucks_i_give : 0
             }
         };
-        
-        // on ajoute un partial qui sera appelable par mustache dans le template
-        data.addPartial('bar_element', 'test-partial');
 
         // on demande a render la page
         meetadvisor.render(data);
