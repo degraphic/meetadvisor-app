@@ -34,12 +34,15 @@ MeetAdvisorApi.prototype = {
 	register : function (login, password, mail, uid, isfemale) {
 	    
 	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale;
-		
 		$.ajax({
-			url: swUrl,
+			url: wsUrl,
 			dataType: 'json',
 			success: function(data) {
-			
+				if (data.Result == true) {
+					window.localStorage.setItem("key", true);
+					location.hash = "#meetspotsList";
+				}
+				console.log(data);
 			},
 			error:function (xhr, ajaxOptions, thrownError){
 				console.log('error', xhr.status);
