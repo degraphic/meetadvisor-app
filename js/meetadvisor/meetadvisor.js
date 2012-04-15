@@ -57,8 +57,7 @@ MeetAdvisor.prototype = {
 				
 				$("#content").html(html);
 				
-				console.log(view_data);
-				
+			
 				// Set content position
 				that._set_content_position();
 				
@@ -79,14 +78,7 @@ MeetAdvisor.prototype = {
 						else {
 							//alert ($("#login").val()+ $("#pwd").val());
 							var ws = new MeetAdvisorApi();
-							var res = ws.login($("#login").val(),$("#pwd").val());
-							console.log(res);
-							if (res.Result == false) {
-								alert("Connection failed");
-							}
-							else {
-								alert("Connection success");
-							}
+							ws.login($("#login").val(),$("#pwd").val());
 						}
 
 					});
