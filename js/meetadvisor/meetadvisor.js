@@ -122,12 +122,11 @@ MeetAdvisor.prototype = {
 				
 		// Bind content position on window resize / used only for desktop version
 		$(window).resize(function() {
-			meetadvisor._set_content_position()
+			meetadvisor._set_content_position();
 		});
 		
         // call callback if set
-        if (callback)
-        {
+        if (callback) {
             callback();
         }
         this.loader_overlay(false);

@@ -15,7 +15,11 @@ MeetAdvisorView.prototype = {
         return data;
     },
 
-    meetspots: function(data) {
+    meetspotsList: function(data) {
+        return data;
+    },
+
+    meetspotsMap: function(data) {
         return data;
     },
 
