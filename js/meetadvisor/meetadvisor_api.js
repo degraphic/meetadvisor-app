@@ -4,6 +4,7 @@ MeetAdvisorApi.prototype = {
 
 	// properties
 	server_address : "http://api.meet-advisor.com/LoginService.svc",
+	server_address_location : "http://api.meet-advisor.com/LocationService.svc",
 	
 	// methods
 	
@@ -55,6 +56,16 @@ MeetAdvisorApi.prototype = {
 			
 		});
 	    
-	}
+	},
+
+    venue : function (x, y, callback) {
+		$.ajax({
+			url: this.server_address_location + "/venue/" + x + "/" + y,
+			dataType: 'json',
+		}).done(function(data) { 
+			callback(data);
+		});
+        
+    }
 	
 };
