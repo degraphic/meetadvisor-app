@@ -37,11 +37,8 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
-<<<<<<< HEAD
 			new UiFieldsGroup();
-=======
-			new uiFieldsGroup();
-			
+		
 			$("#submit").click(function() {		
             
 			    if ($("#login").val() == "" || $("#pwd").val() == "") {
@@ -51,9 +48,8 @@ MeetAdvisorController.prototype = {
 				    meetadvisor.api.register($("#login").val(), $("#pwd").val(), $("#email").val(), "pomme2terre", isfemale);
 			    }
             });
-			
->>>>>>> ddd4362618b950b01dd944092e5ec5b0c9feed80
-        });
+
+		});
 
     },
 
