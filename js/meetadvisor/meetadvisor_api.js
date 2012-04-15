@@ -11,38 +11,25 @@ MeetAdvisorApi.prototype = {
         // TODO
 		var wsUrl = this.server_address + "/login/" + login + "/" + password;
 		
-		alert('calling webservices...' + wsUrl);
-		
-				
-		// $.getJSON(wsUrl, function(data) {
-            // alert("data:" + data);
-			// console.log(data);
-			// //uncomment this for debug
-            // //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
-            // //$('#showdata').html("<p>item1="+data.item1+" item2="+data.item2+" item3="+data.item3+"</p>");
-        // });
-		
 		$.ajax({
 				url: wsUrl,
 					dataType: 'json',
 					success: function(data) {
-						//$('.result').html(data);
-						alert('success');
+						console.log(data);
+						if(data.Result == true){
+							window.localStorage.setItem("key", data.isfemale);
+							location.hash = "#meetspots";
+						}
+						else {
+							alert("Login error");
+						}
 					},
-					// error: function(data) {
-						// //$('.result').html(data);
-						// alert('error');
-					// },
 					error:function (xhr, ajaxOptions, thrownError){
-                    alert(xhr.status);
-                    alert(thrownError);
+						alert(xhr.status);
+						alert(thrownError);
 					},  
 					
-				}).done(function(data) { 
-					
-					alert('success');
-					
-			});
+				});
     },
 	
 	register : function (login, password, mail, uid, isfemale) {
