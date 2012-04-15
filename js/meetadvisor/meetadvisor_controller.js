@@ -11,23 +11,33 @@ MeetAdvisorController.prototype = {
 
     login: function(data) {
         data.page.file = "login";
+        
         meetadvisor.render(data, function() {
-			$("#submit").click(function() {		
+            
+            new uiFieldsGroup();
+        
+            // Bind connect button
+            $("#submit").click(function() {		
+            
 			    if ($("#login").val() == "" || $("#pwd").val() == "") {
 				    alert("Merci d'entrer un login et un mot de passe.");
 			    }
 			    else {
-				    //alert ($("#login").val()+ $("#pwd").val());
 				    var ws = new MeetAdvisorApi();
-				    ws.login($("#login").val(),$("#pwd").val());
+				    wsws.login($("#login").val(),$("#pwd").val());
 			    }
             });
+			
         });
     },
 
     createAccount: function(data) {
-        data.page.file = "create-account";
-        meetadvisor.render(data);
+		data.page.file = "create-account";
+
+		meetadvisor.render(data, function() {
+			new uiFieldsGroup();
+        });
+
     },
 
     meetspots: function(data) {

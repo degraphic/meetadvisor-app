@@ -1,43 +1,48 @@
 var MeetAdvisorRenderData = function MeetAdvisorRenderData() {};
 
 MeetAdvisorRenderData.prototype = {
-	template : null,
-	page : null,
-    partials : null,
-    data : null,
+	
+	template: null,
+	page: null,
+	partials: null,
+	data: null,
     
-    init: function() {
-	    this.template = {
-		    file: null, 
-		    src: null
-	    };
-	    this.page = {
-		    file: null, 
-		    src: null
-	    };
-        this.partials = {};
-        this.data = {};
-    },
+	init: function() {
+		this.template = {
+			file: null, 
+			src: null
+		};
+		this.page = {
+			file: null, 
+			src: null
+		};
+		
+		this.partials = {};
+		this.data = {};
+	},
 
 	addPartial: function(partial) {
-        this.partials[partial] = null;
-    },
+		this.partials[partial] = null;
+	},
 }
 
 var MeetAdvisor = function MeetAdvisor() {};
 
 MeetAdvisor.prototype = {
-    api : null,
-    controller : null,
-    valid_pages : null,
+  
+	api: null,
+    controller: null,
+    valid_pages: null,
 
 	init: function () {
+		
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
 	},
     
 	navigate: function (uri) {
+	
 		var page = uri.replace(/^#/, '');
 		var instance = this;
 	    
@@ -50,28 +55,30 @@ MeetAdvisor.prototype = {
 		}
 	    
 		var render_data = new MeetAdvisorRenderData();
-        render_data.init();
+		render_data.init();
 		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
+		
 		this.controller[page](render_data);			
 	},
 
-    render: function(render_data, callback) {
+	render: function(render_data, callback) {
+	
 		//TODO ne charger le HTML que quand on change par rapport au precedent  
 		//TODO ne charger le HTML que quand le _data est vide
 
-        // Load everything recursively
-
+		// Load everything recursively
 
         // Load template
         if (!render_data.template.src) {
-            $.ajax({
-			    url: "templates/" + render_data.template.file + ".html",
-			    dataType: 'html',			
-		    }).done(function(html) { 
-                render_data.template.src = html;
-                meetadvisor.render(render_data, callback);                
+
+			$.ajax({
+				url: "templates/" + render_data.template.file + ".html",
+				dataType: 'html',			
+				}).done(function(html) { 
+					render_data.template.src = html;
+					meetadvisor.render(render_data, callback);
 			});
-            return ;
+			return;
         }
 
         // Load page
@@ -125,8 +132,7 @@ MeetAdvisor.prototype = {
 		var headerEl = $('header');
 		
 		// Set Decal top & height for overflow management
-		$('#content').css('margin-top', headerEl.outerHeight())
-			.css('height', ($(window).height() - ( headerEl.outerHeight() + $('footer').outerHeight() ) ) );
+		$('#content').css('margin-top', headerEl.outerHeight()).css('height', ($(window).height() - ( headerEl.outerHeight() + $('footer').outerHeight() ) ) );
 		
 	},
     
