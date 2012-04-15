@@ -105,29 +105,16 @@ MeetAdvisor.prototype = {
         $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partials));
 
 		// Set content position
-		that._set_content_position();
+		meetadvisor._set_content_position();
 				
 		// Set active tab
-		that._set_active_nav_css(uri_base, $("footer"));
+		meetadvisor._set_active_nav_css(render_data.page.file, $("footer"));
 				
 		// Bind content position on window resize / used only for desktop version
 		$(window).resize(function() {
-			that._set_content_position()
+			meetadvisor._set_content_position()
 		});
-				
-		if (render_data.page.file == "login") {
-			$("#submit").click(function() {		
-			    if ($("#login").val() == "" || $("#pwd").val() == "") {
-				    alert("Merci d'entrer un login et un mot de passe.");
-			    }
-			    else {
-				    //alert ($("#login").val()+ $("#pwd").val());
-				    var ws = new MeetAdvisorApi();
-				    ws.login($("#login").val(),$("#pwd").val());
-			    }
-            });
-        }
-
+		
         // call callback if set
         if (callback)
             callback();

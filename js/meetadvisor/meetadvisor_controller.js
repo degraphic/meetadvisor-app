@@ -11,7 +11,18 @@ MeetAdvisorController.prototype = {
 
     login: function(data) {
         data.page.file = "login";
-        meetadvisor.render(data);
+        meetadvisor.render(data, function() {
+			$("#submit").click(function() {		
+			    if ($("#login").val() == "" || $("#pwd").val() == "") {
+				    alert("Merci d'entrer un login et un mot de passe.");
+			    }
+			    else {
+				    //alert ($("#login").val()+ $("#pwd").val());
+				    var ws = new MeetAdvisorApi();
+				    ws.login($("#login").val(),$("#pwd").val());
+			    }
+            });
+        });
     },
 
     createAccount: function(data) {
