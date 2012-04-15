@@ -16,18 +16,18 @@ MeetAdvisor.prototype = {
     
 	navigate: function (uri) {
         
-		uri_base = uri.replace(/^#/, '');
-		nav = this.navigation_config[uri_base];
+		var uri_base = uri.replace(/^#/, '');
+		var nav = this.navigation_config[uri_base];
 	    
 
-        if (uri_base == '') {
-            location.hash = '#' + MEET_ADVISOR_NAVIGATION_DEFAULT;
-            return ;
+		if (uri_base == '') {
+			location.hash = '#' + MEET_ADVISOR_NAVIGATION_DEFAULT;
+			return ;
 			//uri_base = MEET_ADVISOR_NAVIGATION_DEFAULT;
 			//nav = this.navigation_config[uri_base];
-        } else if (!nav) {
-            location.hash = '#' + MEET_ADVISOR_NAVIGATION_404;
-            return ;
+		} else if (!nav) {
+			location.hash = '#' + MEET_ADVISOR_NAVIGATION_404;
+			return ;
 			//uri_base = MEET_ADVISOR_NAVIGATION_404;
 			//nav = this.navigation_config['_404'];            
 		}
@@ -45,7 +45,7 @@ MeetAdvisor.prototype = {
         
 		$.ajax({
 			url: "templates/" + view_data.template.file + ".html",
-			dataType: 'html',
+			dataType: 'html',			
 		}).done(function(html) { 
 			
 			$("body").html(html);
@@ -56,6 +56,8 @@ MeetAdvisor.prototype = {
 			}).done(function(html) { 
 				
 				$("#content").html(html);
+				
+				console.log(view_data);
 				
 				// Set content position
 				that._set_content_position();
