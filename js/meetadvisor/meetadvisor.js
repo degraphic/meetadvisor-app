@@ -1,101 +1,113 @@
+var MeetAdvisorRenderData = function MeetAdvisorRenderData() {};
+
+MeetAdvisorRenderData.prototype = {
+	template : null,
+	page : null,
+    partials : null,
+    data : null,
+    
+    init: function() {
+	    this.template = {
+		    file: null, 
+		    src: null
+	    };
+	    this.page = {
+		    file: null, 
+		    src: null
+	    };
+        this.partials = {};
+        this.data = {};
+    },
+
+	addPartial: function(partial) {
+        this.partials[partial] = null;
+    },
+}
+
 var MeetAdvisor = function MeetAdvisor() {};
 
 MeetAdvisor.prototype = {
-    
-	current_template: null,
-	current_page: null,
-	current_template_src: null,
-	current_page_src: null,
-	view: null,
-    
+    api : null,
+    controller : null,
+    valid_pages : null,
+
 	init: function () {
 		this.api = new MeetAdvisorApi();
-		this.view = new MeetAdvisorView();
-		this.navigation_config = MEET_ADVISOR_NAVIGATION;
+		this.controller = new MeetAdvisorController();
+		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
 	},
     
 	navigate: function (uri) {
-        
-		var uri_base = uri.replace(/^#/, '');
-		var nav = this.navigation_config[uri_base];
+		var page = uri.replace(/^#/, '');
+		var instance = this;
 	    
-
-		if (uri_base == '') {
-			location.hash = '#' + MEET_ADVISOR_NAVIGATION_DEFAULT;
+		if (page == '') {
+			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
 			return ;
-			//uri_base = MEET_ADVISOR_NAVIGATION_DEFAULT;
-			//nav = this.navigation_config[uri_base];
-		} else if (!nav) {
-			location.hash = '#' + MEET_ADVISOR_NAVIGATION_404;
+		} else if (!this.valid_pages[page]) {
+			location.hash = '#' + MEET_ADVISOR_404_PAGE;
 			return ;
-			//uri_base = MEET_ADVISOR_NAVIGATION_404;
-			//nav = this.navigation_config['_404'];            
 		}
 	    
-		var view_data = new MeetAdvisorViewData();
-		view_data.template.file = nav.template;
-		view_data.page.file = nav.page;        
-		view_data = this.view[uri_base](view_data);
-	    
+		var render_data = new MeetAdvisorRenderData();
+        render_data.init();
+		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
+		this.controller[page](render_data);			
+	},
+
+    render: function(render_data, callback) {
 		//TODO ne charger le HTML que quand on change par rapport au precedent  
 		//TODO ne charger le HTML que quand le _data est vide
-		//TODO handle le _src avec mustache + le _data
-	    
-		that = this;
-        
-		$.ajax({
-			url: "templates/" + view_data.template.file + ".html",
-			dataType: 'html',			
-		}).done(function(html) { 
-			
-			$("body").html(html);
-			
-			$.ajax({			
-				url: "pages/" + view_data.page.file + ".html",
-				dataType:'html',
-			}).done(function(html) { 
-				
-				$("#content").html(html);
-				
-				console.log(view_data);
-				
-				// Set content position
-				that._set_content_position();
-				
-				// Set active tab
-				that._set_active_nav_css(uri_base, $("footer"));
-				
-				// Bind content position on window resize / used only for desktop version
-				$(window).resize(function() {
-					that._set_content_position()
-				});
-				
-				if (uri_base == "login"){
-					$("#submit").click(function() {
-						
-						if ($("#login").val() == "" || $("#pwd").val() == "") {
-							alert("Merci d'entrer un login et un mot de passe.");
-						}
-						else {
-							//alert ($("#login").val()+ $("#pwd").val());
-							var ws = new MeetAdvisorApi();
-							var res = ws.login($("#login").val(),$("#pwd").val());
-							console.log(res);
-							if (res.Result == false) {
-								alert("Connection failed");
-							}
-							else {
-								alert("Connection success");
-							}
-						}
 
-					});
-				}
-				
+        // Load everything recursively
+
+
+        // Load template
+        if (!render_data.template.src) {
+            $.ajax({
+			    url: "templates/" + render_data.template.file + ".html",
+			    dataType: 'html',			
+		    }).done(function(html) { 
+                render_data.template.src = html;
+                meetadvisor.render(render_data, callback);                
 			});
-			
-		});
-	},
+            return ;
+        }
+
+        // Load page
+        if (!render_data.page.src) {
+            $.ajax({
+			    url: "pages/" + render_data.page.file + ".html",
+			    dataType: 'html',			
+		    }).done(function(html) { 
+                render_data.page.src = html;
+                meetadvisor.render(render_data, callback);
+			});
+            return ;
+        }
+
+        // Load the first missing partial
+        for (partial in render_data.partials) {
+            if (!render_data.partials[partial]) {
+                $.ajax({
+			        url: "templates/parts/" + partial + ".html",
+			        dataType: 'html',			
+		        }).done(function(html) { 
+                    render_data.partials[partial] = html;
+                    meetadvisor.render(render_data, callback);
+			    });
+                return ;
+            }
+        }
+
+        // Everything is loaded, let's actually render it :        
+        $("body").html($.mustache(render_data.template.src, render_data.data));
+        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partials));
+
+        // call callback if set
+        if (callback)
+            callback();
+    },
 	
 	_set_content_position: function() {
 	    

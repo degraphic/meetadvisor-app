@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta charset="utf-8">
-						
-		<meta name="robots" content="index, follow" />	
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	
+	<meta name="robots" content="index, follow" />	
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	
+	<title>Meet Advisor</title>
+    
+	<!-- ### DEFAULTS CSS - BEGIN ### -->
+	<link rel="stylesheet" href="css/default.css" type="text/css" />
+	<link rel="stylesheet" href="css/common.css" type="text/css" />
+	<link rel="stylesheet" href="css/woman.css" type="text/css" />
+	<link rel="stylesheet" href="css/man.css" type="text/css" />
+	<!-- ### DEFAULTS CSS - END ### -->
+	
+	<!-- ### PAGES CSS - BEGIN ### -->
+	<link rel="stylesheet" href="css/pages/meetspots.css" type="text/css" />
+	<!-- ### PAGES CSS - END ### -->
+	
+	<!-- ### MEDIA QUERIES CSS - BEGIN ### -->
+	<link rel="stylesheet" href="css/mq-tablet.css" type="text/css" />
+	<link rel="stylesheet" href="css/mq-desktop.css" type="text/css" />
+	<!-- ### MEDIA QUERIES CSS - END ### -->
+	
+	<!-- ### JAVASCRIPT SECTION - BEGIN ### -->
+	<!-- libs -->
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery.hashchange.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/cordova-1.5.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery.mustache.js"></script>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-				
-		<title>Meet Advisor</title>
+	<!-- config -->
+	<script type="text/javascript" charset="utf-8" src="js/config/navigation.js"></script>
 
-		<!-- ### DEFAULTS CSS - BEGIN ### -->
-		<link rel="stylesheet" href="css/default.css" type="text/css" />
-		<link rel="stylesheet" href="css/common.css" type="text/css" />
-		<link rel="stylesheet" href="css/woman.css" type="text/css" />
-		<link rel="stylesheet" href="css/man.css" type="text/css" />
-		<!-- ### DEFAULTS CSS - END ### -->
-		
-		<!-- ### PAGES CSS - BEGIN ### -->
-		<link rel="stylesheet" href="css/pages/meetspots.css" type="text/css" />
-		<!-- ### PAGES CSS - END ### -->
-		
-		<!-- ### MEDIA QUERIES CSS - BEGIN ### -->
-		<link rel="stylesheet" href="css/mq-tablet.css" type="text/css" />
-		<link rel="stylesheet" href="css/mq-desktop.css" type="text/css" />
-		<!-- ### MEDIA QUERIES CSS - END ### -->
-		
-		<!-- ### JAVASCRIPT SECTION - BEGIN ### -->
-		<!-- libs -->
-		<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/libs/jquery.hashchange.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/libs/cordova-1.5.0.js"></script>
-		<!-- config -->
-		<script type="text/javascript" charset="utf-8" src="js/config/navigation.js"></script>
-		<!-- meet advisor -->
-		<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor_api.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor_view.js"></script>
-		<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor.js"></script>
-		<!-- bootstrapper -->
-		<script type="text/javascript" charset="utf-8" src="js/main.js"></script>   
-		<!-- ### JAVASCRIPT SECTION - END ### -->
-	</head>
+	<!-- meet advisor -->
+	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor_api.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor_controller.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/meetadvisor.js"></script>
+
+	<!-- bootstrapper -->
+	<script type="text/javascript" charset="utf-8" src="js/main.js"></script>   
+	<!-- ### JAVASCRIPT SECTION - END ### -->
+
   </head>
   <body class="woman">
     <!-- THIS IS A BOOTSTRAP HTML, THE JAVASCRIPT WILL LOAD ALL THE CONTENT HERE INSTEAD -->
