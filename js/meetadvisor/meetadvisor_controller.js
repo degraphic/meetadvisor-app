@@ -35,7 +35,7 @@ MeetAdvisorController.prototype = {
 		data.page.file = "create-account";
 		
 		data.addPartial('header', 'header/default');
-		data.addPartial('header', 'footer/tab-bar');
+		data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
 			new uiFieldsGroup();
@@ -46,9 +46,9 @@ MeetAdvisorController.prototype = {
     meetspots: function(data) {
         data.page.file = "meetspots";
 		
-		data.addPartial('header', 'header/default');
+		data.addPartial('header', 'header/meetspots');
 		data.addPartial('meetspotItem', 'list/item-meetspot');
-		data.addPartial('header', 'footer/tab-bar');
+		data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.api.venue(0, 0, function (venues) {
             data.data.venues = venues;
@@ -62,7 +62,7 @@ MeetAdvisorController.prototype = {
         data.page.file = "checkin";
 		
 		data.addPartial('header', 'header/default');
-		data.addPartial('header', 'footer/tab-bar');
+		data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.render(data);
     },
@@ -71,7 +71,7 @@ MeetAdvisorController.prototype = {
         data.page.file = "profile";
 		
 		data.addPartial('header', 'header/default');
-		data.addPartial('header', 'footer/tab-bar');
+		data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.render(data);
     },
