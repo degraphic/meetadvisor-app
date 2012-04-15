@@ -12,7 +12,7 @@ MeetAdvisorController.prototype = {
 		
         meetadvisor.render(data, function() {
             
-            new uiFieldsGroup();
+            new UiFieldsGroup();
         
             // Bind connect button
             $("#submit").click(function() {		
@@ -37,7 +37,7 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
-			new uiFieldsGroup();
+			new UiFieldsGroup();
         });
 
     },
@@ -63,7 +63,14 @@ MeetAdvisorController.prototype = {
 		data.addPartial('header', 'header/meetspots-map');
 		data.addPartial('footer', 'footer/tab-bar');
 
-		meetadvisor.render(data);            
+		meetadvisor.render(data, function() {
+			var map = new MeetspotsMap();
+			map.settings = {
+				mapContainer: document.getElementById('meetspot-map')
+			};
+			map.init();
+        });
+		
 
     },
 
