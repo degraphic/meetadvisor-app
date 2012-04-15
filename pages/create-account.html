@@ -1,7 +1,7 @@
 <div class="content-wrapper">
 
 	<div class="spacer-top-large">
-		
+		<h3>Inscrivez-vous gratuitement</h3>
 		<form id="createAccountForm" method="post">
 
 			<div class="spacer-bottom">
@@ -27,14 +27,22 @@
 					<input type="password" id="pwd" name="pwd" value="" />
 				</div>
 				
+				<div data-role="field-contain">
+					<label for="email">
+						Email
+					</label>
+					<input type="email" id="email" name="email" value="" />
+				</div>
+				
 			</div>
-			
-			<div class="buttons-action-container">
-				<input type="submit" class="button action-default block" name="submit" id="submit" value="Valider" />
-			</div>
-
-		</form>
 	
+			<div class="buttons-action-container">
+				<button type="button" class="button action-default block" name="submit" id="submit">Créer mon compte</button>
+			</div>
+		</form>
+		<div class="spacer-top-large">
+			<a href="#" class="button blue block">Retour</a>
+		</div>
 	</div>
 	
 </div>

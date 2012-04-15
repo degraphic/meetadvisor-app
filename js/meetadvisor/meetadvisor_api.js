@@ -16,7 +16,6 @@ MeetAdvisorApi.prototype = {
 				url: wsUrl,
 				dataType: 'json',
 				success: function(data) {
-					console.log(data);
 					if (data.Result == true) {
 						window.localStorage.setItem("key", data.isfemale);
 						location.hash = "#meetspotsList";
@@ -34,15 +33,19 @@ MeetAdvisorApi.prototype = {
 	
 	register : function (login, password, mail, uid, isfemale) {
 	    
+	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale;
+		
 		$.ajax({
-			url: this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale,
+			url: swUrl,
 			dataType: 'json',
-		}).done(function(data) { 
-			console.log(data);
-			alert('success');
+			success: function(data) {
 			
+			},
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log('error', xhr.status);
+				console.log('error', thrownError);
+			}
 		});
-	    
 	},
 
     venue : function (x, y, callback) {
