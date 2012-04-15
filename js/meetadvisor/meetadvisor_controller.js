@@ -46,7 +46,7 @@ MeetAdvisorController.prototype = {
     meetspots: function(data) {
         data.page.file = "meetspots";
 		
-		data.addPartial('header', 'header/default');
+		data.addPartial('header', 'header/meetspots');
 		data.addPartial('meetspotItem', 'list/item-meetspot');
 		data.addPartial('footer', 'footer/tab-bar');
 		
