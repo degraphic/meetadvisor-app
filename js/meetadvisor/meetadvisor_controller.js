@@ -50,9 +50,9 @@ MeetAdvisorController.prototype = {
 		data.addPartial('meetspotItem', 'list/item-meetspot');
 		data.addPartial('footer', 'footer/tab-bar');
 		
-        meetadvisor.api.venue(0, 0, function (venues) {
-            data.data.venues = venues;
-            console.log(venues);
+        meetadvisor.api.venue(0, 0, function (meetspots) {
+            data.data.meetspots = meetspots;
+            console.log(meetspots);
             meetadvisor.render(data);            
         });
 

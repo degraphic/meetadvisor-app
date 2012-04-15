@@ -59,6 +59,7 @@ MeetAdvisor.prototype = {
 		render_data.init();
 		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
 		
+        this.loader_overlay(true);
 		this.controller[page](render_data);			
 	},
 
@@ -125,7 +126,14 @@ MeetAdvisor.prototype = {
 		
         // call callback if set
         if (callback)
+        {
             callback();
+        }
+        this.loader_overlay(false);
+    },
+
+    loader_overlay: function(is_active) {
+        $(document.getElementById('loading-overlay')).style('display', is_active ? 'block' : 'none');
     },
 	
 	_set_content_position: function() {
