@@ -64,7 +64,7 @@ MeetAdvisorController.prototype = {
         };
         
         // on ajoute un partial qui sera appelable par mustache dans le template
-        data.addPartial('test-partial');
+        data.addPartial('bar_element', 'test-partial');
 
         // on demande a render la page
         meetadvisor.render(data);

@@ -23,39 +23,40 @@ MeetAdvisorApi.prototype = {
         // });
 		
 		$.ajax({
-				url: wsUrl,
-					dataType: 'json',
-					success: function(data) {
-						//$('.result').html(data);
-						alert('success');
-					},
-					// error: function(data) {
-						// //$('.result').html(data);
-						// alert('error');
-					// },
-					error:function (xhr, ajaxOptions, thrownError){
-                    alert(xhr.status);
-                    alert(thrownError);
-					},  
-					
-				}).done(function(data) { 
-					
-					alert('success');
-					
-			});
+			url: wsUrl,
+			dataType: 'json',
+            crossDomain: true,
+			success: function(data) {
+				//$('.result').html(data);
+				alert('success');
+			},
+			// error: function(data) {
+			// //$('.result').html(data);
+			// alert('error');
+			// },
+			error:function (xhr, ajaxOptions, thrownError){
+                alert(xhr.status);
+                alert(thrownError);
+			},  
+			
+		}).done(function(data) { 
+			
+			alert('success');
+			
+		});
     },
 	
 	register : function (login, password, mail, uid, isfemale) {
-	
-			$.ajax({
-				url: this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale,
-							dataType: 'json',
-				}).done(function(data) { 
-					console.log(data);
-					alert('success');
-					
-			});
-	
+	    
+		$.ajax({
+			url: this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale,
+			dataType: 'json',
+		}).done(function(data) { 
+			console.log(data);
+			alert('success');
+			
+		});
+	    
 	}
 	
 };

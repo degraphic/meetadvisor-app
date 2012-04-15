@@ -3,7 +3,8 @@ var MeetAdvisorRenderData = function MeetAdvisorRenderData() {};
 MeetAdvisorRenderData.prototype = {
 	template : null,
 	page : null,
-    partials : null,
+    partial_files : null,
+    partial_srcs : null,
     data : null,
     
     init: function() {
@@ -15,12 +16,14 @@ MeetAdvisorRenderData.prototype = {
 		    file: null, 
 		    src: null
 	    };
-        this.partials = {};
+        this.partial_files = {};
+        this.partial_srcs = {};
         this.data = {};
     },
 
-	addPartial: function(partial) {
-        this.partials[partial] = null;
+	addPartial: function(partial_name, partial_file) {
+        this.partial_files[partial_name] = partial_file;
+        this.partial_srcs[partial_name] = null;
     },
 }
 
@@ -87,13 +90,13 @@ MeetAdvisor.prototype = {
         }
 
         // Load the first missing partial
-        for (partial in render_data.partials) {
-            if (!render_data.partials[partial]) {
+        for (partial in render_data.partial_files) {
+            if (!render_data.partial_srcs[partial]) {
                 $.ajax({
-			        url: "templates/parts/" + partial + ".html",
+			        url: "templates/parts/" + render_data.partial_files[partial] + ".html",
 			        dataType: 'html',			
 		        }).done(function(html) { 
-                    render_data.partials[partial] = html;
+                    render_data.partial_srcs[partial] = html;
                     meetadvisor.render(render_data, callback);
 			    });
                 return ;
@@ -102,7 +105,7 @@ MeetAdvisor.prototype = {
 
         // Everything is loaded, let's actually render it :        
         $("body").html($.mustache(render_data.template.src, render_data.data));
-        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partials));
+        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
 
 		// Set content position
 		meetadvisor._set_content_position();
