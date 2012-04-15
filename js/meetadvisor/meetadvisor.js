@@ -48,7 +48,16 @@ MeetAdvisor.prototype = {
 
 		var page = uri.replace(/^#/, '');
 		var instance = this;
-	    
+	    		
+		// do i have a session ?
+		if (localStorage.getItem("key") == null) {
+			// no => go to login
+			if (page != "createAccount") {
+				page = "login";
+			}
+		}
+		
+		
 		if (page == '') {
 			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
 			return ;

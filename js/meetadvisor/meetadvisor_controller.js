@@ -2,8 +2,16 @@ var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
 
-    _404: function(data) {
-        data.page.file = "404";
+    error404: function(data) {
+        data.page.file = "error404";
+		
+		
+    meetadvisor.render(data, function() {
+            
+                 
+			
+        });
+		
     },
 
     login: function(data) {

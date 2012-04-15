@@ -1,6 +1,6 @@
 MEET_ADVISOR_DEFAULT_TEMPLATE = 'default';
-MEET_ADVISOR_DEFAULT_PAGE = 'login';
-MEET_ADVISOR_404_PAGE = '_404';
+MEET_ADVISOR_DEFAULT_PAGE = 'meetspotsMap';
+MEET_ADVISOR_404_PAGE = 'error404';
 
 MEET_ADVISOR_VALID_PAGES = {
     login: true,
@@ -9,13 +9,12 @@ MEET_ADVISOR_VALID_PAGES = {
 	meetspotsMap: true,
     checkin: true,
     profile: true,
-    _404: true,
+    error404: true,
     testMustache: true,
 };
 
 
-MEET_ADVISOR_NAVIGATION_DEFAULT = "login";
-MEET_ADVISOR_NAVIGATION_404 = "_404";
+MEET_ADVISOR_NAVIGATION_404 = "error404";
 
 MEET_ADVISOR_NAVIGATION = {
     login: {
@@ -42,9 +41,9 @@ MEET_ADVISOR_NAVIGATION = {
         template: "default",
         page: "profile"
     },
-    _404: {
+    error404: {
         template: "default",
-        page: "404"
+        page: "error404"
     },
 };
 
