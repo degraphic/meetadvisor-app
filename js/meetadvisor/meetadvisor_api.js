@@ -1,8 +1,8 @@
 var MeetAdvisorApi = function MeetAdvisorApi () {};
 
 MeetAdvisorApi.prototype = {
-	// properties
 
+	// properties
 	server_address : "http://api.meet-advisor.com/LoginService.svc",
 	
 	// methods
@@ -29,20 +29,29 @@ MeetAdvisorApi.prototype = {
 						alert(thrownError);
 					},  
 					
-				});
+				error:function (xhr, ajaxOptions, thrownError){
+					console.log('error', xhr.status);
+					console.log('error', thrownError);
+				},  
+					
+			}).done(function(data) { 
+					
+				console.log('retrieve data', data);
+					
+			});
     },
 	
 	register : function (login, password, mail, uid, isfemale) {
-	
-			$.ajax({
-				url: this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale,
-							dataType: 'json',
-				}).done(function(data) { 
-					console.log(data);
-					alert('success');
-					
-			});
-	
+	    
+		$.ajax({
+			url: this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale,
+			dataType: 'json',
+		}).done(function(data) { 
+			console.log(data);
+			alert('success');
+			
+		});
+	    
 	}
 	
 };

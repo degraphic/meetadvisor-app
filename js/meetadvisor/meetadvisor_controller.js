@@ -4,50 +4,81 @@ MeetAdvisorController.prototype = {
 
     _404: function(data) {
         data.page.file = "404";
-
-        // on fait un callback de "post-render"
-        meetadvisor.render(data, function(){alert('404')});
     },
 
     login: function(data) {
+		data.template.file = "simple";
         data.page.file = "login";
+		
         meetadvisor.render(data, function() {
-			$("#submit").click(function() {		
+            
+            new uiFieldsGroup();
+        
+            // Bind connect button
+            $("#submit").click(function() {		
+            
 			    if ($("#login").val() == "" || $("#pwd").val() == "") {
 				    alert("Merci d'entrer un login et un mot de passe.");
 			    }
 			    else {
-				    //alert ($("#login").val()+ $("#pwd").val());
 				    var ws = new MeetAdvisorApi();
-				    ws.login($("#login").val(),$("#pwd").val());
+				    wsws.login($("#login").val(),$("#pwd").val());
 			    }
             });
+			
         });
     },
 
     createAccount: function(data) {
-        data.page.file = "create-account";
-        meetadvisor.render(data);
+
+		data.template.file = "simple";
+		data.page.file = "create-account";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('footer', 'footer/tab-bar');
+
+		meetadvisor.render(data, function() {
+			new uiFieldsGroup();
+        });
+
     },
 
     meetspots: function(data) {
         data.page.file = "meetspots";
+		
+		data.addPartial('header', 'header/meetspots');
+		data.addPartial('meetspotItem', 'list/item-meetspot');
+		data.addPartial('footer', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     checkin: function(data) {
         data.page.file = "checkin";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('footer', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     profile: function(data) {
         data.page.file = "profile";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('footer', 'footer/tab-bar');
+		
         meetadvisor.render(data);
     },
 
     testMustache: function(data) {
         data.page.file = "test-mustache";
 
+        // on ajoute un partial qui sera appelable par mustache dans le template
+		data.addPartial('header', 'header/default');
+		data.addPartial('meetspotItem', 'list/item-meetspot');
+		data.addPartial('footer', 'footer/tab-bar');
+		
         // on determine la data qui sera utilisee par mustache pour aficher le template
         data.data = {
             bars : [
@@ -62,9 +93,6 @@ MeetAdvisorController.prototype = {
                 number_of_fucks_i_give : 0
             }
         };
-        
-        // on ajoute un partial qui sera appelable par mustache dans le template
-        data.addPartial('test-partial');
 
         // on demande a render la page
         meetadvisor.render(data);

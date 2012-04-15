@@ -3,7 +3,8 @@ var MeetAdvisorRenderData = function MeetAdvisorRenderData() {};
 MeetAdvisorRenderData.prototype = {
 	template : null,
 	page : null,
-    partials : null,
+    partial_files : null,
+    partial_srcs : null,
     data : null,
     
     init: function() {
@@ -15,29 +16,34 @@ MeetAdvisorRenderData.prototype = {
 		    file: null, 
 		    src: null
 	    };
-        this.partials = {};
+        this.partial_files = {};
+        this.partial_srcs = {};
         this.data = {};
     },
 
-	addPartial: function(partial) {
-        this.partials[partial] = null;
+	addPartial: function(partial_name, partial_file) {
+        this.partial_files[partial_name] = partial_file;
+        this.partial_srcs[partial_name] = null;
     },
 }
 
 var MeetAdvisor = function MeetAdvisor() {};
 
 MeetAdvisor.prototype = {
-    api : null,
-    controller : null,
-    valid_pages : null,
+  
+	api: null,
+    controller: null,
+    valid_pages: null,
 
 	init: function () {
+		
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
 	},
     
 	navigate: function (uri) {
+	
 		var page = uri.replace(/^#/, '');
 		var instance = this;
 	    
@@ -50,28 +56,30 @@ MeetAdvisor.prototype = {
 		}
 	    
 		var render_data = new MeetAdvisorRenderData();
-        render_data.init();
+		render_data.init();
 		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
+		
 		this.controller[page](render_data);			
 	},
 
-    render: function(render_data, callback) {
+	render: function(render_data, callback) {
+	
 		//TODO ne charger le HTML que quand on change par rapport au precedent  
 		//TODO ne charger le HTML que quand le _data est vide
 
-        // Load everything recursively
-
+		// Load everything recursively
 
         // Load template
         if (!render_data.template.src) {
-            $.ajax({
-			    url: "templates/" + render_data.template.file + ".html",
-			    dataType: 'html',			
-		    }).done(function(html) { 
-                render_data.template.src = html;
-                meetadvisor.render(render_data, callback);                
+
+			$.ajax({
+				url: "templates/" + render_data.template.file + ".html",
+				dataType: 'html',			
+				}).done(function(html) { 
+					render_data.template.src = html;
+					meetadvisor.render(render_data, callback);
 			});
-            return ;
+			return;
         }
 
         // Load page
@@ -87,13 +95,13 @@ MeetAdvisor.prototype = {
         }
 
         // Load the first missing partial
-        for (partial in render_data.partials) {
-            if (!render_data.partials[partial]) {
+        for (partial in render_data.partial_files) {
+            if (!render_data.partial_srcs[partial]) {
                 $.ajax({
-			        url: "templates/parts/" + partial + ".html",
+			        url: "templates/parts/" + render_data.partial_files[partial] + ".html",
 			        dataType: 'html',			
 		        }).done(function(html) { 
-                    render_data.partials[partial] = html;
+                    render_data.partial_srcs[partial] = html;
                     meetadvisor.render(render_data, callback);
 			    });
                 return ;
@@ -101,8 +109,8 @@ MeetAdvisor.prototype = {
         }
 
         // Everything is loaded, let's actually render it :        
-        $("body").html($.mustache(render_data.template.src, render_data.data));
-        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partials));
+        $("body").html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
+        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
 
 		// Set content position
 		meetadvisor._set_content_position();
@@ -125,8 +133,7 @@ MeetAdvisor.prototype = {
 		var headerEl = $('header');
 		
 		// Set Decal top & height for overflow management
-		$('#content').css('margin-top', headerEl.outerHeight())
-			.css('height', ($(window).height() - ( headerEl.outerHeight() + $('footer').outerHeight() ) ) );
+		$('#content').css('margin-top', headerEl.outerHeight()).css('height', ($(window).height() - ( headerEl.outerHeight() + $('footer').outerHeight() ) ) );
 		
 	},
     

@@ -8,7 +8,6 @@ MeetAdvisorView.prototype = {
     },
 
     login: function(data) {
-
         return data;	
     },
 
