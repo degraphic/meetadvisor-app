@@ -4,12 +4,10 @@ MeetAdvisorController.prototype = {
 
     _404: function(data) {
         data.page.file = "404";
-
-        // on fait un callback de "post-render"
-        meetadvisor.render(data, function(){alert('404')});
     },
 
     login: function(data) {
+		data.template.file = "simple";
         data.page.file = "login";
         
         meetadvisor.render(data, function() {
@@ -32,6 +30,7 @@ MeetAdvisorController.prototype = {
     },
 
     createAccount: function(data) {
+		data.template.file = "simple";
 		data.page.file = "create-account";
 
 		meetadvisor.render(data, function() {
