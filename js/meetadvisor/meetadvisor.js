@@ -68,6 +68,28 @@ MeetAdvisor.prototype = {
 					that._set_content_position()
 				});
 				
+				if (uri_base == "login"){
+					$("#submit").click(function() {
+						
+						if ($("#login").val() == "" || $("#pwd").val() == "") {
+							alert("Merci d'entrer un login et un mot de passe.");
+						}
+						else {
+							//alert ($("#login").val()+ $("#pwd").val());
+							var ws = new MeetAdvisorApi();
+							var res = ws.login($("#login").val(),$("#pwd").val());
+							console.log(res);
+							if (res.Result == false) {
+								alert("Connection failed");
+							}
+							else {
+								alert("Connection success");
+							}
+						}
+
+					});
+				}
+				
 			});
 			
 		});
