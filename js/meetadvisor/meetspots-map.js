@@ -17,23 +17,17 @@ MeetspotsMap.prototype = {
 	loadGmapApi: function () {
 
 		var instance_ = this;
-
-		$.ajax({
-			url: 'https://maps-api-ssl.google.com/maps/api/js?v=3&sensor=true',
-			dataType: 'json',
-		}).done(function(data) { 
-			console.log(data);
-			alert('success');
+		
+		$.getJSON('https://www.google.com/jsapi?callback=?', function () {		
+		
+			google.load('maps', 3.4, {
+				callback: function () {
+					instance_.gMapInit();
+				},
+				other_params: 'sensor=false'
+			});
 		});
-		/*
-		$.getJSON('https://maps-api-ssl.google.com/maps/api/js?v=3&sensor=false&callback=?', function () {
-			console.log('loaded');
-			instance_.gMapInit();
-		})
-		.success(function() { console.log('success'); return "SUCCESS"; })
-		.error(function() {  console.log('error'); return "ERROR"; })
-		.complete(function() { console.log('complete'); return "COMPLETE"; });
-		*/
+
 	},
 	
     isGMapsAlreadyLoaded: function () {
@@ -65,7 +59,7 @@ MeetspotsMap.prototype = {
             streetViewControl: true
         };
 		
-        setMap(new google.maps.Map(this.settings.mapContainer, mapOptions));
+        this.setMap(new google.maps.Map(this.settings.mapContainer, mapOptions));
     },
 	
     gMapSetPosition: function (lat, lng) {
