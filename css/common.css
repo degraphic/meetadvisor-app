@@ -207,6 +207,12 @@
     padding: 0 25px;
 }
 
+/* block */
+.button.block {
+	display: block;
+	width: 100%;
+}
+
 /* retina management example 
 @media all and (-webkit-min-device-pixel-ratio:2), @media all and (-webkit-min-device-pixel-ratio:1.75), @media all and (-webkit-min-device-pixel-ratio:1.5) {
     .icon-star-plain-like {
@@ -607,7 +613,7 @@
     margin-top: 10px;
 }
 
-/******************* 404 Page *******************/
+/******************* ERRORS PAGES *******************/
 .status-404-container {
 	margin: 25px 0;
 	font-size: 20px;
