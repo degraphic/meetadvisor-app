@@ -109,8 +109,8 @@ MeetAdvisor.prototype = {
         }
 
         // Everything is loaded, let's actually render it :        
-        $("body").html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
-        $("#content").html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
+        $(document.getElementById('body')).html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
+        $(document.getElementById('content')).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
 
 		// Set content position
 		meetadvisor._set_content_position();
