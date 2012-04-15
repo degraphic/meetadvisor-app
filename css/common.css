@@ -631,23 +631,31 @@
     border-radius: 5px;
 }
 
-[data-role="fieldcontain"] {
+[data-role="field-contain"] {
     border-bottom: 1px solid #c4c4c4;
     text-align: left;
 }
 
-[data-role="fieldcontain"]:first-child {
-    border-radius: 3px 3px 0 0;
+[data-role="field-contain"]:first-child,
+[data-role="field-contain"]:first-child  input,
+[data-role="field-contain"]:first-child  textarea {
+    border-radius: 0 3px 0 0;
 }
 
-[data-role="fieldcontain"]:last-child {
+[data-role="field-contain"]:last-child,
+[data-role="field-contain"]:last-child  input,
+[data-role="field-contain"]:last-child  textarea  {
+    border-radius: 0 0 3px 0;
+}
+
+[data-role="field-contain"]:last-child {
     border: 0;
-    border-radius: 0 0 3px 3px;
 }
 
 [data-role="fields-group"] label {
     display: inline-block;
     padding: 10px 2px 10px 4px;
+		box-sizing: border-box;
     text-align: left;
     font-size: 14px;
     font-weight: 700;
@@ -658,10 +666,18 @@
 
 [data-role="fields-group"] input, [data-role="fields-group"] textarea {
     display: inline-block;
-    padding: 10px 0;
+    padding: 10px 5px;
+		box-sizing: border-box;
     margin: 0;
     background: transparent;
     border: 0;
+		border-radius: 0;
     text-shadow: none;
     box-shadow: none;
+}
+
+[data-role="fields-group"] input:focus, [data-role="fields-group"] textarea:focus {
+	box-shadow: rgba(0,0,0,0.25) 1px 1px 3px inset;
+	background-color: #fbf9e0;
+	outline: none;
 }

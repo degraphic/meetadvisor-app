@@ -9,10 +9,35 @@ MeetAdvisorApi.prototype = {
 	
     login : function (login,password) {
         // TODO
-	
+		var wsUrl = this.server_address + "/login/" + login + "/" + password;
+		
+		alert('calling webservices...' + wsUrl);
+		
+				
+		// $.getJSON(wsUrl, function(data) {
+            // alert("data:" + data);
+			// console.log(data);
+			// //uncomment this for debug
+            // //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
+            // //$('#showdata').html("<p>item1="+data.item1+" item2="+data.item2+" item3="+data.item3+"</p>");
+        // });
+		
 		$.ajax({
-				url: this.server_address + "/login/" + login + "/" + password,
-							dataType: 'json',
+				url: wsUrl,
+					dataType: 'json',
+					success: function(data) {
+						//$('.result').html(data);
+						alert('success');
+					},
+					// error: function(data) {
+						// //$('.result').html(data);
+						// alert('error');
+					// },
+					error:function (xhr, ajaxOptions, thrownError){
+                    alert(xhr.status);
+                    alert(thrownError);
+					},  
+					
 				}).done(function(data) { 
 					
 					alert('success');

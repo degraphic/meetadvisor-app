@@ -27,6 +27,8 @@ MeetAdvisorView.prototype = {
     profile: function(data) {
         return data;
     },
+	
+	
 };
 
 MeetAdvisorViewData.prototype = {
