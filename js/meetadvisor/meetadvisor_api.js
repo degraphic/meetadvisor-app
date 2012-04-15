@@ -33,7 +33,7 @@ MeetAdvisorApi.prototype = {
 	
 	register : function (login, password, mail, uid, isfemale) {
 	    
-	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + mail + "/" + uid + "/" + isfemale;
+	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + login + "/" + uid + "/" + isfemale;
 		$.ajax({
 			url: wsUrl,
 			dataType: 'json',
@@ -42,7 +42,11 @@ MeetAdvisorApi.prototype = {
 					window.localStorage.setItem("key", true);
 					location.hash = "#meetspotsList";
 				}
-				console.log(data);
+				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
+					alert("Un compte est déja associé à cet email.");
+				} else {
+					console.log(data);
+				}
 			},
 			error:function (xhr, ajaxOptions, thrownError){
 				console.log('error', xhr.status);
