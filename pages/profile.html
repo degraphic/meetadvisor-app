@@ -1,33 +1,37 @@
 <div class="content-wrapper">
+
 	<div class="spacer-top-large spacer-bottom-large">
-		<h3>Profil :</h3>
+		
+		<h3>Profil</h3>
+		
 		<form id="loginForm" method="post">
 
 			<div data-role="fields-group">
 				
 				<div data-role="field-contain">
 					<label for="login">
-						Email :
+						Email
 					</label>
 					<input type="email" id="login" name="login" value="ton@email.com" />
 				</div>
 				
 				<div data-role="field-contain">
 					<label for="pwd">
-						Mot de passe :
+						Mot de passe
 					</label>
 					<input type="password" id="pwd" name="pwd" value="" />
 				</div>
 				
-				<div data-role="field-contain">
-					<label for="pwd">
-						Abonnement à la Newsletter :
-					</label>
-					<input type="radio" name="newsletter" value="y" /> Oui <input type="radio" name="newsletter" value="n" /> Non
-				</div>
-				
-				
 			</div>
+			
+			<div class="spacer-top">
+				<input type="checkbox" name="newsletter" id="newsletter" value="y" />
+				<label for="newsletter">
+					Abonnement newsletter
+				</label>
+			</div>
+			
+			<br/><br/>
 			
 			<div class="buttons-action-container">
 				<button type="button" class="button action-default block" name="submit" id="submit">Enregistrer</button>

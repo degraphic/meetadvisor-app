@@ -112,7 +112,9 @@ MeetAdvisorController.prototype = {
 		data.addPartial('header', 'header/default');
 		data.addPartial('footer', 'footer/tab-bar');
 		
-        meetadvisor.render(data);
+		meetadvisor.render(data, function() {            
+            new UiFieldsGroup();	
+		});
     },
 
     testMustache: function(data) {
