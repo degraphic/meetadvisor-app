@@ -43,7 +43,7 @@ MeetAdvisorApi.prototype = {
 					location.hash = "#meetspotsMap";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
-					alert("Un compte est déja associé à cet email.");
+					alert("Un compte est déjà associé à cet email.");
 				} else {
 					console.log(data);
 				}

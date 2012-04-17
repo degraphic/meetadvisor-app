@@ -73,8 +73,16 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.api.venue(0, 0, function (meetspotsList) {
-            data.data.meetspots = meetspotsList;
-            console.log(meetspotsList);
+			// minimize list
+			var tab = [];
+			for (i=0;i<=10;i++) {
+				tab[i] = meetspotsList[i];
+			}
+			
+			
+			
+            data.data.meetspots = tab;
+            //console.log(meetspotsList);
             meetadvisor.render(data);            
         });
 		
