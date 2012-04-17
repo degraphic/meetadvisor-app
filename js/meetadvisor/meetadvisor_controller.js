@@ -77,6 +77,17 @@ MeetAdvisorController.prototype = {
             console.log(meetspotsList);
             meetadvisor.render(data);            
         });
+		
+		meetadvisor.render(data, function() {
+		
+			// skin selon sex
+			if (window.localStorage.getItem("key") == "true" ){
+				$("body").addClass("woman");
+			}
+			else {
+				$("body").addClass("man");
+			}
+		});
 
     },
 	
@@ -87,6 +98,17 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
+		
+			// skin selon sex
+			if (window.localStorage.getItem("key") == "true" ){
+				$("body").addClass("woman");
+			}
+			else {
+				$("body").addClass("man");
+			}
+			
+		
+		
 			var map = new MeetspotsMap();
 			map.settings = {
 				mapContainer: document.getElementById('meetspot-map')
@@ -103,7 +125,44 @@ MeetAdvisorController.prototype = {
 		data.addPartial('header', 'header/default');
 		data.addPartial('footer', 'footer/tab-bar');
 		
-        meetadvisor.render(data);
+        meetadvisor.render(data, function() {
+
+			$("#switchsex").click(function() {		
+				if (window.localStorage.getItem("key") == "true" ){
+					$("body").removeClass("woman");
+					$("body").addClass("man");
+					window.localStorage.setItem("key", false);
+				}
+				else {
+					$("body").removeClass("man");
+					$("body").addClass("woman");
+					window.localStorage.setItem("key", true);
+				}
+				alert("sex switched !");
+				location.hash = "#";
+			});
+			
+			$("#logout").click(function() {		
+				window.localStorage.removeItem("key");
+				alert("logued out !");
+				location.hash = "#";
+			});
+
+			$("#VIP").click(function() {
+				window.localStorage.setItem("vip", true);
+				alert("you are now VIP !");
+				location.hash = "#";
+			});
+
+			$("#noVIP").click(function() {
+				window.localStorage.setItem("vip", false);
+				alert("you are no longuer VIP !");
+				location.hash = "#";
+			});
+
+			
+       
+		});
     },
 
     profile: function(data) {
