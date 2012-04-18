@@ -10,7 +10,6 @@ MeetAdvisorController.prototype = {
 		
     },
 
-
     error404: function(data) {
         data.page.file = "error404";
 		
@@ -19,7 +18,7 @@ MeetAdvisorController.prototype = {
         });
 		
     },
-
+	
     login: function(data) {
 		data.template.file = "simple";
         data.page.file = "login";
@@ -173,8 +172,10 @@ MeetAdvisorController.prototype = {
 				alert("you are no longuer VIP !");
 				location.hash = "#";
 			});
-
 			
+			$("#popup").click(function() {
+				location.hash = location.hash + "/create-account";
+			});
        
 		});
     },
@@ -216,4 +217,6 @@ MeetAdvisorController.prototype = {
         // on demande a render la page
         meetadvisor.render(data);
     },
+	
+
 };

@@ -34,6 +34,7 @@ MeetAdvisor.prototype = {
 	api: null,
     controller: null,
     valid_pages: null,
+	last_page: null,
 
 	init: function () {
 		
@@ -43,34 +44,47 @@ MeetAdvisor.prototype = {
 	},
     
 	navigate: function (uri) {
-	
         this.loader_overlay(true);
 
 		var page = uri.replace(/^#/, '');
 		var instance = this;
-	    		
-		// do i have a session ?
-		if (localStorage.getItem("key") == null) {
-			// no => go to login
-			if (page != "createAccount" && page != "gender") {
-				page = "login";
+		
+		//popup hook
+		var tab = page.split('/');
+		if (tab.length == 2) {
+			page = tab[0];
+			this.popup(tab[1]);
+		}
+		
+		// check if page change
+		if (page != this.last_page) {
+			// do i have a session ?
+			if (localStorage.getItem("key") == null) {
+				// no => go to login
+				if (page != "createAccount" && page != "gender") {
+					page = "login";
+				}
 			}
+			
+			// check des rules
+			if (page == '') {
+				location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
+				return ;
+			} else if (!this.valid_pages[page]) {
+				location.hash = '#' + MEET_ADVISOR_404_PAGE;
+				return ;
+			}
+			
+			var render_data = new MeetAdvisorRenderData();
+			render_data.init();
+			render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
+			
+			this.controller[page](render_data);
+			this.last_page = page;
 		}
-		
-		
-		if (page == '') {
-			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
-			return ;
-		} else if (!this.valid_pages[page]) {
-			location.hash = '#' + MEET_ADVISOR_404_PAGE;
-			return ;
+		else {
+			this.loader_overlay(false);
 		}
-	    
-		var render_data = new MeetAdvisorRenderData();
-		render_data.init();
-		render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
-		
-		this.controller[page](render_data);			
 	},
 
 	render: function(render_data, callback) {
@@ -144,6 +158,31 @@ MeetAdvisor.prototype = {
     loader_overlay: function(is_active) {
         document.getElementById('loading-overlay').style.display = is_active ? 'block' : 'none';
     },
+	
+	popup: function(data) {
+		// show popup
+		document.getElementById('popup-overlay').style.display = 'block';
+		
+		// bind close popup button
+		$("#close-popup").click(function() {
+			$("#popup-box").empty();
+			document.getElementById('popup-overlay').style.display = 'none';
+			
+			//reset hash
+			var tab = location.hash.split('/');
+			location.hash = tab[0];
+		});
+		
+		$.ajax({
+			url: "pages/" + data + ".html",
+			dataType: 'html',
+		}).done(function(html) {
+			$("#popup-box").append(html);
+			//render_data.page.src = html;
+			//meetadvisor.render(render_data, callback);
+		});
+		
+	},
 	
 	_set_content_position: function() {
 	    
