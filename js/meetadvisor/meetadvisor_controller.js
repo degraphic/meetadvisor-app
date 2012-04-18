@@ -1,14 +1,20 @@
 var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
+	gender: function(data) {
+        data.page.file = "gender";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+		
+    },
+
 
     error404: function(data) {
         data.page.file = "error404";
 		
-		
     meetadvisor.render(data, function() {
-            
-                 
 			
         });
 		

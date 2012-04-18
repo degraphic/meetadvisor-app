@@ -52,7 +52,7 @@ MeetAdvisor.prototype = {
 		// do i have a session ?
 		if (localStorage.getItem("key") == null) {
 			// no => go to login
-			if (page != "createAccount") {
+			if (page != "createAccount" && page != "gender") {
 				page = "login";
 			}
 		}

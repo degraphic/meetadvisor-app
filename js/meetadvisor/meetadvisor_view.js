@@ -2,7 +2,10 @@ var MeetAdvisorView = function MeetAdvisorView() {};
 var MeetAdvisorViewData = function MeetAdvisorViewData() {};
 
 MeetAdvisorView.prototype = {
-
+	gender: function(data) {
+        return data;
+    },
+	
     _404: function(data) {
         return data;
     },

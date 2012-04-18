@@ -3,7 +3,8 @@ MEET_ADVISOR_DEFAULT_PAGE = 'meetspotsMap';
 MEET_ADVISOR_404_PAGE = 'error404';
 
 MEET_ADVISOR_VALID_PAGES = {
-    login: true,
+    gender: true,
+	login: true,
     createAccount: true,	
     meetspotsList: true,
 	meetspotsMap: true,
@@ -17,6 +18,10 @@ MEET_ADVISOR_VALID_PAGES = {
 MEET_ADVISOR_NAVIGATION_404 = "error404";
 
 MEET_ADVISOR_NAVIGATION = {
+	gender: {
+        template: "simple",
+        page : "gender"
+    },
     login: {
         template: "simple",
         page : "login"
