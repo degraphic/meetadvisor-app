@@ -2,14 +2,14 @@ var MeetAdvisorUser = function MeetAdvisorUser() { this.init(); };
 
 MeetAdvisorUser.prototype = {
     
-	PROFILE_FEMALE = "f";
-	PROFILE_MALE = "m";
+	PROFILE_FEMALE: "f",
+	PROFILE_MALE: "m",
 	
 	profile: {
 		sex: null,
 		login: null,
 		vip: null,
-	}
+	},
 	
 	init: function () {
 		
@@ -26,11 +26,11 @@ MeetAdvisorUser.prototype = {
 		
 	},
 	
-	isFemale() {
+	isFemale: function() {
 		return this.profile.sex == this.PROFILE_FEMALE ? true : false;
 	},
 	
-	isMale() {
+	isMale: function() {
 		return this.profile.sex == this.PROFILE_MALE ? true : false;
 	},
 	
