@@ -38,7 +38,7 @@ MeetAdvisorApi.prototype = {
 			});
     },
 	
-	register : function (login, password, mail, uid, isfemale) {
+	register: function(login, password, mail, uid, isfemale) {
 	    
 	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + login + "/" + uid + "/" + isfemale;
 		$.ajax({
@@ -62,12 +62,28 @@ MeetAdvisorApi.prototype = {
 		});
 	},
 
-    venue : function (x, y, callback) {
+    venue: function(x, y, callback) {
+		
 		$.ajax({
 			url: this.server_address_location + "/venue/" + x + "/" + y,
 			dataType: 'json',
-		}).done(function(data) { 
-			callback(data);
+		}).done(function(data) { 		
+			
+			// Manage data - wrapper
+			var wrappedData = new Array();
+
+			$.each(data, function(index, value) { 
+				console.log("value", value);
+				var test = new MeetAdvisorVenue(value);
+				
+				/*console.log("test", test);*/
+				wrappedData.push(value);
+			});
+			
+			/*console.log("wrappedData", wrappedData);*/
+			
+			callback(wrappedData);
+			
 		});
         
     }

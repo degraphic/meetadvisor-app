@@ -1,39 +1,46 @@
-var User = function User() { this.init(); };
+var MeetAdvisorUser = function MeetAdvisorUser() { this.init(); };
 
-User.prototype = {
+MeetAdvisorUser.prototype = {
+    
+	PROFILE_FEMALE: "f",
+	PROFILE_MALE: "m",
 	
-	// this is a private var !
-	hasVagina : null,
-	login: null,
-	vip: false,
-	
-	init : function () {
-		window.localStorage.setItem("isFemale", true);
+	profile: {
+		sex: null,
+		login: null,
+		vip: null,
 	},
 	
-	getVagina : function () {
-		if (this.hasVagina == null) {
-			this.hasVagina = window.localStorage.getItem("isFemale");
-		}
-		return (this.hasVagina);
-	},
+	init: function () {
 		
-	login: function (login, sex) {
-		// TODO, these are default values
-		this.hasVagina = true;
-		window.localStorage.setItem("isFemale", true);
-		this.login = "toto";
+		// Init profile - TODO : from api login & set in session ?
+		if (window.localStorage.getItem("key") == "true" ) {
+			this.profile.sex = this.PROFILE_FEMALE;
+		} else {
+			this.profile.sex = this.PROFILE_MALE;
+		}
+		
     },
 	
-	create: function (login, sex) {
-		// TODO, these are default values
-		this.hasVagina = true;
-		window.localStorage.setItem("isFemale", true);
-		this.login = "toto";
+	create: function () {
+		
 	},
 	
-	isFemale : function () {
-		return (this.getVagina());
+	isFemale: function() {
+		return this.profile.sex == this.PROFILE_FEMALE ? true : false;
 	},
 	
+	isMale: function() {
+		return this.profile.sex == this.PROFILE_MALE ? true : false;
+	},
+	
+	
+	/******************** GETTERS / SETTERS ********************/
+	getProfile: function () {
+		return this.profile;
+	},
+	
+	setProfile: function (profile) {
+		this.profile = profile;
+	}
 }
