@@ -1,11 +1,13 @@
-var MeetAdvisorRenderData = function MeetAdvisorRenderData() {};
+var MeetAdvisorRenderData = function MeetAdvisorRenderData() { this.init(); };
 
 MeetAdvisorRenderData.prototype = {
-	template : null,
-	page : null,
-    partial_files : null,
-    partial_srcs : null,
-    data : null,
+	template: null,
+	page: null,
+    partial_files: null,
+    partial_srcs: null,
+    data: null,
+    request_params: null,
+    inner_rendering_id: null,
     
     init: function() {
 	    this.template = {
@@ -19,6 +21,7 @@ MeetAdvisorRenderData.prototype = {
         this.partial_files = {};
         this.partial_srcs = {};
         this.data = {};
+        this.request_params = {};
     },
 
 	addPartial: function(partial_name, partial_file) {
@@ -34,69 +37,94 @@ MeetAdvisor.prototype = {
 	api: null,
     controller: null,
     valid_pages: null,
+    current_page: null,
 	last_page: null,
+    current_uri: null,
+    last_uri: null,
+    current_params: null,
 
 	init: function () {
-		
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
-		
 	},
-    
-	navigate: function (uri) {
-        this.loader_overlay(true);
 
-		var page = uri.replace(/^#/, '');
-		var instance = this;
-		
-		//popup hook
-		var tab = page.split('/');
-		if (tab.length == 2) {
-			page = tab[0];
-			this.popup(tab[1]);
-		}
+	navigate: function (uri) {
+		var instance = this;		
+		var render_data = this.parse_uri(uri);
 		
 		// check if page change
-		if (page != this.last_page) {
-			// do i have a session ?
-			if (localStorage.getItem("key") == null) {
-				// no => go to login
-				if (page != "createAccount" && page != "gender") {
-					page = "login";
-				}
+		if (this.current_uri == this.last_uri)
+            return false;
+
+		// do i have a session ?
+		if (localStorage.getItem("key") == null) {
+			// no => go to login
+			if (this.current_page != "createAccount" &&
+                this.current_page != "gender") {
+				location.hash = '#login';
+				return false;
 			}
-			
-			// check des rules
-			if (page == '') {
-				location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
-				return ;
-			} else if (!this.valid_pages[page]) {
-				location.hash = '#' + MEET_ADVISOR_404_PAGE;
-				return ;
-			}
-			
-			var render_data = new MeetAdvisorRenderData();
-			render_data.init();
-			render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
-			
-			this.controller[page](render_data);
-			this.last_page = page;
 		}
-		else {
-			this.loader_overlay(false);
+		
+		// check des rules
+		if (this.current_page == '') {
+			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
+			return false;
+		} else if (!this.valid_pages[this.current_page]) {
+			location.hash = '#' + MEET_ADVISOR_404_PAGE;
+			return false;
 		}
+
+		// run the standard controller or the update controller
+        if (this.current_page != this.last_page) {
+            this.loader_overlay(true);
+			this.controller[this.current_page](render_data);
+        }
+        else if (this.controller[this.current_page + '__update'])
+			this.controller[this.current_page + '__update'](render_data);                
+        else
+            return false;
+
+        return true;
 	},
 
-	render: function(render_data, callback) {
+    // prends une URI et en extrait l'identifiant de la page ainsi que ses parametres
+    // met a jour this.last_page et this.current_page
+    // Construit et retourne un objet MeetAdvisorRenderData
+    parse_uri: function (uri) {
+        var status = 'begin';
+        var tmp_key = null;
+        var render_data = new MeetAdvisorRenderData();
+
+        render_data.template.file = MEET_ADVISOR_DEFAULT_TEMPLATE;
+        this.last_uri = this.current_uri;
+        this.last_page = this.current_page;
+        this.current_uri = uri;
+        splitted_uri = (uri.replace(/^#/, '')).split('/');
+        for (k in splitted_uri)
+            if (status == 'begin') {
+                this.current_page = splitted_uri[k];
+                status = 'need_key';
+            } else if (status == 'need_key') {
+                tmp_key = splitted_uri[k];
+                status = 'need_value';
+            } else {
+                render_data.request_params[tmp_key] = splitted_uri[k];                
+                status = 'need_key';
+            }
+        return render_data;
+    },
+
+	render: function(render_data, callback, dont_remove_overlay) {
 	
 		//TODO ne charger le HTML que quand on change par rapport au precedent  
 		//TODO ne charger le HTML que quand le _data est vide
 
 		// Load everything recursively
 
-        // Load template
-        if (!render_data.template.src) {
+        // Load template if we are not doing an inner rendering
+        if (!render_data.inner_rendering_id && !render_data.template.src) {
 
 			$.ajax({
 				url: "templates/" + render_data.template.file + ".html",
@@ -134,9 +162,13 @@ MeetAdvisor.prototype = {
             }
         }
 
-        // Everything is loaded, let's actually render it :        
-        $(document.getElementById('body')).html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
-        $(document.getElementById('content')).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
+        // Everything is loaded, let's actually render it :
+        if (render_data.inner_rendering_id) {            
+            $(document.getElementById(render_data.inner_rendering_id)).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
+        } else {
+            $(document.getElementById('body')).html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
+            $(document.getElementById('content')).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
+        }
 
 		// Set content position
 		meetadvisor._set_content_position();
@@ -150,10 +182,10 @@ MeetAdvisor.prototype = {
 		});
 		
         // call callback if set
-        if (callback) {
+        if (callback)
             callback();
-        }
-        this.loader_overlay(false);
+        if (!dont_remove_overlay)
+            this.loader_overlay(false);
     },
 
     loader_overlay: function(is_active) {

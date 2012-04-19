@@ -109,11 +109,20 @@ MeetAdvisorController.prototype = {
 			map.settings = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
-			map.init();
+			map.init(data.request_params, false);
 			
         });
 		
 
+    },
+
+	// Page Meetspots Map update 
+	meetspotsMap__update: function(data) {
+		var map = new MeetspotsMap();
+		map.settings = {
+			mapContainer: document.getElementById('meetspot-map')
+		};
+		map.init(data.request_params, true);
     },
 	
 	// Page checkin
