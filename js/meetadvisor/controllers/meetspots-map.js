@@ -4,16 +4,40 @@ MeetspotsMap.prototype = {
 	
 	map: null,
 
-	init: function() {	
+	init: function(request_params, updating) {	
 		
 		if (!this.isGMapsAlreadyLoaded()) {
 			this.loadGmapApi();
-		} else {
+		} else if (!updating) {
 			this.gMapInit();
 		}
-		
+        console.log("request_params");
+        console.log(request_params);
+		this.updatePopup(request_params);
 	},
 	
+    updatePopup: function (request_params) {
+        if (request_params && request_params.popup) {
+            // show popup
+		    document.getElementById('popup-overlay').style.display = 'block';
+		    
+		    // bind close popup button
+		    $("#close-popup").click(function() {
+			    //reset hash
+			    location.hash = '#' + meetadvisor.current_page;
+		    });
+		    
+            popup_render_data = new MeetAdvisorRenderData();
+            popup_render_data.page.file = 'create-account';
+            popup_render_data.inner_rendering_id = 'popup-box';
+            meetadvisor.render(popup_render_data);
+        }
+        else {
+			$("#popup-box").empty();
+			document.getElementById('popup-overlay').style.display = 'none';
+        }
+    },
+
 	loadGmapApi: function () {
 
 		var instance_ = this;
@@ -104,7 +128,7 @@ MeetspotsMap.prototype = {
 		this.gMapSetMarker(geolocatedLat, geolocatedLng);
 		
 		// some test
-		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#meetspotsMap/create-account">inscription a meetadvisor</a><br/>');
+		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#meetspotsMap/popup/create-account">inscription a meetadvisor</a><br/>');
     },
 	
     gMapSetPosition: function (lat, lng) {
