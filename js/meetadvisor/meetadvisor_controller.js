@@ -21,12 +21,12 @@ MeetAdvisorController.prototype = {
 		meetadvisor.render(data, function() {
 			$(".btWoman").click(function() {
 				window.localStorage.setItem("isfemale", true);
-				location.hash = "#womanmapguest";
+				location.hash = "#meetspotsMap";
 			});
 
 			$(".btMan").click(function() {
 				window.localStorage.setItem("isfemale", false);
-				location.hash = "#manmapguest";
+				location.hash = "#meetspotsMap";
 			});
         });
 		
