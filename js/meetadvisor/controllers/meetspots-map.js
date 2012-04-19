@@ -11,8 +11,7 @@ MeetspotsMap.prototype = {
 		} else if (!updating) {
 			this.gMapInit();
 		}
-        console.log("request_params");
-        console.log(request_params);
+
 		this.updatePopup(request_params);
 	},
 	
