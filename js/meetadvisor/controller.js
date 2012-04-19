@@ -111,6 +111,14 @@ MeetAdvisorController.prototype = {
 			};
 			map.init(data.request_params, false);
 			
+			meetadvisor.api.venue(0, 0, function (data) {
+
+				$.each(data, function(index, venue) { 
+					map.gMapSetMarker(venue.getLat(), venue.getLng());
+				});
+				
+			});
+			
         });
 		
 

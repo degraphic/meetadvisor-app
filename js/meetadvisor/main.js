@@ -42,6 +42,7 @@ MeetAdvisor.prototype = {
     current_uri: null,
     last_uri: null,
     current_params: null,
+	user: null,
 
 	init: function () {
 		this.api = new MeetAdvisorApi();

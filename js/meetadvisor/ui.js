@@ -2,8 +2,8 @@ var MeetAdvisorUi = function MeetAdvisorUi() {};
 
 MeetAdvisorUi.prototype = {
 	
-	SKIN_WOMAN = "woman";
-	SKIN_MAN = "man";
+	SKIN_WOMAN: "woman",
+	SKIN_MAN: "man",
 	
 	setSkin: function() {
 

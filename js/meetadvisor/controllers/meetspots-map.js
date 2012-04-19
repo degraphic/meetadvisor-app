@@ -45,7 +45,7 @@ MeetspotsMap.prototype = {
 		
 		$.getJSON('https://www.google.com/jsapi?callback=?', function () {		
 		
-			google.load('maps', 3.8, {
+			google.load('maps', 3.4, {
 				callback: function () {
 					instance_.gMapInit();
 				},
