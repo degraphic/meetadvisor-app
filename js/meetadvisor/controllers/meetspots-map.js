@@ -4,7 +4,9 @@ MeetspotsMap.prototype = {
 	
 	map: null,
 
-	init: function(request_params, updating) {	
+	init: function(request_params, updating) {
+		var ui = new MeetAdvisorUi();
+		ui.setSkin();
 		
 		if (!this.isGMapsAlreadyLoaded()) {
 			this.loadGmapApi();

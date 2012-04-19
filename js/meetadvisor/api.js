@@ -21,9 +21,6 @@ MeetAdvisorApi.prototype = {
 						var ur = new User();
 						ur.setSex(data.isfemale);
 						
-						var ui = new MeetAdvisorUi();
-						ui.setSkin();
-						
 						location.hash = "#meetspotsMap";
 					}
 					else {
@@ -48,7 +45,6 @@ MeetAdvisorApi.prototype = {
 					var ur = new User();
 					ur.setSex(data.isfemale);
 				
-					window.localStorage.setItem("key", true);
 					location.hash = "#meetspotsMap";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {

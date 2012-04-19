@@ -19,8 +19,10 @@ MeetAdvisorCheckIn.prototype = {
 				location.hash = "#";
 			});
 			
-			$("#logout").click(function() {		
-				window.localStorage.removeItem("key");
+			$("#logout").click(function() {	
+				var ur = new User();
+				ur.logout();
+				
 				alert("logued out !");
 				location.hash = "#";
 			});

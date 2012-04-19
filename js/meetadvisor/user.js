@@ -43,6 +43,10 @@ User.prototype = {
 	isFemale : function () {
 		return (this.getVagina());
 	},
+	
+	logout : function () {
+		window.localStorage.removeItem("isFemale");
+	},
 
 }
 
