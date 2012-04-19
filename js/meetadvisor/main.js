@@ -35,6 +35,7 @@ MeetAdvisor.prototype = {
     controller: null,
     valid_pages: null,
 	last_page: null,
+	user: null,
 
 	init: function () {
 		

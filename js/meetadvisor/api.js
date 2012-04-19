@@ -20,7 +20,7 @@ MeetAdvisorApi.prototype = {
 						window.localStorage.setItem("key", data.isfemale);
 						
 						var ui = new MeetAdvisorUi();
-						MeetAdvisorUi.setSkin();
+						ui.setSkin();
 						
 						location.hash = "#meetspotsMap";
 					}
