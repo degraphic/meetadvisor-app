@@ -96,16 +96,16 @@ MeetAdvisorController.prototype = {
 
     },
 	
-	// Page Meetspots Map
-	meetspotsMap: function(render_data) {
-        render_data.page.file = "meetspots-map";
+	// Page map
+	map: function(render_data) {
+        render_data.page.file = "map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');
 		render_data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(render_data, function() {
 		
-			var map = new MeetspotsMap();
+			var map = new Map();
 			map.settings = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
@@ -124,9 +124,9 @@ MeetAdvisorController.prototype = {
 
     },
 
-	// Page Meetspots Map update 
-	meetspotsMap__update: function(render_data) {
-		var map = new MeetspotsMap();
+	// Page Map update 
+	map__update: function(render_data) {
+		var map = new Map();
 		map.settings = {
 			mapContainer: document.getElementById('meetspot-map')
 		};

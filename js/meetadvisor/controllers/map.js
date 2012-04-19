@@ -1,6 +1,6 @@
-var MeetspotsMap = function MeetspotsMap() {};
+var Map = function Map() {};
 
-MeetspotsMap.prototype = {
+Map.prototype = {
 	
 	map: null,
 
@@ -129,7 +129,7 @@ MeetspotsMap.prototype = {
 		this.gMapSetMarker(geolocatedLat, geolocatedLng);
 		
 		// some test
-		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#meetspotsMap/popup/create-account">inscription a meetadvisor</a><br/>');
+		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#map/popup/create-account">inscription a meetadvisor</a><br/>');
     },
 	
     gMapSetPosition: function (lat, lng) {

@@ -1,5 +1,5 @@
 MEET_ADVISOR_DEFAULT_TEMPLATE = 'default';
-MEET_ADVISOR_DEFAULT_PAGE = 'meetspotsMap';
+MEET_ADVISOR_DEFAULT_PAGE = 'map';
 MEET_ADVISOR_404_PAGE = 'error404';
 
 MEET_ADVISOR_VALID_PAGES = {
@@ -12,7 +12,7 @@ MEET_ADVISOR_VALID_PAGES = {
 	login: true,
     createAccount: true,	
     meetspotsList: true,
-	meetspotsMap: true,
+	map: true,
     checkin: true,
     error404: true,
     testMustache: true,
@@ -49,9 +49,9 @@ MEET_ADVISOR_NAVIGATION = {
         template: "default",
         page: "meetspots-list"
     },
-	meetspotsMap: {
+	map: {
         template: "default",
-        page: "meetspots-map"
+        page: "map"
     },
     checkin: {
         template: "default",

@@ -21,7 +21,7 @@ MeetAdvisorApi.prototype = {
 						var ur = new User();
 						ur.setSex(data.isfemale);
 						
-						location.hash = "#meetspotsMap";
+						location.hash = "#map";
 					}
 					else {
 						alert("Login error");
@@ -45,7 +45,7 @@ MeetAdvisorApi.prototype = {
 					var ur = new User();
 					ur.setSex(data.isfemale);
 				
-					location.hash = "#meetspotsMap";
+					location.hash = "#map";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
 					alert("Un compte est déjà associé à cet email.");
