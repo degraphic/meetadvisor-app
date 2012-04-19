@@ -1,12 +1,24 @@
-var User = function User() {};
+var MeetAdvisorUser = function MeetAdvisorUser() { this.init(); };
 
-User.prototype = {
+MeetAdvisorUser.prototype = {
     
-	isFemale: null,
-	isVIP: null,
-	email: null,
+	PROFILE_FEMALE = "f";
+	PROFILE_MALE = "m";
+	
+	profile: {
+		sex: null,
+		login: null,
+		vip: null,
+	}
 	
 	init: function () {
+		
+		// Init profile - TODO : from api login & set in session ?
+		if (window.localStorage.getItem("key") == "true" ) {
+			this.profile.sex = this.PROFILE_FEMALE;
+		} else {
+			this.profile.sex = this.PROFILE_MALE;
+		}
 		
     },
 	
@@ -14,13 +26,21 @@ User.prototype = {
 		
 	},
 	
-	getProfile: function () {
-		// skin selon sex
-		if (window.localStorage.getItem("key") == "true" ){
-			$("body").addClass("woman");
-		}
-		else {
-			$("body").addClass("man");
-		}
+	isFemale() {
+		return this.profile.sex == this.PROFILE_FEMALE ? true : false;
 	},
+	
+	isMale() {
+		return this.profile.sex == this.PROFILE_MALE ? true : false;
+	},
+	
+	
+	/******************** GETTERS / SETTERS ********************/
+	getProfile: function () {
+		return this.profile;
+	},
+	
+	setProfile: function (profile) {
+		this.profile = profile;
+	}
 }

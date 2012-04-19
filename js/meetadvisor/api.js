@@ -18,6 +18,10 @@ MeetAdvisorApi.prototype = {
 				success: function(data) {
 					if (data.Result == true) {
 						window.localStorage.setItem("key", data.isfemale);
+						
+						var ui = new MeetAdvisorUi();
+						MeetAdvisorUi.setSkin();
+						
 						location.hash = "#meetspotsMap";
 					}
 					else {
