@@ -59,7 +59,7 @@ MeetAdvisor.prototype = {
             return false;
 
 		// do i have a session ?
-		if (this.current_page != 'login' && localStorage.getItem("key") == null) {
+		if (this.current_page != 'login' && localStorage.getItem("isFemale") == null) {
 			// no => go to login
 			if (this.current_page != "createAccount" &&
                 this.current_page != "gender") {
