@@ -19,15 +19,10 @@ MeetAdvisorController.prototype = {
         data.page.file = "gender";
 		
 		meetadvisor.render(data, function() {
-			$(".btWoman").click(function() {
-				window.localStorage.setItem("isfemale", true);
-				location.hash = "#meetspotsMap";
-			});
-
-			$(".btMan").click(function() {
-				window.localStorage.setItem("isfemale", false);
-				location.hash = "#meetspotsMap";
-			});
+		
+			var MeetAdvisorGender = new MeetAdvisorGender();
+			MeetAdvisorGender.bindElements();
+		
         });
 		
     },
@@ -46,17 +41,10 @@ MeetAdvisorController.prototype = {
         meetadvisor.render(data, function() {
             
             new UiFieldsGroup();
-        
-            // Bind connect button
-            $("#submit").click(function() {		
-            
-			    if ($("#login").val() == "" || $("#pwd").val() == "") {
-				    alert("Merci d'entrer un login et un mot de passe.");
-			    }
-			    else {
-				    meetadvisor.api.login($("#login").val(),$("#pwd").val());
-			    }
-            });
+			
+			// Bind elements
+			var MeetAdvisorLogin = new MeetAdvisorLogin();
+			MeetAdvisorLogin.bindElements();
 			
         });
     },
@@ -74,19 +62,9 @@ MeetAdvisorController.prototype = {
 			
 			new UiFieldsGroup();
 		
-			$("#submit").click(function() {		
-            
-			    if ($("#login").val() == "" || $("#pwd").val() == "" || $("#email").val() == "") {
-				    alert("Merci de remplir les champs : login, mot de passe et email.");
-			    }
-			    else {
-					var isfemale = false;
-					if ($("#gender").val() == "F") {
-						isfemale = true;
-					}
-				    meetadvisor.api.register($("#login").val(), $("#pwd").val(), $("#login").val(), $("#login").val(), isfemale);
-			    }
-            });
+			// Bind elements
+			var MeetAdvisorCreateAccount = new MeetAdvisorCreateAccount.bindElements();
+			MeetAdvisorCreateAccount.bindElements();
 
 		});
 
@@ -114,16 +92,7 @@ MeetAdvisorController.prototype = {
 			
         });
 		
-		meetadvisor.render(data, function() {
-		
-			// skin selon sex
-			if (window.localStorage.getItem("key") == "true" ){
-				$("body").addClass("woman");
-			}
-			else {
-				$("body").addClass("man");
-			}
-		});
+		meetadvisor.render(data);
 
     },
 	
@@ -156,42 +125,8 @@ MeetAdvisorController.prototype = {
 		
         meetadvisor.render(data, function() {
 
-			$("#switchsex").click(function() {		
-				if (window.localStorage.getItem("key") == "true" ){
-					$("body").removeClass("woman");
-					$("body").addClass("man");
-					window.localStorage.setItem("key", false);
-				}
-				else {
-					$("body").removeClass("man");
-					$("body").addClass("woman");
-					window.localStorage.setItem("key", true);
-				}
-				alert("sex switched !");
-				location.hash = "#";
-			});
-			
-			$("#logout").click(function() {		
-				window.localStorage.removeItem("key");
-				alert("logued out !");
-				location.hash = "#";
-			});
-
-			$("#VIP").click(function() {
-				window.localStorage.setItem("vip", true);
-				alert("you are now VIP !");
-				location.hash = "#";
-			});
-
-			$("#noVIP").click(function() {
-				window.localStorage.setItem("vip", false);
-				alert("you are no longuer VIP !");
-				location.hash = "#";
-			});
-			
-			$("#popup").click(function() {
-				location.hash = location.hash + "/create-account";
-			});
+			var MeetAdvisorCheckIn = new MeetAdvisorCheckIn();
+			MeetAdvisorCheckIn.bindElements();
        
 		});
     },
