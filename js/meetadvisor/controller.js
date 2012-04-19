@@ -20,8 +20,8 @@ MeetAdvisorController.prototype = {
 		
 		meetadvisor.render(data, function() {
 		
-			var MeetAdvisorGender = new MeetAdvisorGender();
-			MeetAdvisorGender.bindElements();
+			var maGender = new MeetAdvisorGender();
+			maGender.bindElements();
 		
         });
 		
@@ -43,8 +43,8 @@ MeetAdvisorController.prototype = {
             new UiFieldsGroup();
 			
 			// Bind elements
-			var MeetAdvisorLogin = new MeetAdvisorLogin();
-			MeetAdvisorLogin.bindElements();
+			var maLogin = new MeetAdvisorLogin();
+			maLogin.bindElements();
 			
         });
     },
@@ -63,8 +63,8 @@ MeetAdvisorController.prototype = {
 			new UiFieldsGroup();
 		
 			// Bind elements
-			var test = new MeetAdvisorCreateAccount.bindElements();
-			test.bindElements();
+			var maCreateAccount = new MeetAdvisorCreateAccount.bindElements();
+			maCreateAccount.bindElements();
 
 		});
 
@@ -125,8 +125,8 @@ MeetAdvisorController.prototype = {
 		
         meetadvisor.render(data, function() {
 
-			var MeetAdvisorCheckIn = new MeetAdvisorCheckIn();
-			MeetAdvisorCheckIn.bindElements();
+			var maCheckIn = new MeetAdvisorCheckIn();
+			maCheckIn.bindElements();
        
 		});
     },
