@@ -18,6 +18,9 @@ MeetAdvisorApi.prototype = {
 				success: function(data) {
 					if (data.Result == true) {
 						window.localStorage.setItem("key", data.isfemale);
+						var ur = new User();
+						ur.login("toto","toto");
+						
 						
 						var ui = new MeetAdvisorUi();
 						ui.setSkin();
