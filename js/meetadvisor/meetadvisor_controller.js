@@ -71,6 +71,7 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(data, function() {
+			
 			new UiFieldsGroup();
 		
 			$("#submit").click(function() {		
@@ -100,17 +101,17 @@ MeetAdvisorController.prototype = {
 		data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.api.venue(0, 0, function (meetspotsList) {
+			
 			// minimize list
 			var tab = [];
 			for (i=0;i<=10;i++) {
 				tab[i] = meetspotsList[i];
 			}
-			
-			
-			
+
             data.data.meetspots = tab;
-            //console.log(meetspotsList);
-            meetadvisor.render(data);            
+            
+			meetadvisor.render(data);            
+			
         });
 		
 		meetadvisor.render(data, function() {
@@ -135,21 +136,12 @@ MeetAdvisorController.prototype = {
 
 		meetadvisor.render(data, function() {
 		
-			// skin selon sex
-			if (window.localStorage.getItem("key") == "true" ){
-				$("body").addClass("woman");
-			}
-			else {
-				$("body").addClass("man");
-			}
-			
-		
-		
 			var map = new MeetspotsMap();
 			map.settings = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
 			map.init();
+			
         });
 		
 
