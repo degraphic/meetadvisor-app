@@ -7,9 +7,9 @@ MeetAdvisorUi.prototype = {
 	
 	setSkin: function() {
 
-		var maUser = MeetAdvisorUser();
+		var ur = new User();
 		
-		if (maUser.isFemale()) {
+		if (ur.isFemale()) {
 			$("body").addClass(this.SKIN_WOMAN);
 		} else {
 			$("body").addClass(this.SKIN_MAN);
