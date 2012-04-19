@@ -2,10 +2,18 @@ var MeetAdvisorUi = function MeetAdvisorUi() {};
 
 MeetAdvisorUi.prototype = {
 	
+	SKIN_WOMAN = "woman";
+	SKIN_MAN = "man";
+	
 	setSkin: function() {
-		// use user interface to know if it's a woman or man	
-		$("body").addClass("woman");
-		//$("body").addClass("man");
-	}
 
+		var maUser = MeetAdvisorUser();
+		
+		if (maUser.isFemale()) {
+			$("body").addClass(this.SKIN_WOMAN);
+		} else {
+			$("body").addClass(this.SKIN_MAN);
+		}
+		
+	}
 }

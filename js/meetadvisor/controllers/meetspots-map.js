@@ -3,7 +3,6 @@ var MeetspotsMap = function MeetspotsMap() {};
 MeetspotsMap.prototype = {
 	
 	map: null,
-	chicago: null,
 
 	init: function() {	
 		
@@ -41,7 +40,6 @@ MeetspotsMap.prototype = {
         } else {
 		
             if (typeof(google.maps) == 'undefined') {
-			
                 return false;
             } else {
                 return true;
