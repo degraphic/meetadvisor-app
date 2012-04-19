@@ -17,10 +17,9 @@ MeetAdvisorApi.prototype = {
 				dataType: 'json',
 				success: function(data) {
 					if (data.Result == true) {
-						window.localStorage.setItem("key", data.isfemale);
+
 						var ur = new User();
-						ur.login("toto","toto");
-						
+						ur.setSex(data.isfemale);
 						
 						var ui = new MeetAdvisorUi();
 						ui.setSkin();
@@ -46,6 +45,9 @@ MeetAdvisorApi.prototype = {
 			dataType: 'json',
 			success: function(data) {
 				if (data.Result == true) {
+					var ur = new User();
+					ur.setSex(data.isfemale);
+				
 					window.localStorage.setItem("key", true);
 					location.hash = "#meetspotsMap";
 				}

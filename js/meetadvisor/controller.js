@@ -82,7 +82,7 @@ MeetAdvisorController.prototype = {
 			
 			// minimize list
 			var tab = [];
-			for (i=0;i<=10;i++) {
+			for (i=0; i<=10; i++) {
 				tab[i] = meetspotsList[i];
 			}
 

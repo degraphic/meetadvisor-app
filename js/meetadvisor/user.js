@@ -15,9 +15,17 @@ User.prototype = {
 		if (this.hasVagina == null) {
 			this.hasVagina = window.localStorage.getItem("isFemale");
 		}
+		if (this.hasVagina == null) {
+			alert("HTML5 window.localStorage doesn't seem to work on your phone :(");
+		}
 		return (this.hasVagina);
 	},
 
+	setSex : function (sex) {
+		window.localStorage.setItem("isFemale", sex);
+		this.hasVagina = sex;
+	},
+	
 	login: function (login, sex) {
 		// TODO, these are default values
 		this.hasVagina = true;
