@@ -1,15 +1,175 @@
 var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
+    // 0
+	profile: function(data) {
+        data.page.file = "profile";
+		
+		data.addPartial('header', 'header/default');
+		data.addPartial('footer', 'footer/tab-bar');
+		
+		meetadvisor.render(data, function() {            
+            new UiFieldsGroup();	
+		});
+    },
+
+	// 2
 	gender: function(data) {
         data.page.file = "gender";
 		
-    meetadvisor.render(data, function() {
+		meetadvisor.render(data, function() {
+			$("#btWoman").click(function() {
+				location.hash = "#womanmapguest";
+			});
+
+			$("#btMan").click(function() {		
+				location.hash = "#manmapguest";
+			});
+
 			
         });
 		
     },
 
+	// 3
+	womanmapguest: function(data) {
+        data.page.file = "womanmapguest";
+		
+		data.addPartial('header', 'header/meetspots-map');
+		data.addPartial('footer', 'footer/tab-bar');
+
+		meetadvisor.render(data, function() {
+		
+			// skin selon sex
+			if (window.localStorage.getItem("key") == "true" ){
+				$("body").addClass("woman");
+			}
+			else {
+				$("body").addClass("man");
+			}
+		
+			var map = new MeetspotsMap();
+			map.settings = {
+				mapContainer: document.getElementById('meetspot-map')
+			};
+			map.init();
+        });
+		
+
+	
+    },
+	
+	// 4
+	womansubscribe: function(data) {
+        data.page.file = "womansubscribe";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 5
+	womanmap: function(data) {
+        data.page.file = "womanmap";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 6
+	womanbar: function(data) {
+        data.page.file = "womanbar";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 7
+	coupon: function(data) {
+        data.page.file = "coupon";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 8
+	manmapguest: function(data) {
+        data.page.file = "manmapguest";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 9
+	mansubscribe: function(data) {
+        data.page.file = "mansubscribe";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 10
+	manmap: function(data) {
+        data.page.file = "manmap";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 11
+	manbar: function(data) {
+        data.page.file = "manbar";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 12
+	becomevip: function(data) {
+        data.page.file = "becomevip";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 13
+	vipmap: function(data) {
+        data.page.file = "vipmap";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 14
+	vipbar: function(data) {
+        data.page.file = "vipbar";
+		
+    meetadvisor.render(data, function() {
+			
+        });
+	
+    },
+	
+	// 15
     error404: function(data) {
         data.page.file = "error404";
 		
@@ -177,17 +337,6 @@ MeetAdvisorController.prototype = {
 				location.hash = location.hash + "/create-account";
 			});
        
-		});
-    },
-
-    profile: function(data) {
-        data.page.file = "profile";
-		
-		data.addPartial('header', 'header/default');
-		data.addPartial('footer', 'footer/tab-bar');
-		
-		meetadvisor.render(data, function() {            
-            new UiFieldsGroup();	
 		});
     },
 
