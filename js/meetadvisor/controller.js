@@ -114,8 +114,7 @@ MeetAdvisorController.prototype = {
 			meetadvisor.api.venue(0, 0, function (data) {
 
 				$.each(data, function(index, venue) { 
-					console.log("controller map :", venue);
-					/*map.gMapSetMarker(venue.getLat(), venue.getLng());*/
+					map.gMapSetMarker(venue.getLat(), venue.getLng());
 				});
 				
 			});

@@ -73,15 +73,9 @@ MeetAdvisorApi.prototype = {
 			var wrappedData = new Array();
 
 			$.each(data, function(index, value) { 
-				
-				var test = new MeetAdvisorVenue(value);
-				
-				console.log("api wrapped", test);
-				wrappedData.push(test);
+				wrappedData.push(new MeetAdvisorVenue(value));
 			});
-			
-			/*console.log("wrappedData", wrappedData);*/
-			
+					
 			callback(wrappedData);
 			
 		});
