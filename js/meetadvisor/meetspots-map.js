@@ -106,7 +106,7 @@ MeetspotsMap.prototype = {
 		this.gMapSetMarker(geolocatedLat, geolocatedLng);
 		
 		// some test
-		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#womanmapguest/create-account">inscription a meetadvisor</a><br/>');
+		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#meetspotsMap/create-account">inscription a meetadvisor</a><br/>');
     },
 	
     gMapSetPosition: function (lat, lng) {
