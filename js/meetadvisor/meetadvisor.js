@@ -41,6 +41,7 @@ MeetAdvisor.prototype = {
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
+		
 	},
     
 	navigate: function (uri) {
