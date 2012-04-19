@@ -46,13 +46,15 @@ MeetAdvisorVenue.prototype = {
 		this.venue.percentage_of_girls = data.percentage_of_girls;
 		this.venue.title = data.title;
 		
+		console.log(this.getFullAddress());
+		
     },
 
 	
 	
 	/******************** UTILS ********************/
 	getFullAddress: function() {
-		return this.venue.getAddress() + ", " + this.venue.getPostalCode() + this.venue.getCity() + ", " + this.venue.getCountry();
+		return this.getAddress() + ", " + this.getAddress() + this.getCity() + ", " + this.getCountry();
 	},	
 
 	
@@ -166,7 +168,6 @@ MeetAdvisorVenue.prototype = {
 		this.venue.location_country = country;
 	},
 	
-	
 	/*location latitude*/
 	getLat: function() {
 		return this.venue.location_lat;
@@ -178,16 +179,16 @@ MeetAdvisorVenue.prototype = {
 	
 	/*location longitude*/
 	getLng: function() {
-		return this.location_lng;
+		return this.venue.location_lng;
 	},
 	
 	setLng: function(lng) {
-		this.location_lng = lng;
+		this.venue.location_lng = lng;
 	},
 	
 	/*location postalcode*/
 	getPostalCode: function() {
-		return this.location_postal_code;
+		return this.venue.location_postal_code;
 	},
 	
 	setPostalCode: function (postalCode) {
