@@ -63,8 +63,8 @@ MeetAdvisorController.prototype = {
 			new UiFieldsGroup();
 		
 			// Bind elements
-			var MeetAdvisorCreateAccount = new MeetAdvisorCreateAccount.bindElements();
-			MeetAdvisorCreateAccount.bindElements();
+			var test = new MeetAdvisorCreateAccount.bindElements();
+			test.bindElements();
 
 		});
 
