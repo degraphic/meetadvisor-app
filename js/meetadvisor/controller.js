@@ -3,22 +3,22 @@ var MeetAdvisorController = function MeetAdvisorController() {};
 MeetAdvisorController.prototype = {
     
 	// Page profile
-	profile: function(data) {
-        data.page.file = "profile";
+	profile: function(render_data) {
+        render_data.page.file = "profile";
 		
-		data.addPartial('header', 'header/default');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/default');
+		render_data.addPartial('footer', 'footer/tab-bar');
 		
-		meetadvisor.render(data, function() {            
+		meetadvisor.render(render_data, function() {            
             new UiFieldsGroup();	
 		});
     },
 
 	// Page gender	
-	gender: function(data) {
-        data.page.file = "gender";
+	gender: function(render_data) {
+        render_data.page.file = "gender";
 		
-		meetadvisor.render(data, function() {
+		meetadvisor.render(render_data, function() {
 		
 			var maGender = new MeetAdvisorGender();
 			maGender.bindElements();
@@ -28,17 +28,17 @@ MeetAdvisorController.prototype = {
     },
 			
 	// Page 404
-    error404: function(data) {
-        data.page.file = "error404";
-		meetadvisor.render(data);
+    error404: function(render_data) {
+        render_data.page.file = "error404";
+		meetadvisor.render(render_data);
     },
 
 	// Page login	
-    login: function(data) {
-		data.template.file = "simple";
-        data.page.file = "login";
+    login: function(render_data) {
+		render_data.template.file = "simple";
+        render_data.page.file = "login";
 		
-        meetadvisor.render(data, function() {
+        meetadvisor.render(render_data, function() {
             
             new UiFieldsGroup();
 			
@@ -50,15 +50,15 @@ MeetAdvisorController.prototype = {
     },
 
 	// Page createAccount
-    createAccount: function(data) {
+    createAccount: function(render_data) {
 
-		data.template.file = "simple";
-		data.page.file = "create-account";
+		render_data.template.file = "simple";
+		render_data.page.file = "create-account";
 		
-		data.addPartial('header', 'header/default');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/default');
+		render_data.addPartial('footer', 'footer/tab-bar');
 
-		meetadvisor.render(data, function() {
+		meetadvisor.render(render_data, function() {
 			
 			new UiFieldsGroup();
 		
@@ -71,45 +71,45 @@ MeetAdvisorController.prototype = {
     },
 	
 	// Page Meetspots List
-    meetspotsList: function(data) {
-        data.page.file = "meetspots-list";
+    meetspotsList: function(render_data) {
+        render_data.page.file = "meetspots-list";
 		
-		data.addPartial('header', 'header/meetspots-list');
-		data.addPartial('meetspotItem', 'list/item-meetspot');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/meetspots-list');
+		render_data.addPartial('meetspotItem', 'list/item-meetspot');
+		render_data.addPartial('footer', 'footer/tab-bar');
 		
         meetadvisor.api.venue(0, 0, function (meetspotsList) {
 			
 			// minimize list
 			var tab = [];
-			for (i=0; i<=10; i++) {
+			for (i=0;i<=10;i++) {
 				tab[i] = meetspotsList[i];
 			}
 
-            data.data.meetspots = tab;
+            render_data.data.meetspots = tab;
             
-			meetadvisor.render(data);            
+			meetadvisor.render(render_data);            
 			
         });
 		
-		meetadvisor.render(data);
+		meetadvisor.render(render_data);
 
     },
 	
 	// Page Meetspots Map
-	meetspotsMap: function(data) {
-        data.page.file = "meetspots-map";
+	meetspotsMap: function(render_data) {
+        render_data.page.file = "meetspots-map";
 		
-		data.addPartial('header', 'header/meetspots-map');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/meetspots-map');
+		render_data.addPartial('footer', 'footer/tab-bar');
 
-		meetadvisor.render(data, function() {
+		meetadvisor.render(render_data, function() {
 		
 			var map = new MeetspotsMap();
 			map.settings = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
-			map.init(data.request_params, false);
+			map.init(render_data.request_params, false);
 			
 			meetadvisor.api.venue(0, 0, function (data) {
 
@@ -125,22 +125,22 @@ MeetAdvisorController.prototype = {
     },
 
 	// Page Meetspots Map update 
-	meetspotsMap__update: function(data) {
+	meetspotsMap__update: function(render_data) {
 		var map = new MeetspotsMap();
 		map.settings = {
 			mapContainer: document.getElementById('meetspot-map')
 		};
-		map.init(data.request_params, true);
+		map.init(render_data.request_params, true);
     },
 	
 	// Page checkin
-    checkin: function(data) {
-        data.page.file = "checkin";
+    checkin: function(render_data) {
+        render_data.page.file = "checkin";
 		
-		data.addPartial('header', 'header/default');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/default');
+		render_data.addPartial('footer', 'footer/tab-bar');
 		
-        meetadvisor.render(data, function() {
+        meetadvisor.render(render_data, function() {
 
 			var maCheckIn = new MeetAdvisorCheckIn();
 			maCheckIn.bindElements();
@@ -149,16 +149,16 @@ MeetAdvisorController.prototype = {
     },
 
 	// Page Test
-    testMustache: function(data) {
-        data.page.file = "test-mustache";
+    testMustache: function(render_data) {
+        render_data.page.file = "test-mustache";
 
         // on ajoute un partial qui sera appelable par mustache dans le template
-		data.addPartial('header', 'header/default');
-		data.addPartial('meetspotItem', 'list/item-meetspot');
-		data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/default');
+		render_data.addPartial('meetspotItem', 'list/item-meetspot');
+		render_data.addPartial('footer', 'footer/tab-bar');
 		
         // on determine la data qui sera utilisee par mustache pour aficher le template
-        data.data = {
+        render_data.data = {
             bars : [
                 {name : "toto", type : "tutu"},
                 {name : "pouet", type : "blup"},
@@ -173,7 +173,7 @@ MeetAdvisorController.prototype = {
         };
 
         // on demande a render la page
-        meetadvisor.render(data);
+        meetadvisor.render(render_data);
     },
 	
 
