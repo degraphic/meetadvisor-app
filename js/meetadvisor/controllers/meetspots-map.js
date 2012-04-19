@@ -52,7 +52,7 @@ MeetspotsMap.prototype = {
 		if (typeof(google.loader) == "undefined") {
 			return false;
 		} else {
-			if (typeof(google.loader.ClientLocation) == "undefined") {
+			if (typeof(google.loader.ClientLocation) == "undefined" || google.loader.ClientLocation == null) {
 				return false;
 			} else {
 				return true;
@@ -66,7 +66,7 @@ MeetspotsMap.prototype = {
 		return false;
 	},
 	
-	isHtml5Gelocation: function() {
+	isHtml5Geolocation: function() {
 		// TODO : Check if html5 geoLocation is available
 		return false;	
 	},
@@ -82,7 +82,7 @@ MeetspotsMap.prototype = {
 		} else if (this.isGoogleClientLocation()) {
 			geolocatedLat = google.loader.ClientLocation.latitude;
 			geolocatedLng = google.loader.ClientLocation.longitude;		
-		} else if (isHtml5Gelocation()) {
+		} else if (this.isHtml5Geolocation()) {
 			// USE HTML5 GEOLOCATION
 		}
 		
