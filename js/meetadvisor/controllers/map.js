@@ -29,7 +29,7 @@ Map.prototype = {
 		    });
 		    
             popup_render_data = new MeetAdvisorRenderData();
-            popup_render_data.page.file = 'create-account';
+            popup_render_data.page.file = request_params.popup;
             popup_render_data.inner_rendering_id = 'popup-box';
             meetadvisor.render(popup_render_data);
         }
@@ -152,7 +152,7 @@ Map.prototype = {
 	
 	onWindowClick: function (evt) {
 		var coordInfoWindow = new google.maps.InfoWindow();
-		coordInfoWindow.setContent('Le Charlus<br />bar de quartier<br/> Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/> <a href="#map/popup/login">PLUS D INFOS</a></buttons>');
+		coordInfoWindow.setContent('Le Charlus<br />bar de quartier<br/> Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/> <a href="#map/popup/place">PLUS D INFOS</a></buttons>');
 		coordInfoWindow.setPosition(evt.latLng);
 		coordInfoWindow.open(this.map);
 	},

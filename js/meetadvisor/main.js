@@ -105,18 +105,24 @@ MeetAdvisor.prototype = {
         this.last_page = this.current_page;
         this.current_uri = uri;
         splitted_uri = (uri.replace(/^#/, '')).split('/');
-        for (k in splitted_uri)
-            if (status == 'begin') {
-                this.current_page = splitted_uri[k];
-                status = 'need_key';
-            } else if (status == 'need_key') {
-                tmp_key = splitted_uri[k];
-                status = 'need_value';
-            } else {
-                render_data.request_params[tmp_key] = splitted_uri[k];                
-                status = 'need_key';
-            }
-        return render_data;
+        for (k in splitted_uri) {
+				if (status == 'begin') {
+					this.current_page = splitted_uri[k];
+					status = 'need_key';
+				}
+				else {
+					if (status == 'need_key') {
+						tmp_key = splitted_uri[k];
+						status = 'need_value';
+					} 
+					else {
+							render_data.request_params[tmp_key] = splitted_uri[k];                
+							status = 'need_key';
+					}
+				}
+				
+			}
+        return (render_data);
     },
 
 	render: function(render_data, callback, dont_remove_overlay) {
