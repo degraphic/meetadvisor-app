@@ -128,8 +128,6 @@ Map.prototype = {
 		this.gMapSetPosition(geolocatedLat, geolocatedLng);
 		this.gMapSetMarker(geolocatedLat, geolocatedLng);
 		
-		// some test
-		this.showInfoWindow(48.850033, 2.297383, '<br /><a href="#map/popup/create-account">inscription a meetadvisor</a><br/>');
     },
 	
     gMapSetPosition: function (lat, lng) {
@@ -147,6 +145,16 @@ Map.prototype = {
             animation: google.maps.Animation.DROP
         });
 
+		// some test
+		google.maps.event.addListener(this.gMapMarker, 'click', this.onWindowClick);
+
+	},
+	
+	onWindowClick: function (evt) {
+		var coordInfoWindow = new google.maps.InfoWindow();
+		coordInfoWindow.setContent('Le Charlus<br />bar de quartier<br/> Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/> <a href="#map/popup/login">PLUS D INFOS</a></buttons>');
+		coordInfoWindow.setPosition(evt.latLng);
+		coordInfoWindow.open(this.map);
 	},
 	
 	showInfoWindow: function (lat, lng, message) {
