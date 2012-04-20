@@ -148,6 +148,18 @@ MeetAdvisorController.prototype = {
 		});
     },
 
+	// Page place
+	place: function (render_data) {
+        render_data.page.file = "place";
+		
+		meetadvisor.render(render_data, function() {
+
+			
+       
+		});
+	
+	},
+	
 	// Page Test
     testMustache: function(render_data) {
         render_data.page.file = "test-mustache";

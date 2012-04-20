@@ -22,8 +22,6 @@ MeetAdvisorCheckIn.prototype = {
 			$("#logout").click(function() {	
 				var ur = new User();
 				ur.logout();
-				
-				alert("logued out !");
 				location.hash = "#";
 			});
 

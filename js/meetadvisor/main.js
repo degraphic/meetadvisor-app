@@ -48,6 +48,7 @@ MeetAdvisor.prototype = {
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
+		this.user = new User();
 	},
 
 	navigate: function (uri) {
@@ -59,9 +60,10 @@ MeetAdvisor.prototype = {
             return false;
 
 		// do i have a session ?
-		if (this.current_page != 'login' && localStorage.getItem("isFemale") == null) {
+		if (this.user.isLoggedIn() == false) {
 			// no => go to login
 			if (this.current_page != "createAccount" &&
+                this.current_page != "login"	&&
                 this.current_page != "gender") {
 				location.hash = '#login';
 				return false;

@@ -19,7 +19,7 @@ MeetAdvisorApi.prototype = {
 					if (data.Result == true) {
 
 						var ur = new User();
-						ur.setSex(data.isfemale);
+						ur.login(data.isfemale);
 						
 						location.hash = "#map";
 					}
