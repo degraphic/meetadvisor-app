@@ -3,15 +3,15 @@ var Map = function Map() {};
 Map.prototype = {
 	
 	//map: null,
-	ggmap: null,
+	gmap: null,
 	last_infoWindow: null,
 
 	init: function(request_params, updating) {
 		var ui = new MeetAdvisorUi();
 		ui.setSkin();
 		
-		this.ggmap = new GoogleMap();
-		this.ggmap.init(this, updating, this.onMapReady);
+		this.gmap = new GoogleMap();
+		this.gmap.init(this, updating, this.onMapReady);
 
 		this.updatePopup(request_params);
 	},
@@ -46,7 +46,7 @@ Map.prototype = {
 		var that = this;
 		meetadvisor.api.venue(0, 0, function (data) {
 			$.each(data, function(index, venue) {
-				that.ggmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that);
+				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that);
 			});
 		});
 	},
