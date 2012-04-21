@@ -53,12 +53,12 @@ Map.prototype = {
 	onMarkerClick: function (evt) {
 		var content = 'Le Charlus<br />bar de quartier<br/> Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/> <a href="#map/popup/place">PLUS D INFOS</a></buttons>';
 
-		this.setInfoWindow(evt.latLng, content);
+		//this.setInfoWindow(evt.latLng, content);
 	
-		// var coordInfoWindow = new google.maps.InfoWindow();
-		// coordInfoWindow.setContent(content);
-		// coordInfoWindow.setPosition(evt.latLng);
-		// coordInfoWindow.open(this.map);
+		var coordInfoWindow = new google.maps.InfoWindow();
+		coordInfoWindow.setContent(content);
+		coordInfoWindow.setPosition(evt.latLng);
+		coordInfoWindow.open(this.map);
 	},
 	
 
