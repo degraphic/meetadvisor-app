@@ -106,20 +106,12 @@ MeetAdvisorController.prototype = {
 		meetadvisor.render(render_data, function() {
 		
 			var map = new Map();
-			map.settings = {
+			map.settings = { 
 				mapContainer: document.getElementById('meetspot-map')
 			};
 			map.init(render_data.request_params, false);
-			
-			meetadvisor.api.venue(0, 0, function (data) {
 
-				$.each(data, function(index, venue) { 
-					map.gMapSetMarker(venue.getLat(), venue.getLng());
-				});
-				
-			});
-			
-        });
+		});
 		
 
     },

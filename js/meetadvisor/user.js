@@ -40,6 +40,14 @@ User.prototype = {
 		}
 		return (false);
 	},
+	
+	changeSex : function() {
+		if (window.localStorage.getItem("isFemale") == "true") {
+			window.localStorage.setItem("isFemale", false);
+		} else {
+			window.localStorage.setItem("isFemale", true);
+		}
+	},
 
 }
 

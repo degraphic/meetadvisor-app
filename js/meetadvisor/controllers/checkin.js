@@ -4,17 +4,10 @@ MeetAdvisorCheckIn.prototype = {
 	
 	bindElements: function() {
 
-		$("#switchsex").click(function() {		
-				if (window.localStorage.getItem("key") == "true" ){
-					$("body").removeClass("woman");
-					$("body").addClass("man");
-					window.localStorage.setItem("key", false);
-				}
-				else {
-					$("body").removeClass("man");
-					$("body").addClass("woman");
-					window.localStorage.setItem("key", true);
-				}
+		$("#switchsex").click(function() {
+				var u = new User();
+				u.changeSex();
+				
 				alert("sex switched !");
 				location.hash = "#";
 			});
