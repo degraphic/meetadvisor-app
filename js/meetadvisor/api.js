@@ -3,8 +3,8 @@ var MeetAdvisorApi = function MeetAdvisorApi() {};
 MeetAdvisorApi.prototype = {
 
 	// properties
-	server_address : "http://api.meet-advisor.com/LoginService.svc",
-	server_address_location : "http://api.meet-advisor.com/LocationService.svc",
+	server_address : "http://api.meet-advisor.com:1000/LoginService.svc",
+	server_address_location : "http://api.meet-advisor.com:1000/LocationService.svc",
 	
 	// methods
 	
