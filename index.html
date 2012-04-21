@@ -40,6 +40,7 @@
 
    	<!-- ui components -->
 	<script type="text/javascript" charset="utf-8" src="js/ui/ui-fields-group.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/ui/ui-overlay.js"></script>
 
 	<!-- pages controllers -->
 	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/controllers/login.js"></script>
@@ -68,15 +69,23 @@
 
 	<span id="body"></span>
 	
-	<!-- BEGIN - LOADING SPINNER -->
-	<div id="popup-overlay" class="overlay-background">
-		<div class="popup-content">
-			<div id="popup-box"></div>
-			<button type="button" class="button blue block" id="close-popup">Retour</button>
-		</div>
+	<!-- BEGIN - OVERLAY BOX -->
+	<div id="overlay-modal" class="overlay-background">
+		
+		<div class="overlay-modal-content">
+		
+			<a class="button action-cancel" id="overlay-close">X</a>
+		
+			<div id="overlay-content"></div>
+			
+		
+		</div>		
 		
 	</div>
-	<div id="loading-overlay" class="overlay-background">
+	<!-- END - OVERLAY BOX -->
+	
+	<!-- BEGIN - LOADING SPINNER -->
+	<div id="overlay-loading" class="overlay-background">
 	
 		<div class="overlay-loading-box">
 			<img src="./img/icons/spinner.gif" width="32" height="32" />

@@ -198,32 +198,26 @@ MeetAdvisor.prototype = {
     },
 
     loader_overlay: function(is_active) {
-        document.getElementById('loading-overlay').style.display = is_active ? 'block' : 'none';
+        document.getElementById('overlay-loading').style.display = is_active ? 'block' : 'none';
     },
 	
 	popup: function(data) {
+		
+		console.log(data);
+		
+		var overlay = new UiOverlay();
+		
 		// show popup
-		document.getElementById('popup-overlay').style.display = 'block';
-		
-		// bind close popup button
-		$("#close-popup").click(function() {
-			$("#popup-box").empty();
-			document.getElementById('popup-overlay').style.display = 'none';
-			
-			//reset hash
-			var tab = location.hash.split('/');
-			location.hash = tab[0];
-		});
-		
+		overlay.show(data);
+		/*
 		$.ajax({
 			url: "pages/" + data + ".html",
 			dataType: 'html',
 		}).done(function(html) {
 			$("#popup-box").append(html);
-			//render_data.page.src = html;
-			//meetadvisor.render(render_data, callback);
 		});
-		
+		*/
+
 	},
 	
 	_set_content_position: function() {
