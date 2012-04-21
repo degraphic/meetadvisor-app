@@ -4,6 +4,7 @@ Map.prototype = {
 	
 	//map: null,
 	ggmap: null,
+	last_infoWindow: null,
 
 	init: function(request_params, updating) {
 		var ui = new MeetAdvisorUi();
@@ -57,10 +58,18 @@ Map.prototype = {
 		content += '<a href="#map/popup/place/id/'+ this.data.foursquare_id +'">PLUS D INFOS</a></buttons>';
 		
 		var coordInfoWindow = new google.maps.InfoWindow();
-		//that.test();
+
 		coordInfoWindow.setContent(content);
 		coordInfoWindow.setPosition(evt.latLng);
 		coordInfoWindow.open(this.map);
+		
+		// only one info window at a time !
+		if (this.parent.last_infoWindow != null) {
+			this.parent.last_infoWindow.close();
+		} 
+		this.parent.last_infoWindow = coordInfoWindow;
+		
+		
 	},
 	
 	test : function () {
