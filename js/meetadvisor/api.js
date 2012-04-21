@@ -21,7 +21,7 @@ MeetAdvisorApi.prototype = {
 						var ur = new User();
 						ur.login(data.isfemale);
 						
-						location.hash = "#map";
+						location.hash = "#meetspotsMap";
 					}
 					else {
 						alert("Login error");

@@ -1,6 +1,6 @@
-var Map = function Map() {};
+var MeetspotsMap = function MeetspotsMap() {};
 
-Map.prototype = {
+MeetspotsMap.prototype = {
 	
 	//map: null,
 	gmap: null,

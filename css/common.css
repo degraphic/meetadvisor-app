@@ -52,6 +52,10 @@
 .overflow-hidden { overflow: hidden !important; }
 
 
+/******************* MARGIN *******************/
+.margin-auto { margin: auto; }
+
+
 /******************* CONTENT-WRAPPER *******************/
 .content-wrapper {
 	margin: 0 10px;

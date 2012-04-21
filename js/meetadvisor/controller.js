@@ -97,32 +97,32 @@ MeetAdvisorController.prototype = {
     },
 	
 	// Page map
-	map: function(render_data) {
-        render_data.page.file = "map";
+	meetspotsMap: function(render_data) {
+        
+		render_data.page.file = "meetspots-map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');
 		render_data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(render_data, function() {
 		
-			var map = new Map();
-			map.settings = { 
+			var msMap = new MeetspotsMap();
+			msMap.settings = { 
 				mapContainer: document.getElementById('meetspot-map')
 			};
-			map.init(render_data.request_params, false);
+			msMap.init(render_data.request_params, false);
 
 		});
-		
 
     },
 
 	// Page Map update 
 	map__update: function(render_data) {
-		var map = new Map();
-		map.settings = {
+		var msMap = new MeetspotsMap();
+		msMap.settings = {
 			mapContainer: document.getElementById('meetspot-map')
 		};
-		map.init(render_data.request_params, true);
+		msMap.init(render_data.request_params, true);
     },
 	
 	// Page checkin
