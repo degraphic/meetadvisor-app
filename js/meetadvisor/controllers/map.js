@@ -44,22 +44,29 @@ Map.prototype = {
 	populate: function () {
 		var that = this;
 		meetadvisor.api.venue(0, 0, function (data) {
-			$.each(data, function(index, venue) { 
-				that.ggmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick);
+			$.each(data, function(index, venue) {
+				that.ggmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that);
 			});
 		});
 	},
 	
 	onMarkerClick: function (evt) {
-		var content = 'Le Charlus<br />bar de quartier<br/> Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/> <a href="#map/popup/place">PLUS D INFOS</a></buttons>';
-
-		//this.setInfoWindow(evt.latLng, content);
-	
+		var content = this.data.name + '<br />';
+		content += this.data.ambiance + '<br/>';
+		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
+		content += '<a href="#map/popup/place/id/'+ this.data.foursquare_id +'">PLUS D INFOS</a></buttons>';
+		
 		var coordInfoWindow = new google.maps.InfoWindow();
+		//that.test();
 		coordInfoWindow.setContent(content);
 		coordInfoWindow.setPosition(evt.latLng);
 		coordInfoWindow.open(this.map);
 	},
+	
+	test : function () {
+		alert("map");
+	},
+
 	
 
 }

@@ -4,11 +4,14 @@ GoogleMap.prototype = {
 
 	lat: null,
 	lng: null,
+	parent: null,
 	target: null,
 	onReady: null,
+	map: null,
 	
 	init: function(that, updating, handler) {
 		this.onReady = handler;
+		this.parent = that;
 		
 		if (!this.isGMapsAlreadyLoaded()) {
 			this.loadGmapApi(that);
@@ -85,15 +88,17 @@ GoogleMap.prototype = {
         this.getMap().setCenter(new google.maps.LatLng(lat, lng));
     },
 	
-	gMapSetMarker: function (lat, lng, clickEvent) {
+	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent) {
 		
 		// Store instance
-		var instance_ = this;
+		var that = this;
 
         this.gMapMarker = new google.maps.Marker({
-            map: instance_.getMap(),
+            map: that.getMap(),
             position: new google.maps.LatLng(lat, lng),
-            animation: google.maps.Animation.DROP
+            animation: google.maps.Animation.DROP,
+			data: maData,
+			parent: maParent
         });
 
 		// some test
@@ -122,6 +127,10 @@ GoogleMap.prototype = {
         coordInfoWindow.setContent(message);
         coordInfoWindow.setPosition(point);
         coordInfoWindow.open(this.map);
+	},
+	
+	test : function () {
+		alert("googlemap");
 	},
 	
 	/* GETTERS - SETTERS */
