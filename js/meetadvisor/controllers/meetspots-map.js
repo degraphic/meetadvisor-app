@@ -7,6 +7,8 @@ MeetspotsMap.prototype = {
 	last_infoWindow: null,
 
 	init: function(request_params, updating) {
+		var ui = new MeetAdvisorUi();
+		ui.setSkin();
 
 		this.gmap = new GoogleMap();
 		this.gmap.init(this, updating, this.onMapReady);
@@ -15,39 +17,14 @@ MeetspotsMap.prototype = {
 	},
 	
     updatePopup: function (request_params) {
-		
-		var overlay = new UiOverlay();
-		
-		// show popup
-		if (request_params && request_params.popup) {
-			overlay.show(request_params.popup);
-		} else {
-			overlay.hide(request_params.popup);
-		}
-		
-		/*
-		
-            // show popup
-		    document.getElementById('popup-overlay').style.display = 'block';
-		    
-		    // bind close popup button
-		    $("#close-popup").click(function() {
-			    //reset hash
-			    location.hash = '#' + meetadvisor.current_page;
-		    });
-		    
-			
-			
-            popup_render_data = new MeetAdvisorRenderData();
-            popup_render_data.page.file = request_params.popup;
-            popup_render_data.inner_rendering_id = 'popup-box';
-            meetadvisor.render(popup_render_data);
+        if (request_params && request_params.popup) {
+			var uo = new UiOverlay();
+			uo.show("place");
         }
         else {
-			$("#popup-box").empty();
-			document.getElementById('popup-overlay').style.display = 'none';
+			var uo = new UiOverlay();
+			uo.hide();
         }
-		*/
     },
 	
 	onMapReady: function (that) {

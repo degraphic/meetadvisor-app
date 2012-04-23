@@ -117,7 +117,7 @@ MeetAdvisorController.prototype = {
     },
 
 	// Page Map update 
-	map__update: function(render_data) {
+	meetspotsMap__update: function(render_data) {
 		var msMap = new MeetspotsMap();
 		msMap.settings = {
 			mapContainer: document.getElementById('meetspot-map')

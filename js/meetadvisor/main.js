@@ -70,7 +70,7 @@ MeetAdvisor.prototype = {
 			}
 		}
 		
-		// check des rules
+		// auto sredirection  
 		if (this.current_page == '') {
 			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
 			return false;
@@ -79,6 +79,9 @@ MeetAdvisor.prototype = {
 			return false;
 		}
 
+		// is there a popup
+		
+		
 		// run the standard controller or the update controller
         if (this.current_page != this.last_page) {
             this.loader_overlay(true);
@@ -134,7 +137,7 @@ MeetAdvisor.prototype = {
 
         // Load template if we are not doing an inner rendering
         if (!render_data.inner_rendering_id && !render_data.template.src) {
-
+			console.log("render : loading template (" + render_data.template.file + ".html)");
 			$.ajax({
 				url: "templates/" + render_data.template.file + ".html",
 				dataType: 'html',			
@@ -147,6 +150,7 @@ MeetAdvisor.prototype = {
 
         // Load page
         if (!render_data.page.src) {
+			console.log("render : loading page (" + render_data.page.file + ".html)");
             $.ajax({
 			    url: "pages/" + render_data.page.file + ".html",
 			    dataType: 'html',			
@@ -160,6 +164,7 @@ MeetAdvisor.prototype = {
         // Load the first missing partial
         for (partial in render_data.partial_files) {
             if (!render_data.partial_srcs[partial]) {
+				console.log("render : loading partial (" + render_data.partial_files[partial] + ".html)");
                 $.ajax({
 			        url: "templates/parts/" + render_data.partial_files[partial] + ".html",
 			        dataType: 'html',			
@@ -171,10 +176,18 @@ MeetAdvisor.prototype = {
             }
         }
 
+		// is there an overlay popup to add ??
+		if (render_data.request_params && render_data.request_params.popup) {
+			//var overlay = new UiOverlay();
+			//overlay.show(render_data.request_params.popup);
+		}
+		
         // Everything is loaded, let's actually render it :
-        if (render_data.inner_rendering_id) {            
+        if (render_data.inner_rendering_id) {
+			console.log("render : inner renderging (" + render_data.inner_rendering_id + ")");
             $(document.getElementById(render_data.inner_rendering_id)).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
         } else {
+			console.log("render : global renderging");
             $(document.getElementById('body')).html($.mustache(render_data.template.src, render_data.data, render_data.partial_srcs));
             $(document.getElementById('content')).html($.mustache(render_data.page.src, render_data.data, render_data.partial_srcs));
         }
@@ -205,18 +218,18 @@ MeetAdvisor.prototype = {
 		
 		console.log(data);
 		
-		var overlay = new UiOverlay();
+		//var overlay = new UiOverlay();
 		
 		// show popup
-		overlay.show(data);
-		/*
+		//overlay.show(data);
+		
 		$.ajax({
 			url: "pages/" + data + ".html",
 			dataType: 'html',
 		}).done(function(html) {
 			$("#popup-box").append(html);
 		});
-		*/
+		
 
 	},
 	
