@@ -14,7 +14,6 @@ MeetAdvisorGender.prototype = {
 			window.localStorage.setItem("isfemale", false);
 			location.hash = "#map";
 		});
-
 	
 	},
 	

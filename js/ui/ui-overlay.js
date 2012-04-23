@@ -21,11 +21,21 @@ UiOverlay.prototype = {
 			
 		});
 		
+		// simule navigate et parse_uri
 		var renderData = new MeetAdvisorRenderData();
-
-		renderData.page.file = file;
+		
+		
+		// simule le controler 
 		renderData.inner_rendering_id = this.ID_CONTENT;
-		meetadvisor.render(renderData);
+		//renderData.page.file = file;
+		//meetadvisor.render(renderData);
+
+		// call le controler (better than simule)
+		if (file == "place") {
+			meetadvisor.controller.place(renderData);
+		}
+		
+		// prepare le DOM
 		document.getElementById('overlay-modal').style.display = 'block';
 	},
 		

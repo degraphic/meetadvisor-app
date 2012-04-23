@@ -2,6 +2,22 @@ var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
     
+	// Page place
+	place: function (render_data) {
+		console.log("controller: place");
+        render_data.page.file = "place";
+
+		render_data.data = {
+            name : "ceci est une page de test",
+        };
+
+		
+		meetadvisor.render(render_data, function() {
+			var maPlace = new Place();
+			
+		});
+	},
+	
 	// Page profile
 	profile: function(render_data) {
         render_data.page.file = "profile";
@@ -19,12 +35,9 @@ MeetAdvisorController.prototype = {
         render_data.page.file = "gender";
 		
 		meetadvisor.render(render_data, function() {
-		
 			var maGender = new MeetAdvisorGender();
 			maGender.bindElements();
-		
         });
-		
     },
 			
 	// Page 404
@@ -98,7 +111,7 @@ MeetAdvisorController.prototype = {
 	
 	// Page map
 	meetspotsMap: function(render_data) {
-        
+        console.log("controller: map");
 		render_data.page.file = "meetspots-map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');
@@ -140,18 +153,6 @@ MeetAdvisorController.prototype = {
 		});
     },
 
-	// Page place
-	place: function (render_data) {
-        render_data.page.file = "place";
-		
-		meetadvisor.render(render_data, function() {
-
-			
-       
-		});
-	
-	},
-	
 	// Page Test
     testMustache: function(render_data) {
         render_data.page.file = "test-mustache";
