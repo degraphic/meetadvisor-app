@@ -1,21 +1,26 @@
 var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
-    
+    // Page Coupon
+	coupon: function (render_data) {
+		console.log("controller: coupon");
+		render_data.page.file = "coupon";
+		
+		var cp = new Coupon();
+		render_data.data = cp.getInfo(render_data);
+		
+		meetadvisor.render(render_data);
+	},
+	
 	// Page place
 	place: function (render_data) {
 		console.log("controller: place");
         render_data.page.file = "place";
 
-		render_data.data = {
-            name : "ceci est une page de test",
-        };
-
+		var maPlace = new Place();
+		render_data.data = maPlace.getInfo(render_data);
 		
-		meetadvisor.render(render_data, function() {
-			var maPlace = new Place();
-			
-		});
+		meetadvisor.render(render_data);
 	},
 	
 	// Page profile

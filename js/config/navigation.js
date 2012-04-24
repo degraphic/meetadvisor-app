@@ -13,55 +13,56 @@ MEET_ADVISOR_VALID_PAGES = {
     checkin: true,
     error404: true,
     testMustache: true,
+	coupon: true,
 };
 
 
 MEET_ADVISOR_NAVIGATION_404 = "error404";
 
-MEET_ADVISOR_NAVIGATION = {
+// MEET_ADVISOR_NAVIGATION = {
 
-    profile: {
-        template: "default",
-        page: "profile"
-    },
+    // profile: {
+        // template: "default",
+        // page: "profile"
+    // },
 
-	gender: {
-        template: "simple",
-        page : "gender"
-    },
+	// gender: {
+        // template: "simple",
+        // page : "gender"
+    // },
 
-    login: {
-        template: "simple",
-        page : "login"
-    },
+    // login: {
+        // template: "simple",
+        // page : "login"
+    // },
 
-    createAccount: {
-        template: "simple",	
-        page : "create-account"
-    },	
+    // createAccount: {
+        // template: "simple",	
+        // page : "create-account"
+    // },	
 
-    meetspotsList: {
-        template: "default",
-        page: "meetspots-list"
-    },
+    // meetspotsList: {
+        // template: "default",
+        // page: "meetspots-list"
+    // },
 	
-	meetspotsMap: {
-        template: "default",
-        page: "meetspots-map"
-    },
+	// meetspotsMap: {
+        // template: "default",
+        // page: "meetspots-map"
+    // },
 	
-	place: {
-        template: "default",
-        page: "place"
-	},
+	// place: {
+        // template: "default",
+        // page: "place"
+	// },
 	
-    checkin: {
-        template: "default",
-        page: "checkin"
-    },
+    // checkin: {
+        // template: "default",
+        // page: "checkin"
+    // },
 	
-    error404: {
-        template: "default",
-        page: "error404"
-    },
-};
+    // error404: {
+        // template: "default",
+        // page: "error404"
+    // },
+// };

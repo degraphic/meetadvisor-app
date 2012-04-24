@@ -31,9 +31,14 @@ UiOverlay.prototype = {
 		//meetadvisor.render(renderData);
 
 		// call le controler (better than simule)
+		// TODO : refactorer ca en un truc plus cool
 		if (file == "place") {
 			meetadvisor.controller.place(renderData);
 		}
+		if (file == "coupon") {
+			meetadvisor.controller.coupon(renderData);
+		}
+		
 		
 		// prepare le DOM
 		document.getElementById('overlay-modal').style.display = 'block';
