@@ -137,6 +137,7 @@ MeetAdvisorController.prototype = {
 	// Page map
 	meetspotsMap: function(render_data) {
         console.log("controller: meetspotsMap");
+		//debugger;
 		render_data.page.file = "meetspots-map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');

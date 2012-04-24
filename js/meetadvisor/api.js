@@ -4,7 +4,7 @@ MeetAdvisorApi.prototype = {
 
 	// properties
 	server_address : "http://api.meet-advisor.com:1000/LoginService.svc",
-	server_address_location : "http://api.meet-advisor.com:1000/LocationService.svc",
+	server_address_location : "http://api.meet-advisor.com",
 	
 	// methods
 	
@@ -63,21 +63,55 @@ MeetAdvisorApi.prototype = {
     venue: function(x, y, callback) {
 		
 		$.ajax({
-			url: this.server_address_location + "/venue/" + x + "/" + y,
+			url: this.server_address_location 
+				+ "/Venue.json.svc/VenueByRange/" + x + "/" + y + "/0",
+
+			
 			dataType: 'json',
 		}).done(function(data) { 		
-			
+			data = jQuery.parseJSON(data);
 			// Manage data - wrapper
 			var wrappedData = new Array();
 
-			$.each(data, function(index, value) { 
+			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value));
 			});
 					
 			callback(wrappedData);
 			
 		});
-        
-    }
+    },
+
+	validateCoupon: function (barid, uid) {
+		$.ajax({
+			url: this.server_address_location 
+				+ "/Venue.json.svc/CouponValidated/" + barid + "/" + uid,
+			dataType: 'json',
+		}).done(function(data) { 		
+			// TODO : check validation 
+		});
+	},
+	
+	venueByDrinkers: function(callback) {
+		
+		$.ajax({
+			url: this.server_address_location 
+				+ "/VenueByDrinkers/600/0",
+			dataType: 'json',
+		}).done(function(data) { 		
+			data = jQuery.parseJSON(data);
+			// Manage data - wrapper
+			var wrappedData = new Array();
+
+			$.each(data.Venue, function(index, value) { 
+				wrappedData.push(new MeetAdvisorVenue(value));
+			});
+					
+			callback(wrappedData);
+			
+		});
+    },
+	
+	
 	
 };
