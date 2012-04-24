@@ -14,6 +14,7 @@ MEET_ADVISOR_VALID_PAGES = {
     error404: true,
     testMustache: true,
 	coupon: true,
+	drinkersMap: true,
 };
 
 

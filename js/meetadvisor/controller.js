@@ -1,6 +1,26 @@
 var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
+	// Page DrinkersMap
+	drinkersMap: function (render_data) {
+	    console.log("controller: drinkersMap");
+		
+		render_data.page.file = "drinkers-map";
+		
+		render_data.addPartial('header', 'header/meetspots-map');
+		render_data.addPartial('footer', 'footer/tab-bar');
+
+		meetadvisor.render(render_data, function() {
+		
+			var map = new DrinkersMap();
+			map.settings = { 
+				mapContainer: document.getElementById('meetspot-map')
+			};
+			map.init(render_data.request_params, false);
+
+		});
+	},
+
     // Page Coupon
 	coupon: function (render_data) {
 		console.log("controller: coupon");
@@ -116,7 +136,7 @@ MeetAdvisorController.prototype = {
 	
 	// Page map
 	meetspotsMap: function(render_data) {
-        console.log("controller: map");
+        console.log("controller: meetspotsMap");
 		render_data.page.file = "meetspots-map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');

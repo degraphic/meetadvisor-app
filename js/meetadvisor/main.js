@@ -65,6 +65,7 @@ MeetAdvisor.prototype = {
 			if (this.current_page != "createAccount" &&
                 this.current_page != "login"	&&
                 this.current_page != "gender") {
+				console.log("navigate: no session, goto home");
 				location.hash = '#login';
 				return false;
 			}
@@ -75,6 +76,7 @@ MeetAdvisor.prototype = {
 			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
 			return false;
 		} else if (!this.valid_pages[this.current_page]) {
+			console.log("navigate: goto 404 (" + this.current_page + ")");
 			location.hash = '#' + MEET_ADVISOR_404_PAGE;
 			return false;
 		}
@@ -140,7 +142,8 @@ MeetAdvisor.prototype = {
 			console.log("render : loading template (" + render_data.template.file + ".html)");
 			$.ajax({
 				url: "templates/" + render_data.template.file + ".html",
-				dataType: 'html',			
+				dataType: 'html',
+				error: function() { console.log("fail to load template");},
 				}).done(function(html) { 
 					render_data.template.src = html;
 					meetadvisor.render(render_data, callback);
@@ -153,7 +156,8 @@ MeetAdvisor.prototype = {
 			console.log("render : loading page (" + render_data.page.file + ".html)");
             $.ajax({
 			    url: "pages/" + render_data.page.file + ".html",
-			    dataType: 'html',			
+			    dataType: 'html',
+				error: function() { console.log("fail to load page");},
 		    }).done(function(html) { 
                 render_data.page.src = html;
                 meetadvisor.render(render_data, callback);
