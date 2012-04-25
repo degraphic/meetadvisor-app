@@ -78,7 +78,6 @@ GoogleMap.prototype = {
 
 		// Set map position & marker with geolocated data
 		this.gMapSetPosition(geolocatedLat, geolocatedLng);
-		this.gMapSetMarker(geolocatedLat, geolocatedLng);
 		
 		// fire the ready event !
 		this.onReady(that);
@@ -88,18 +87,23 @@ GoogleMap.prototype = {
         this.getMap().setCenter(new google.maps.LatLng(lat, lng));
     },
 	
-	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent) {
+	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, imgUrl) {
 		
 		// Store instance
 		var that = this;
+		var ico = new google.maps.MarkerImage(imgUrl);
 
         this.gMapMarker = new google.maps.Marker({
             map: that.getMap(),
+			icon: ico,
             position: new google.maps.LatLng(lat, lng),
             animation: google.maps.Animation.DROP,
 			data: maData,
 			parent: maParent
         });
+		
+		var icon = new google.maps.MarkerImage("http://domain/path/beach_flag.png", null, null, new google.maps.Point(0, 32));
+		
 
 		// some test
 		google.maps.event.addListener(this.gMapMarker, 'click', clickEvent);

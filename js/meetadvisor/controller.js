@@ -46,7 +46,7 @@ MeetAdvisorController.prototype = {
 	// Page profile
 	profile: function(render_data) {
         render_data.page.file = "profile";
-		
+
 		render_data.addPartial('header', 'header/default');
 		render_data.addPartial('footer', 'footer/tab-bar');
 		
@@ -101,7 +101,7 @@ MeetAdvisorController.prototype = {
 			new UiFieldsGroup();
 		
 			// Bind elements
-			var maCreateAccount = new MeetAdvisorCreateAccount.bindElements();
+			var maCreateAccount = new MeetAdvisorCreateAccount();
 			maCreateAccount.bindElements();
 
 		});

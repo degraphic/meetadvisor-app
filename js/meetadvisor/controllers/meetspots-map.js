@@ -33,9 +33,17 @@ MeetspotsMap.prototype = {
 
 	populate: function () {
 		var that = this;
+		var tab = [
+			"img/cocktail.png",
+			"img/coke.png",
+			"img/wine.png"
+		];
+		var i = 0;
 		meetadvisor.api.venue(0, 0, function (data) {
 			$.each(data, function(index, venue) {
-				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that);
+				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[i]);
+				i++;
+				if (i == 3) { i = 0; }
 			});
 		});
 	},

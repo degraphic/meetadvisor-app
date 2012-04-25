@@ -14,6 +14,7 @@ MeetAdvisorApi.prototype = {
 		
 		$.ajax({
 				url: wsUrl,
+				
 				dataType: 'json',
 				success: function(data) {
 					if (data.Result == true) {
@@ -21,6 +22,40 @@ MeetAdvisorApi.prototype = {
 						var ur = new User();
 						ur.login(data.isfemale);
 						
+						location.hash = "#meetspotsMap";
+					}
+					else {
+						alert("Login error");
+					}
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					console.log('error', xhr.status);
+					console.log('error', thrownError);
+				}
+			});
+    },
+	
+	login2 : function (login,password) {
+        // TODO
+		var wsUrl = this.server_address_location + "/User.json.svc/Login/";
+		
+		$.ajax({
+				url: wsUrl,
+				type: "POST",
+				data: {
+						age:0,
+						created_at: "",
+						is_female:true,
+						login: login,
+						mail: "",
+						password: password,
+						uid: "",
+					},
+				dataType: 'json',
+				success: function(data) {
+					if (data.Result == true) {
+						var ur = new User();
+						ur.login(data.isfemale);
 						location.hash = "#meetspotsMap";
 					}
 					else {
@@ -43,9 +78,9 @@ MeetAdvisorApi.prototype = {
 			success: function(data) {
 				if (data.Result == true) {
 					var ur = new User();
-					ur.setSex(data.isfemale);
-				
-					location.hash = "#map";
+					debugger;
+					ur.create(login, isfemale)
+					location.hash = "#meetspotsMap";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
 					alert("Un compte est déjà associé à cet email.");
@@ -101,6 +136,7 @@ MeetAdvisorApi.prototype = {
 		}).done(function(data) { 		
 			data = jQuery.parseJSON(data);
 			// Manage data - wrapper
+			debugger;
 			var wrappedData = new Array();
 
 			$.each(data.Venue, function(index, value) { 
