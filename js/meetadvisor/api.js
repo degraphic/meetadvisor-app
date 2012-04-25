@@ -39,34 +39,16 @@ MeetAdvisorApi.prototype = {
         // TODO
 		var wsUrl = this.server_address_location + "/User.json.svc/Login";
 		
-		// var jsonObjects= [{
-						// age:0,
-						// created_at: "",
-						// is_female:true,
-						// login: login,
-						// mail: "",
-						// password: password,
-						// uid: "",
-					// }];
-					
-		// var jsonObjects= {Users[{
-						// age:0,
-						// created_at: "",
-						// is_female:true,
-						// login: login,
-						// mail: "",
-						// password: password,
-						// uid: "",
-					// }]};
-		
-		
+		var jsonObjects= {"mail":login,"password":password}
 		
 		$.ajax({
 				url: wsUrl,
 				type: "POST",
-				data: {user: JSON.stringify(jsonObjects) },
+				data: JSON.stringify(jsonObjects),
 				dataType: 'json',
 				success: function(data) {
+					data = jQuery.parseJSON(data);
+					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
 						ur.login(data.isfemale);
