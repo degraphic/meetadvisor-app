@@ -11,7 +11,7 @@ MeetAdvisorLogin.prototype = {
 				alert("Merci d'entrer un login et un mot de passe.");
 			}
 			else {
-				meetadvisor.api.login($("#login").val(),$("#pwd").val());
+				meetadvisor.api.login2($("#login").val(),$("#pwd").val());
 			}
 		});
 	
