@@ -87,15 +87,15 @@ GoogleMap.prototype = {
         this.getMap().setCenter(new google.maps.LatLng(lat, lng));
     },
 	
-	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, imgUrl) {
+	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, mkgImage) {
 		
 		// Store instance
 		var that = this;
-		var ico = new google.maps.MarkerImage(imgUrl);
+		//var ico = new google.maps.MarkerImage(imgUrl);
 
         this.gMapMarker = new google.maps.Marker({
             map: that.getMap(),
-			icon: ico,
+			icon: mkgImage,
             position: new google.maps.LatLng(lat, lng),
             animation: google.maps.Animation.DROP,
 			data: maData,

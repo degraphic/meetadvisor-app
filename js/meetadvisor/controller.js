@@ -17,7 +17,6 @@ MeetAdvisorController.prototype = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
 			map.init(render_data.request_params, false);
-
 		});
 	},
 

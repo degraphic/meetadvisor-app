@@ -34,10 +34,11 @@ MeetspotsMap.prototype = {
 	populate: function () {
 		var that = this;
 		var tab = [
-			"img/cocktail.png",
-			"img/coke.png",
-			"img/wine.png"
-		];
+				new google.maps.MarkerImage("img/cocktail.png"),
+				new google.maps.MarkerImage("img/coke.png"),
+				new google.maps.MarkerImage("img/wine.png")
+			];
+		
 		var i = 0;
 		meetadvisor.api.venue(0, 0, function (data) {
 			$.each(data, function(index, venue) {
@@ -52,8 +53,7 @@ MeetspotsMap.prototype = {
 		var content = this.data.name + '<br />';
 		content += this.data.ambiance + '<br/>';
 		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
-		content += '<a href="#meetspotsMap/popup/place/id/'+ this.data.foursquare_id +'">PLUS D INFOS</a></buttons>';
-		
+		content += '<a href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		var coordInfoWindow = new google.maps.InfoWindow();
 
 		coordInfoWindow.setContent(content);

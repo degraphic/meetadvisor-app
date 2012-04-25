@@ -2,6 +2,7 @@ var MeetAdvisorVenue = function MeetAdvisorVenue(data) { this.init(data); };
 
 MeetAdvisorVenue.prototype = {
 	
+	id: null,
 	ambiance: null,
 	average_age: null,
 	categories: null,
@@ -23,7 +24,8 @@ MeetAdvisorVenue.prototype = {
 	title: null,
 	
 	init: function(data) {
-	
+		
+		this.id = data.id;
 		this.ambiance = data.ambiance;
 		this.average_age = data.average_age;
 		this.categories = data.categories;
@@ -43,7 +45,6 @@ MeetAdvisorVenue.prototype = {
 		this.name = data.name;
 		this.percentage_of_girls = data.percentage_of_girls;
 		this.title = data.title;
-		
     },
 
 	

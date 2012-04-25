@@ -28,7 +28,7 @@ DrinkersMap.prototype = {
     },
 	
 	onMapReady: function (that) {
-		that.populate();
+		//that.populate();
 	},
 
 	populate: function () {

@@ -54,7 +54,7 @@ MeetAdvisor.prototype = {
 	navigate: function (uri) {
 		var instance = this;		
 		var render_data = this.parse_uri(uri);
-		
+
 		// check if page change
 		if (this.current_uri == this.last_uri)
             return false;
@@ -71,9 +71,13 @@ MeetAdvisor.prototype = {
 			}
 		}
 		
-		// auto sredirection  
+		// auto redirection  
 		if (this.current_page == '') {
-			location.hash = '#' + MEET_ADVISOR_DEFAULT_PAGE;
+			if (this.user.isFemale()) {
+				location.hash = '#' + WOMAN_DEFAULT_PAGE;
+			} else {
+				location.hash = '#' + MAN_DEFAULT_PAGE;
+			}
 			return false;
 		} else if (!this.valid_pages[this.current_page]) {
 			console.log("navigate: goto 404 (" + this.current_page + ")");

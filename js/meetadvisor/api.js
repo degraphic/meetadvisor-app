@@ -3,39 +3,11 @@ var MeetAdvisorApi = function MeetAdvisorApi() {};
 MeetAdvisorApi.prototype = {
 
 	// properties
-	server_address : "http://api.meet-advisor.com:1000/LoginService.svc",
 	server_address_location : "http://api.meet-advisor.com",
 	
 	// methods
 	
-    login : function (login,password) {
-        // TODO
-		var wsUrl = this.server_address + "/login/" + login + "/" + password;
-		
-		$.ajax({
-				url: wsUrl,
-				
-				dataType: 'json',
-				success: function(data) {
-					if (data.Result == true) {
-
-						var ur = new User();
-						ur.login(data.isfemale);
-						
-						location.hash = "#meetspotsMap";
-					}
-					else {
-						alert("Login error");
-					}
-				},
-				error:function (xhr, ajaxOptions, thrownError){
-					console.log('error', xhr.status);
-					console.log('error', thrownError);
-				}
-			});
-    },
-	
-	login2 : function (login,password) {
+	login : function (login,password) {
         // TODO
 		var wsUrl = this.server_address_location + "/User.json.svc/Login";
 		
@@ -51,7 +23,7 @@ MeetAdvisorApi.prototype = {
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
-						ur.login(data.isfemale);
+						ur.login(login, data.isfemale);
 						location.hash = "#meetspotsMap";
 					}
 					else {
@@ -66,15 +38,20 @@ MeetAdvisorApi.prototype = {
     },
 	
 	register: function(login, password, mail, uid, isfemale) {
-	    
-	    var wsUrl = this.server_address + "/register/" + login + "/" + password + "/" + login + "/" + uid + "/" + isfemale;
+
+		var wsUrl = this.server_address_location + "/User.json.svc/Register";
+		
+		var jsonObjects= {"mail":mail,"password":password, "isfemale":isfemale,"age":"0", "uid":uid}
+
 		$.ajax({
 			url: wsUrl,
+			type: "POST",
+			data: JSON.stringify(jsonObjects),
 			dataType: 'json',
 			success: function(data) {
+				data = jQuery.parseJSON(data);
 				if (data.Result == true) {
 					var ur = new User();
-					debugger;
 					ur.create(login, isfemale)
 					location.hash = "#meetspotsMap";
 				}
@@ -90,14 +67,11 @@ MeetAdvisorApi.prototype = {
 			}
 		});
 	},
-
+	
     venue: function(x, y, callback) {
-		
 		$.ajax({
 			url: this.server_address_location 
 				+ "/Venue.json.svc/VenueByRange/" + x + "/" + y + "/0",
-
-			
 			dataType: 'json',
 		}).done(function(data) { 		
 			data = jQuery.parseJSON(data);
@@ -125,6 +99,8 @@ MeetAdvisorApi.prototype = {
 	
 	venueByDrinkers: function(callback) {
 		
+		var wsUrl = this.server_address_location + "/Venue.json.svc";
+		
 		$.ajax({
 			url: this.server_address_location 
 				+ "/VenueByDrinkers/600/0",
@@ -134,7 +110,6 @@ MeetAdvisorApi.prototype = {
 			// Manage data - wrapper
 			debugger;
 			var wrappedData = new Array();
-
 			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value));
 			});

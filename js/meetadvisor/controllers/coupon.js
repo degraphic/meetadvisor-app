@@ -13,8 +13,9 @@ Coupon.prototype = {
 			id: render_data.request_params["id"],
 			};
 		
-		meetadvisor.api.validateCoupon(render_data.request_params["id"], 2, function (data) {
-		});
+		var u = new User();
+		
+		meetadvisor.api.validateCoupon(render_data.request_params["id"], u.getUid());
 		
 		return (tab);
 	},
