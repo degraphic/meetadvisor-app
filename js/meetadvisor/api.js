@@ -24,15 +24,15 @@ MeetAdvisorApi.prototype = {
 					if (data.Result == true) {
 						var ur = new User();
 						ur.login(login, data.isfemale);
-						location.hash = "#meetspotsMap";
+						location.hash = "#";
 					}
 					else {
 						alert("Login error");
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
-					console.log('API: login error', xhr.status);
-					console.log('API: login error', thrownError);
+					console.log('API: login error ', xhr.status);
+					console.log('API: login error ', thrownError);
 				}
 			});
     },
@@ -53,7 +53,7 @@ MeetAdvisorApi.prototype = {
 				if (data.Result == true) {
 					var ur = new User();
 					ur.create(login, isfemale)
-					location.hash = "#meetspotsMap";
+					location.hash = "#";
 				}
 				else if (data.Error == "ERRORLoginOrMailOrUidExists") {
 					alert("Un compte est déjà associé à cet email.");
