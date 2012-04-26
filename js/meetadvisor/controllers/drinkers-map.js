@@ -53,7 +53,7 @@ DrinkersMap.prototype = {
 			$.each(data, function(index, venue) {
 				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[i]);
 				i++;
-				if (i == 9) { i = 0; }
+				if (i == 8) { i = 0; }
 			});
 		});
 	},
