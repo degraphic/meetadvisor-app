@@ -45,6 +45,7 @@ MeetAdvisor.prototype = {
 	user: null,
 
 	init: function () {
+		jQuery.support.cors = true;
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
