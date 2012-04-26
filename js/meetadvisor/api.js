@@ -23,7 +23,7 @@ MeetAdvisorApi.prototype = {
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
-						ur.login(login, data.isfemale);
+						ur.login(login, data.User.is_female);
 						location.hash = "#";
 					}
 					else {
@@ -40,8 +40,14 @@ MeetAdvisorApi.prototype = {
 	register: function(login, password, mail, uid, isfemale) {
 
 		var wsUrl = this.server_address_location + "/User.json.svc/Register";
+		
+		if (isfemale == true) {
+			isfemale = "true";
+		} else {
+			isfemale = "false";
+		}
 
-		var jsonObjects= {"mail":mail,"password":password, "isfemale":isfemale,"age":"0", "uid":uid}
+		var jsonObjects= {"mail":mail, "uid":uid, "login":login, "password":password, "is_female":isfemale,"age":"0", }
 
 		$.ajax({
 			url: wsUrl,

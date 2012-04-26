@@ -73,6 +73,16 @@ MeetAdvisor.prototype = {
 			}
 		}
 		
+		// split man / woman
+		if (this.user.isFemale() && this.current_page == 'drinkersMap') {
+			location.hash = '#' + WOMAN_DEFAULT_PAGE;
+			return false;
+		}
+		if (!this.user.isFemale() && this.current_page == 'meetspotsMap') {
+			location.hash = '#' + MAN_DEFAULT_PAGE;
+			return false;
+		}
+		
 		// auto redirection  
 		if (this.current_page == '') {
 			if (this.user.isFemale()) {
