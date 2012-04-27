@@ -1,9 +1,10 @@
 <div id="place" class="place">
 	<img width="50" height="50" src="./img/icons/default-avatar.png"> <br />
 	<div class="name">{{name}}</div><br />
-	{{type}}<br />
+	{{ambiance}}<br />
 	{{description}}<br />
-	adresse : {{location_address}} <a href="http://maps.google.fr/maps?q={{location_address_urlencoded}}&hl=en">map</a><br />
+	adresse : {{location_address}} {{location_city}}<a href="http://maps.google.fr/maps?q={{location_address_urlencoded}}&hl=en">map</a><br />
 	<div class="name">Offre :</div><br />
-	{{offer1}} <a href="#meetspotsMap/popup/coupon/id/{{id}}">DEMANDER UN TICKET<a/>
+	Happy hour toute la nuit pour les filles <br />
+	<a class="button block" href="#meetspotsMap/popup/coupon/id/{{id}}">DEMANDER UN TICKET<a/>
 </div>

@@ -48,5 +48,22 @@
 	box-shadow: rgba(0,0,0,0.5) 0 1px 6px;
 }
 
+#overlay-modal {
+	text-align:center; /* centrage horizontal */
+	margin: 0 auto;
+}
 
+.overlay-modal-content {
+	border:1px solid purple;
+	vertical-align:middle;
+	display:inline-block;
+	line-height:1.2; /* on rétablit le line-height */
+	text-align:left; /* ... et l'alignement du texte */
+	border-radius: 4px;
+	padding: 10px;
+	margin: 20px auto;
+	box-shadow: rgba(0,0,0,0.5) 0 1px 6px;
+}
+
+.new- 
 

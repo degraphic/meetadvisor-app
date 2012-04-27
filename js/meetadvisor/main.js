@@ -43,6 +43,8 @@ MeetAdvisor.prototype = {
     last_uri: null,
     current_params: null,
 	user: null,
+	current_venue: null,
+	venues: null,
 
 	init: function () {
 		jQuery.support.cors = true;
@@ -71,6 +73,13 @@ MeetAdvisor.prototype = {
 				location.hash = '#login';
 				return false;
 			}
+		} else {
+			if (this.current_page == "createAccount" ||
+                this.current_page == "login"	||
+                this.current_page == "gender") {
+				location.hash = '#';
+				return false;
+			}
 		}
 		
 		// split man / woman
@@ -97,8 +106,6 @@ MeetAdvisor.prototype = {
 			return false;
 		}
 
-		// is there a popup
-		
 		
 		// run the standard controller or the update controller
         if (this.current_page != this.last_page) {

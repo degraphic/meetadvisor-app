@@ -85,6 +85,7 @@ MeetAdvisorApi.prototype = {
 			}
 		}).done(function(data) { 		
 			data = jQuery.parseJSON(data);
+			meetadvisor.venues = this.data;
 			// Manage data - wrapper
 			var wrappedData = new Array();
 

@@ -36,10 +36,12 @@ MeetAdvisorController.prototype = {
 		console.log("controller: place");
         render_data.page.file = "place";
 
+
 		var maPlace = new Place();
 		render_data.data = maPlace.getInfo(render_data);
-		
-		meetadvisor.render(render_data);
+		meetadvisor.render(render_data, function() {
+
+		});
 	},
 	
 	// Page profile

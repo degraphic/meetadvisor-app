@@ -59,6 +59,7 @@ DrinkersMap.prototype = {
 	},
 	
 	onMarkerClick: function (evt) {
+
 		var content = this.data.name + '<br />';
 		content += this.data.ambiance + '<br/>';
 		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
