@@ -38,10 +38,7 @@ MeetAdvisorController.prototype = {
 
 
 		var maPlace = new Place();
-		render_data.data = maPlace.getInfo(render_data);
-		meetadvisor.render(render_data, function() {
-
-		});
+		maPlace.render(render_data);
 	},
 	
 	// Page profile

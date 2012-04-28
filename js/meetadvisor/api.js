@@ -110,7 +110,7 @@ MeetAdvisorApi.prototype = {
 
 	venueByDrinkers: function(callback) {
 
-		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenueByDrinkers/600/0";
+		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenueByDrinkers/600/100";
 
 		$.ajax({
 			url: wsUrl,
@@ -118,7 +118,7 @@ MeetAdvisorApi.prototype = {
 		}).done(function(data) { 		
 			data = jQuery.parseJSON(data);
 			// Manage data - wrapper
-			debugger;
+			//debugger;
 			var wrappedData = new Array();
 			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value));
@@ -129,6 +129,22 @@ MeetAdvisorApi.prototype = {
 		});
     },
 
-
+	getPlaceInfo: function (id, callback) {
+		var wsUrl = this.server_address_location + "/Venue.json.svc/VenueById/" + id;
+		
+		$.ajax({
+			url: wsUrl,
+			dataType: 'json',
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log('API: venue error', xhr.status);
+				console.log('API: venue error', thrownError);
+			}
+		}).done(function(data) {
+			data = jQuery.parseJSON(data);
+			callback(data.Venue[0]);
+		});
+	
+	
+	},
 
 };
