@@ -54,7 +54,7 @@
 }
 
 .overlay-modal-content {
-	border:1px solid purple;
+	border:1px solid #b43879;
 	vertical-align:middle;
 	display:inline-block;
 	line-height:1.2; /* on rétablit le line-height */

@@ -1,0 +1,51 @@
+.coupon {
+	width : 207px;
+	height: 207px;
+	box-shadow: rgba(0,0,0,0.5) 0 1px 6px;
+	border-radius: 6px;
+	margin: 10px auto;
+	background: #b43879;
+	background: -moz-linear-gradient(top,#b43879 0%,#b43879 62%,white 62%, white 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(62%, #b43879), color-stop(62, white));
+	padding-top: 3px;
+}
+
+.coupon-title {
+	color: white;
+	margin: 0 0 1px 6px;
+    color: #fcfcfc;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.coupon-content {
+	font-size: 12px;
+	padding: 5px 0;
+}
+	
+.coupon-col {
+	float: left;	
+	margin-left: 5px;
+}
+
+.coupon-left-col {
+	width: 124px;
+	
+}
+
+.coupon-right-col {
+	
+}
+
+.coupon-id {
+	font-size: 10px;
+	margin-left: 1px;	
+}
+
+
+
+
+
+
+
