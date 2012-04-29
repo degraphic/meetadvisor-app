@@ -1,12 +1,12 @@
 .coupon {
 	width : 207px;
-	height: 207px;
+	height: 186px;
 	box-shadow: rgba(0,0,0,0.5) 0 1px 6px;
 	border-radius: 6px;
 	margin: 10px auto;
 	background: #b43879;
-	background: -moz-linear-gradient(top,#b43879 0%,#b43879 62%,white 62%, white 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(62%, #b43879), color-stop(62, white));
+	background: -moz-linear-gradient(top,#b43879 0%,#b43879 68%,white 68%, white 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(68%, #b43879),color-stop(68%, #b43879), color-stop(62, white),color-stop(100%, white));
 	padding-top: 3px;
 }
 

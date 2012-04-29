@@ -26,16 +26,14 @@ MeetAdvisorController.prototype = {
 		render_data.page.file = "coupon";
 		
 		var cp = new Coupon();
-		render_data.data = cp.getInfo(render_data);
-		
-		meetadvisor.render(render_data);
+		cp.render(render_data);
+		//render_data.data = cp.getInfo(render_data);
 	},
 	
 	// Page place
 	place: function (render_data) {
 		console.log("controller: place");
         render_data.page.file = "place";
-
 
 		var maPlace = new Place();
 		maPlace.render(render_data);
