@@ -39,12 +39,9 @@ MeetspotsMap.prototype = {
 				new google.maps.MarkerImage("img/wine.png")
 			];
 		
-		var i = 0;
-		meetadvisor.api.venue(0, 0, function (data) {
+		meetadvisor.api.VenuesAndDrinkerCount(function (data) {
 			$.each(data, function(index, venue) {
-				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[i]);
-				i++;
-				if (i == 3) { i = 0; }
+				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[venue.ambiance]);
 			});
 		});
 	},

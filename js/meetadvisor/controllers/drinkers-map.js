@@ -36,24 +36,23 @@ DrinkersMap.prototype = {
 		var tab = [
 				new google.maps.MarkerImage("img/cocktail0.png"),
 				new google.maps.MarkerImage("img/cocktail1.png"),
-				//new google.maps.MarkerImage("img/cocktail2.png"),
+				new google.maps.MarkerImage("img/cocktail2.png"),
 				new google.maps.MarkerImage("img/cocktail3.png"),
+
 				new google.maps.MarkerImage("img/coke0.png"),
-				//new google.maps.MarkerImage("img/coke1.png"),
+				new google.maps.MarkerImage("img/coke1.png"),
 				new google.maps.MarkerImage("img/coke2.png"),
 				new google.maps.MarkerImage("img/coke3.png"),
+
 				new google.maps.MarkerImage("img/wine0.png"),
-				//new google.maps.MarkerImage("img/wine1.png"),
-				//new google.maps.MarkerImage("img/wine2.png"),
+				new google.maps.MarkerImage("img/wine1.png"),
+				new google.maps.MarkerImage("img/wine2.png"),
 				new google.maps.MarkerImage("img/wine3.png"),
 			];
 		
-		var i = 0;
-		meetadvisor.api.venue(0, 0, function (data) {
+		meetadvisor.api.VenuesAndDrinkerCount(function (data) {
 			$.each(data, function(index, venue) {
-				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[i]);
-				i++;
-				if (i == 8) { i = 0; }
+				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[venue.ambiance * 4 + venue.drinkernb]);
 			});
 		});
 	},
