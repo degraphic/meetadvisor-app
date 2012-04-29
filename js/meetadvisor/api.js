@@ -110,7 +110,7 @@ MeetAdvisorApi.prototype = {
 
 	venueByDrinkers: function(callback) {
 
-		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenueByDrinkers/600/100";
+		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenueByDrinkers/" + 60 * 4 + "/0";
 
 		$.ajax({
 			url: wsUrl,
@@ -122,6 +122,28 @@ MeetAdvisorApi.prototype = {
 			var wrappedData = new Array();
 			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value));
+			});
+
+			callback(wrappedData);
+
+		});
+    },
+
+
+    VenuesAndDrinkerCount: function(callback) {
+
+		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenuesAndDrinkerCount/" + 60 * 4;
+
+		$.ajax({
+			url: wsUrl,
+			dataType: 'json',
+		}).done(function(data) { 		
+			data = jQuery.parseJSON(data);
+			// Manage data - wrapper
+			//debugger;
+			var wrappedData = new Array();
+			$.each(data.Venue, function(index, value) { 
+				wrappedData.push(new MeetAdvisorVenue(value.venue, value.count));
 			});
 
 			callback(wrappedData);
