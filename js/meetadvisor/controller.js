@@ -48,9 +48,19 @@ MeetAdvisorController.prototype = {
 		render_data.addPartial('header', 'header/default');
 		render_data.addPartial('footer', 'footer/tab-bar');
 		
-		meetadvisor.render(render_data, function() {            
-            new UiFieldsGroup();	
-		});
+        meetadvisor.render(render_data, function() {
+            
+            new UiFieldsGroup();
+			
+			// Bind elements
+            var model = new MeetAdvisorUpdateAccount();
+			model.bindElements();
+			
+        });
+
+//		meetadvisor.render(render_data, function() {            
+//            new UiFieldsGroup();	
+//		});
     },
 
 	// Page gender	

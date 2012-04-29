@@ -13,10 +13,13 @@ User.prototype = {
 
 	// PUBLIC
 	
-	login: function (login, sex) {
+	login: function (id, mail, sex, token, password) {
 		// TODO, these are default values
-		window.localStorage.setItem("login", login);
+		window.localStorage.setItem("mail", mail);
+		window.localStorage.setItem("id", id);
 		window.localStorage.setItem("isFemale", sex);
+		window.localStorage.setItem("token", token);
+		window.localStorage.setItem("password", password);
 		window.localStorage.setItem("loggedIn", true);
     },
 
@@ -46,6 +49,21 @@ User.prototype = {
 		return (false);
 	},
 	
+    id : function() {
+        return window.localStorage.getItem("id");
+    },
+
+    token : function() {
+        return window.localStorage.getItem("token");
+    },
+
+    mail : function() {
+        return window.localStorage.getItem("mail");
+    },
+    password : function() {
+        return window.localStorage.getItem("password");
+    },
+
 	changeSex : function() {
 		if (window.localStorage.getItem("isFemale") == "true") {
 			window.localStorage.setItem("isFemale", false);

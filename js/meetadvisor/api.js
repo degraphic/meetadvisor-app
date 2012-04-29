@@ -4,14 +4,72 @@ MeetAdvisorApi.prototype = {
 
 	// properties
 	server_address_location : "http://api.meet-advisor.com",
+    //server_address_location : "http://localhost",
 	
 	// methods
 
-	login : function (login,password) {
+	login : function (mail,password) {
         // TODO
 		var wsUrl = this.server_address_location + "/User.json.svc/Login";
 
-		var jsonObjects= {"mail":login,"password":password}
+		var jsonObjects= {"mail":mail,"password":password}
+
+		$.ajax({
+				url: wsUrl,
+				type: "POST",
+				data: JSON.stringify(jsonObjects),
+				dataType: 'json',
+				success: function(data) {
+					data = jQuery.parseJSON(data);
+					console.log(data)
+					if (data.Result == true) {
+						var ur = new User();
+						ur.login(data.User.id, mail, data.User.is_female, data.User.token, data.User.password);
+						location.hash = "#";
+					}
+					else {
+						alert("Login error");
+					}
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					console.log('API: login error ', xhr.status);
+					console.log('API: login error ', thrownError);
+				}
+			});
+    },
+	
+	loginWithToken : function (token, callback) {
+        // TODO
+		var wsUrl = this.server_address_location + "/User.json.svc/LoginWithToken/" + token;
+
+
+		$.ajax({
+			url: this.server_address_location 
+				+ "/User.json.svc/LoginWithToken/" + token,
+			dataType: 'json',
+			error:function (xhr, ajaxOptions, thrownError){
+				console.log('API: venue error', xhr.status);
+				console.log('API: venue error', thrownError);
+			}
+		}).done(function(data) {
+					data = jQuery.parseJSON(data);
+					console.log(data)
+					if (data.Result == true) {
+						var ur = new User();
+						ur.login(data.User.id, data.User.mail, data.User.is_female, data.User.token, data.User.password);
+                        callback();
+					}
+					else {
+						alert("Login error");
+					}
+		});
+    },
+
+	UpdateUser : function (login,password) {
+        // TODO
+		var wsUrl = this.server_address_location + "/User.json.svc/UpdateUser";
+        var ur = new User();
+		var jsonObjects= {"id":ur.id(),"mail":login,"password":password}
 
 		$.ajax({
 				url: wsUrl,
@@ -36,7 +94,7 @@ MeetAdvisorApi.prototype = {
 				}
 			});
     },
-	
+
 	register: function(login, password, mail, uid, isfemale) {
 
 		var wsUrl = this.server_address_location + "/User.json.svc/Register";
