@@ -1,0 +1,5 @@
+D:\Projet\MeetAdvisor\phonegap\app\bin\app.dll
+D:\Projet\MeetAdvisor\phonegap\app\bin\app.pdb
+D:\Projet\MeetAdvisor\phonegap\app\obj\Debug\ResolveAssemblyReference.cache
+D:\Projet\MeetAdvisor\phonegap\app\obj\Debug\app.dll
+D:\Projet\MeetAdvisor\phonegap\app\obj\Debug\app.pdb
