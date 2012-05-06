@@ -20,30 +20,35 @@ User.prototype = {
 		window.localStorage.setItem("isFemale", sex);
 		window.localStorage.setItem("token", token);
 		window.localStorage.setItem("password", password);
-		window.localStorage.setItem("loggedIn", true);
+		window.localStorage.setItem("loggedIn", "1");
     },
 
 	create: function (login, sex) {
 		// TODO, these are default values
 		window.localStorage.setItem("login", login);
 		window.localStorage.setItem("isFemale", sex);
-		window.localStorage.setItem("loggedIn", true);
+		window.localStorage.setItem("loggedIn", "1");
 	},
 
 	logout : function () {
+		window.localStorage.removeItem("mail");
+		window.localStorage.removeItem("id");
 		window.localStorage.removeItem("isFemale");
-		window.localStorage.setItem("loggedIn", false);
+		window.localStorage.removeItem("token");
+		window.localStorage.removeItem("password");
+		window.localStorage.removeItem("isFemale");
+		window.localStorage.setItem("loggedIn", "0");
 	},
 	
 	isFemale : function () {
-		if (window.localStorage.getItem("isFemale") == "true") {
+		if (window.localStorage.getItem("isFemale") == "1") {
 			return (true);
 		}
 		return (false);
 	},
 			
 	isLoggedIn : function () {
-		if (window.localStorage.getItem("loggedIn") == "true") {
+		if (window.localStorage.getItem("loggedIn") == "1") {
 			return (true);
 		}
 		return (false);
@@ -66,9 +71,9 @@ User.prototype = {
 
 	changeSex : function() {
 		if (window.localStorage.getItem("isFemale") == "true") {
-			window.localStorage.setItem("isFemale", false);
+			window.localStorage.setItem("isFemale", "0");
 		} else {
-			window.localStorage.setItem("isFemale", true);
+			window.localStorage.setItem("isFemale", "1");
 		}
 	},
 	

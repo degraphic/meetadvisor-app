@@ -93,6 +93,13 @@ MeetAdvisorController.prototype = {
         });
     },
 
+	// Action logout
+    logout: function(render_data) {
+		var ur = new User();
+		ur.logout();
+        location.hash = "#login"
+    },
+
 	// Page createAccount
     createAccount: function(render_data) {
 
