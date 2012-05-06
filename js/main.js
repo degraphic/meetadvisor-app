@@ -3,7 +3,7 @@ $(document).ready(function () {
     meetadvisor.init();
 
     var u = new User();
-    u.logout();
+    u.logout(false);
     var token = u.token();
     if (token != null) {
         meetadvisor.api.loginWithToken(token, function () {
