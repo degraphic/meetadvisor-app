@@ -101,11 +101,7 @@ MeetAdvisorApi.prototype = {
 
 		var wsUrl = this.server_address_location + "/User.json.svc/Register";
 		
-		if (isfemale == true) {
-			isfemale = "true";
-		} else {
-			isfemale = "false";
-		}
+        isfemale = (isfemale ? "true" : "false")
 
 		var jsonObjects= {"mail":mail, "uid":uid, "login":login, "password":password, "is_female":isfemale,"age":"0", }
 

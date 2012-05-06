@@ -96,7 +96,7 @@ MeetAdvisorController.prototype = {
 	// Action logout
     logout: function(render_data) {
 		var ur = new User();
-		ur.logout();
+		ur.logout(true);
         location.hash = "#login"
     },
 
