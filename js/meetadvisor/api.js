@@ -34,7 +34,6 @@ MeetAdvisorApi.prototype = {
 				error:function (xhr, ajaxOptions, thrownError){
 					console.log('API: login error ', xhr.status);
 					console.log('API: login error ', thrownError);
-					//location.hash = "#logout";
 				}
 			});
     },
@@ -55,13 +54,14 @@ MeetAdvisorApi.prototype = {
 		}).done(function(data) {
 					data = jQuery.parseJSON(data);
 					console.log(data)
+					var ur = new User();
 					if (data.Result == true) {
-						var ur = new User();
 						ur.login(data.User.id, data.User.mail, data.User.is_female, data.User.token, data.User.password);
                         callback();
 					}
 					else {
 						alert("Login error");
+						ur.logout(true);
 						location.hash = "#logout";
 					}
 		});
