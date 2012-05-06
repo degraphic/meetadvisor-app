@@ -34,6 +34,7 @@ MeetAdvisorApi.prototype = {
 				error:function (xhr, ajaxOptions, thrownError){
 					console.log('API: login error ', xhr.status);
 					console.log('API: login error ', thrownError);
+					//location.hash = "#logout";
 				}
 			});
     },
@@ -61,6 +62,7 @@ MeetAdvisorApi.prototype = {
 					}
 					else {
 						alert("Login error");
+						location.hash = "#logout";
 					}
 		});
     },

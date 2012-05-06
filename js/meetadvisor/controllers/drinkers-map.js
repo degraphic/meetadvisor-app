@@ -60,7 +60,7 @@ DrinkersMap.prototype = {
 	onMarkerClick: function (evt) {
 
 		var content = '<h4>' + this.data.name + '</h4>';
-		content += '<br/>';
+		content += this.data.location_adress + ' ' + this.data.location_city + ' ' + this.data.location_borough + '<br/>';
 		content += ' Distance: 900 metres<br/>';
 		content += '<a class="button blue" href="#drinkersMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
