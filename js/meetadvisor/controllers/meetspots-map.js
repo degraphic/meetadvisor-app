@@ -48,8 +48,8 @@ MeetspotsMap.prototype = {
 	
 	onMarkerClick: function (evt) {
 		meetadvisor.current_venue = this.data;
-		var content = this.data.name + '<br />';
-		content += this.data.ambiance + '<br/>';
+		var content = '<h4>' + this.data.name + '</h4>';
+		content += '<br/>';
 		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
 		content += '<a class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		var coordInfoWindow = new google.maps.InfoWindow();

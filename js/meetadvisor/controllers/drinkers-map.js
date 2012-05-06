@@ -59,10 +59,10 @@ DrinkersMap.prototype = {
 	
 	onMarkerClick: function (evt) {
 
-		var content = this.data.name + '<br />';
-		content += this.data.ambiance + '<br/>';
-		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
-		content += '<a href="#meetspotsMap/popup/place/id/'+ this.data.foursquare_id +'">PLUS D INFOS</a></buttons>';
+		var content = '<h4>' + this.data.name + '</h4>';
+		content += '<br/>';
+		content += ' Distance: 900 metres<br/>';
+		content += '<a class="button blue" href="#drinkersMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
 		var coordInfoWindow = new google.maps.InfoWindow();
 
