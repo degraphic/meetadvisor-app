@@ -31,12 +31,7 @@ User.prototype = {
 	},
 
 	logout : function () {
-		window.localStorage.removeItem("mail");
-		window.localStorage.removeItem("id");
-		window.localStorage.removeItem("isFemale");
-		window.localStorage.removeItem("token");
-		window.localStorage.removeItem("password");
-		window.localStorage.removeItem("isFemale");
+        console.log("user.logout:");
 		window.localStorage.setItem("loggedIn", "0");
 	},
 	
