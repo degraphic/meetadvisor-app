@@ -9,6 +9,7 @@ MEET_ADVISOR_VALID_PAGES = {
 	profile: true,
     gender: true,
 	login: true,
+	logout: true,
     createAccount: true,	
     meetspotsList: true,
 	meetspotsMap: true,

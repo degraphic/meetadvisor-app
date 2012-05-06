@@ -13,19 +13,17 @@ MeetAdvisorCheckIn.prototype = {
 			});
 			
 			$("#logout").click(function() {	
-				var ur = new User();
-				ur.logout();
-				location.hash = "#";
+				location.hash = "#logout";
 			});
 
 			$("#VIP").click(function() {
-				window.localStorage.setItem("vip", true);
+				window.localStorage.setItem("vip", "1");
 				alert("you are now VIP !");
 				location.hash = "#";
 			});
 
 			$("#noVIP").click(function() {
-				window.localStorage.setItem("vip", false);
+				window.localStorage.setItem("vip", "0");
 				alert("you are no longuer VIP !");
 				location.hash = "#";
 			});

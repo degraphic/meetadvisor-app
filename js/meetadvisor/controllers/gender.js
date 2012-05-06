@@ -6,12 +6,12 @@ MeetAdvisorGender.prototype = {
 
 		// Bind connect button
 		$(".btWoman").click(function() {
-			window.localStorage.setItem("isfemale", true);
+			window.localStorage.setItem("isfemale", "1");
 			location.hash = "#map";
 		});
 
 		$(".btMan").click(function() {
-			window.localStorage.setItem("isfemale", false);
+			window.localStorage.setItem("isfemale", "0");
 			location.hash = "#map";
 		});
 	
