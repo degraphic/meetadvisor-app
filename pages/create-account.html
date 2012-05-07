@@ -3,13 +3,18 @@
 
 
 	<div class="spacer-top-large">
+		<hr>
 		<h3>Inscrivez-vous gratuitement !</h3>
 		<form id="createAccountForm" method="post">
 
 			<div class="spacer-bottom">
-				<select name="gender" id="gender">
-					<option value="M">Homme</option>
-					<option value="F">Femme</option>
+				<label for="gender">
+					Je suis 
+				</label>				
+				<select name="gender" id="gender" required="required">
+					<option value="">Sexe :</option>
+					<option value="M">un homme</option>
+					<option value="F">une femme</option>
 				</select>
 			</div>
 
@@ -17,26 +22,30 @@
 				
 				<div data-role="field-contain">
 					<label for="login">
-						Email
+						Votre Email :
 					</label>
-					<input type="email" id="login" name="login" value="" />
+					<input type="email" id="login" name="login" value="" required="required" />
 				</div>
 				
 				<div data-role="field-contain">
 					<label for="pwd">
-						Password
+						Nouveau mot de passe :
 					</label>
-					<input type="password" id="pwd" name="pwd" value="" />
+					<input type="password" id="pwd" name="pwd" value="" required="required" />
 				</div>
 			
 			</div>
 	
 			<div class="buttons-action-container">
-				<button type="button" class="button action-default block" name="submit" id="submit">Créer mon compte</button>
+				<input type="submit" class="button action-default block" value="Créer mon compte" />
 			</div>
 			
+			<br/>
+			<hr>
+			<br/>
+			
 			<div class="spacer-bottom-large">
-				<a href="#login" class="button action-cancel"></a>
+				<a href="#login" class="button blue block">J'ai déjà un compte</a>
 			</div>
 		</form>
 

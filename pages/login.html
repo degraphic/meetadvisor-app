@@ -2,6 +2,7 @@
 
 <div class="content-wrapper">
 	<div class="spacer-top-large spacer-bottom-large">
+		<hr>
 		<h3>Login</h3>
 		<form id="loginForm" method="post">
 
@@ -11,27 +12,29 @@
 					<label for="login">	
 						Email
 					</label>
-					<input type="email" id="login" name="login" value="" />
+					<input type="email" id="login" name="login" required="required"/>
 				</div>
 				
 				<div data-role="field-contain">
 					<label for="pwd">
 						Password
 					</label>
-					<input type="password" id="pwd" name="pwd" value="" />
+					<input type="password" id="pwd" name="pwd" required="required" />
 				</div>
 				
 			</div>
 			
 			<div class="buttons-action-container">
-				<button type="button" class="button action-default block" name="submit" id="submit">Connexion</button>
+				<input type="submit" class="button action-default block" value="Connexion" />
 			</div>
 
 		</form>
 	
 	</div>
 	
-	<br/><br/>
+	<br/>
+	<hr>
+	<br/>
 	
 	<h3>Inscription</h3>
 	<div class="spacer-top-large">
