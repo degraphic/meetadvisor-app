@@ -34,7 +34,7 @@ function error_forward(msg) {
 	};		
 		
 	$.ajax({
-		url: "http://test2.meet-advisor.com/repport.php?" + JSON.stringify(tab),
+		url: "http://test2.meet-advisor.com/report.php?msg=" + JSON.stringify(tab),
 		context: document.body
 	});
 	
