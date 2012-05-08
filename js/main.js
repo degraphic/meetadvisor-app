@@ -23,6 +23,8 @@ function start(u, meetadvisor) {
 
 function error_forward(msg) {
 	
+	msg = msg.replace("&", "%26");
+	
 	var tab = {
 		"msg":msg,
 		"appCodeName": navigator.appCodeName,
