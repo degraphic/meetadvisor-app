@@ -28,7 +28,7 @@ MeetAdvisorApi.prototype = {
 						location.hash = "#";
 					}
 					else {
-						alert("Login error");
+						alert("mot de passe incorrect.");
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
