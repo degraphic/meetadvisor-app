@@ -101,7 +101,7 @@ MeetAdvisor.prototype = {
 			}
 			return false;
 		} else if (!this.valid_pages[this.current_page]) {
-			error_forward("404-user-asked-for--" . this.current_page);
+			error_forward("404-user-asked-for--" + this.current_page);
 			console.log("navigate: goto 404 (" + this.current_page + ")");
 			location.hash = '#' + MEET_ADVISOR_404_PAGE;
 			return false;
