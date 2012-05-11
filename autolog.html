@@ -21,7 +21,6 @@
 
 
 	<!-- meet advisor -->
-	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/api.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/user.js"></script>
 	
 	
@@ -31,13 +30,40 @@
 		var tab = str.split("/");
 		
 		if (tab.length == 2) {
-			var api = new MeetAdvisorApi();
-		
-			api.login(tab[0], tab[1]);
-		
+			login(tab[0].slice(1), tab[1]);
 		}
 	});
 	
+	function login(mail,password) {
+        // TODO
+		var server_address_location = "http://api.meet-advisor.com";
+		var wsUrl = server_address_location + "/User.json.svc/Login";
+
+		var jsonObjects= {"mail":mail,"password":password}
+
+		$.ajax({
+				url: wsUrl,
+				type: "POST",
+				data: JSON.stringify(jsonObjects),
+				dataType: 'json',
+				success: function(data) {
+					data = jQuery.parseJSON(data);
+					console.log(data)
+					if (data.Result == true) {
+						var ur = new User();
+						ur.login(data.User.id, mail, data.User.is_female, data.User.token, data.User.password);
+						window.location = "index.html";
+					}
+					else {
+						alert("mot de passe incorrect.");
+					}
+				},
+				error:function (xhr, ajaxOptions, thrownError){
+					console.log('API: login error ', xhr.status);
+					console.log('API: login error ', thrownError);
+				}
+			});
+    }
 	
 	</script>
 	
