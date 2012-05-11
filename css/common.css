@@ -1,3 +1,29 @@
+/******************* TITLE *******************/
+.title {
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 18px;
+	color: white;
+	word-spacing: -1px;
+	margin: 10px 3px 20px;
+	font-weight: 900;
+}
+.title-white {
+	color: white;
+}
+.title-pink {
+	color: #ff0277;
+}
+.title-blue {
+	color: #2671c6;
+}
+.title-black {
+	color: black;
+}
+
+.title-pink {
+	color: #D94391;
+}
+
 /******************* TEXT *******************/
 .text-italic { font-style: italic !important; }
 .w-space-nowrap { white-space: nowrap !important; }
@@ -6,7 +32,10 @@
 
 /******************* ALIGN *******************/
 .align-left { text-align: left !important; }
-.align-right { text-align: right !important; }
+.align-right { 
+	text-align: right !important;
+	padding-right: 10px; 
+}
 .align-center { text-align: center !important; }
 .align-justify { text-align: justify !important; }
 
@@ -696,7 +725,7 @@
 
 [data-role="fields-group"] label {
     display: inline-block;
-    padding: 10px 2px 10px 4px;
+    padding: 10px 0px 10px 0px;
 		box-sizing: border-box;
     text-align: left;
     font-size: 14px;
@@ -708,7 +737,7 @@
 
 [data-role="fields-group"] input, [data-role="fields-group"] textarea {
     display: inline-block;
-    padding: 10px 5px;
+    padding: 10px 0px;
 		box-sizing: border-box;
     margin: 0;
     background: transparent;

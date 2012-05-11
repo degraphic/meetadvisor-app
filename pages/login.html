@@ -2,23 +2,22 @@
 
 <div class="content-wrapper">
 	<div class="spacer-top-large spacer-bottom-large">
+		<img src="img/logo2.png" alt="logo" />
 		<hr>
-		<h3>Login</h3>
+		<span class="title title-black">Connectez</span><span class="title title-pink">Vous</span>
+		<br />
+		<br />
 		<form id="loginForm" method="post">
 
 			<div data-role="fields-group">
 				
 				<div data-role="field-contain">
-					<label for="login">	
-						Email
-					</label>
+					<label for="login">&nbsp;Email :</label>
 					<input type="email" id="login" name="login" required="required" autocorrect="off" autocapitalize="off"/>
 				</div>
 				
 				<div data-role="field-contain">
-					<label for="pwd">
-						Password
-					</label>
+					<label for="pwd">&nbsp;Mot de passe :</label>
 					<input type="password" id="pwd" name="pwd" required="required" autocorrect="off" autocapitalize="off"/>
 				</div>
 				
@@ -26,23 +25,22 @@
 			
 		
 			<div class="buttons-action-container">
-				<input type="submit" class="button action-default block" value="Connexion" />
+				<input type="submit" class="button blue block" value="Connexion" />
 			</div>
-			
-			<div class="buttons-action-container">
-				<a href="http://www.meet-advisor.com/login_fb.html"><img src="img/fb.png" alt="boutton login with facebook" /></a>
-			</div>
-		</form>
-	
+		</form>			
+		<div class="buttons-action-container">
+			<a href="http://www.meet-advisor.com/login_fb.html"><img src="img/fb.png" alt="boutton login with facebook" /></a>
+		</div>
+		
+		<br />
+		<hr />
+
+		<div class="spacer-top-large">
+			<button id="createAccount" class="button action-cancel block">Créer un compte</button>
+		</div>
+		
 	</div>
 	
-	<br/>
-	<hr>
-	<br/>
-	
-	<h3>Inscription</h3>
-	<div class="spacer-top-large">
-		<a href="#createAccount" class="button blue block">Créer un compte</a>
-	</div>
+
 	
 </div>

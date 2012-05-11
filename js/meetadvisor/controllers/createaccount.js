@@ -30,6 +30,10 @@ MeetAdvisorCreateAccount.prototype = {
 			
 			return false;
 		});
+		
+		$("#btlogin").click(function () {
+			document.location.hash = "#login";
+		});
 	
 	},
 	

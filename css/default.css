@@ -216,6 +216,7 @@ h3 {
 	font-weight: bold;
 	color: #d94391;
 	text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+	
 }
 
 h4 {
@@ -223,6 +224,7 @@ h4 {
 	font-size: 18px;
 	color: black;
 	word-spacing: -1px;
+	margin-bottom: 15px;
 }
 
 /**************************** INPUTS ****************************/

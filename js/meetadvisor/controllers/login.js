@@ -20,6 +20,11 @@ MeetAdvisorLogin.prototype = {
 			meetadvisor.api.login($("#login").val(),$("#pwd").val());
 			return false;
 		});
+		
+		$("#createAccount").click(function () {
+			document.location.hash = "#createAccount";
+		});
+		
 	},
 	
 }

@@ -54,7 +54,7 @@ UiFieldsGroup.prototype = {
 		});
 		
 		$('input', fieldsGroupEl).each(function() {
-			$(this).css('width', inputMaxWidth - 5);
+			$(this).css('width', inputMaxWidth - 6);
 		});
 		
 	}
