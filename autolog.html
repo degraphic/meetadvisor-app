@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8">
+	
+	<meta name="robots" content="index, follow" />	
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	
+	<title>Meet Advisor</title>
+    
+	
+	<!-- ### JAVASCRIPT SECTION - BEGIN ### -->
+	<!-- libs -->
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery.hashchange.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/cordova-1.5.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/libs/jquery.mustache.js"></script>
+
+
+	<!-- meet advisor -->
+	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/api.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/meetadvisor/user.js"></script>
+	
+	
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function () {
+		var str = location.hash;
+		var tab = str.split("/");
+		
+		if (tab.length == 2) {
+			var api = new MeetAdvisorApi();
+		
+			api.login(tab[0], tab[1]);
+		
+		}
+	});
+	
+	
+	</script>
+	
+	
+	<!-- ### JAVASCRIPT SECTION - END ### -->
+
+  </head>
+  <body>
+	<span id="body"></span>
+	
+	<!-- BEGIN - OVERLAY BOX -->
+	<div id="overlay-modal" class="overlay-background">
+		
+		<div class="overlay-modal-content popup-content">
+		
+			<a class="button action-cancel" id="overlay-close">X</a>
+		
+			<div id="overlay-content"></div>
+			
+		
+		</div>		
+		
+	</div>
+	<!-- END - OVERLAY BOX -->
+	
+	<!-- BEGIN - LOADING SPINNER -->
+	<div id="overlay-loading" class="overlay-background">
+	
+		<div class="overlay-loading-box">
+			<img src="./img/icons/spinner.gif" width="32" height="32" />
+		</div>
+		
+	</div>
+	<!-- END - LOADING SPINNER -->
+	
+  </body>
+</html>
+
+

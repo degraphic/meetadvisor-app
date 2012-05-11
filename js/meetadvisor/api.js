@@ -1,4 +1,4 @@
-var MeetAdvisorApi = function MeetAdvisorApi() {};
+﻿var MeetAdvisorApi = function MeetAdvisorApi() {};
 
 MeetAdvisorApi.prototype = {
 
@@ -103,7 +103,7 @@ MeetAdvisorApi.prototype = {
 		
         isfemale = (isfemale ? "true" : "false")
 
-		var jsonObjects= {"mail":mail, "uid":uid, "login":login, "password":password, "is_female":isfemale,"age":"0"}
+		var jsonObjects= {"mail":mail, "uid":uid, "login":login, "password":password, "is_female":isfemale,"age":"0", "token":"lol"}
 
 		$.ajax({
 			url: wsUrl,
