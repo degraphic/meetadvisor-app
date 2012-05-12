@@ -204,12 +204,6 @@ MeetAdvisor.prototype = {
             }
         }
 
-		// is there an overlay popup to add ??
-		if (render_data.request_params && render_data.request_params.popup) {
-			//var overlay = new UiOverlay();
-			//overlay.show(render_data.request_params.popup);
-		}
-		
         // Everything is loaded, let's actually render it :
         if (render_data.inner_rendering_id) {
 			console.log("render : inner renderging (" + render_data.inner_rendering_id + ")");

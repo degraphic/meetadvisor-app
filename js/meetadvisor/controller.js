@@ -41,6 +41,7 @@ MeetAdvisorController.prototype = {
 	
 	// Page profile
 	profile: function(render_data) {
+		console.log("controller: profile");
         render_data.page.file = "profile";
 
 		render_data.addPartial('header', 'header/default');
@@ -55,10 +56,6 @@ MeetAdvisorController.prototype = {
 			model.bindElements();
 			
         });
-
-//		meetadvisor.render(render_data, function() {            
-//            new UiFieldsGroup();	
-//		});
     },
 
 	// Page gender	

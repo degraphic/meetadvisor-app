@@ -37,6 +37,15 @@ UiOverlay.prototype = {
 		if (file == "coupon") {
 			meetadvisor.controller.coupon(renderData);
 		}
+		if (file == "profile") {
+			meetadvisor.controller.profile(renderData);
+		}
+		if (file == "profile") {
+			meetadvisor.controller.profile(renderData);
+		}
+		if (file == "checkin") {
+			meetadvisor.controller.profile(renderData);
+		}
 	
 		// prepare le DOM
 		document.getElementById('overlay-modal').style.display = 'block';
