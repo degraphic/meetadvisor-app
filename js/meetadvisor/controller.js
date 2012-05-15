@@ -7,8 +7,7 @@ MeetAdvisorController.prototype = {
 		
 		render_data.page.file = "drinkers-map";
 		
-		render_data.addPartial('header', 'header/meetspots-map');
-		render_data.addPartial('footer', 'footer/tab-bar');
+		render_data.addPartial('header', 'header/drinkers-map');
 
 		meetadvisor.render(render_data, function() {
 		
@@ -27,7 +26,6 @@ MeetAdvisorController.prototype = {
 		
 		var cp = new Coupon();
 		cp.render(render_data);
-		//render_data.data = cp.getInfo(render_data);
 	},
 	
 	// Page place
@@ -151,7 +149,7 @@ MeetAdvisorController.prototype = {
 		render_data.page.file = "meetspots-map";
 		
 		render_data.addPartial('header', 'header/meetspots-map');
-		render_data.addPartial('footer', 'footer/tab-bar');
+		//render_data.addPartial('footer', 'footer/tab-bar');
 
 		meetadvisor.render(render_data, function() {
 		

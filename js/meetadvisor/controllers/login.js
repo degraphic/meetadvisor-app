@@ -21,9 +21,15 @@ MeetAdvisorLogin.prototype = {
 			return false;
 		});
 		
+		$("#btGoFacebook").click(function () {
+			document.location = "http://www.meet-advisor.com/login_fb.html";
+		});
+		
 		$("#createAccount").click(function () {
 			document.location.hash = "#createAccount";
 		});
+		
+		
 		
 	},
 	

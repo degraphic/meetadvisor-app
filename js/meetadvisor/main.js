@@ -48,7 +48,6 @@ MeetAdvisor.prototype = {
 
 	init: function () {
 		jQuery.support.cors = true;
-		//document.domain = "meet-advisor.com";
 		this.api = new MeetAdvisorApi();
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;

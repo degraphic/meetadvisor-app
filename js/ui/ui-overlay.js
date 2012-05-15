@@ -40,11 +40,8 @@ UiOverlay.prototype = {
 		if (file == "profile") {
 			meetadvisor.controller.profile(renderData);
 		}
-		if (file == "profile") {
-			meetadvisor.controller.profile(renderData);
-		}
 		if (file == "checkin") {
-			meetadvisor.controller.profile(renderData);
+			meetadvisor.controller.checkin(renderData);
 		}
 	
 		// prepare le DOM
