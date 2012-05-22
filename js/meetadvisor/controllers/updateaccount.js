@@ -15,7 +15,7 @@ MeetAdvisorUpdateAccount.prototype = {
 				alert("Merci d'entrer un login et un mot de passe.");
 			}
 			else {
-				meetadvisor.api.UpdateUser($("#login").val(),$("#pwd").val());
+				meetadvisor.api.UpdateUser(u.id(),$("#login").val(),$("#pwd").val(), u.isFemale(), u.token());
 			}
 		});
 	

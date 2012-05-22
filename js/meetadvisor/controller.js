@@ -6,7 +6,6 @@ MeetAdvisorController.prototype = {
 	    console.log("controller: drinkersMap");
 		
 		render_data.page.file = "drinkers-map";
-		
 		render_data.addPartial('header', 'header/drinkers-map');
 
 		meetadvisor.render(render_data, function() {
@@ -18,6 +17,15 @@ MeetAdvisorController.prototype = {
 			map.init(render_data.request_params, false);
 		});
 	},
+	
+	// Page Map update 
+	drinkersMap__update: function(render_data) {
+		var msMap = new DrinkersMap();
+		msMap.settings = {
+			mapContainer: document.getElementById('meetspot-map')
+		};
+		msMap.init(render_data.request_params, false);
+    },
 
     // Page Coupon
 	coupon: function (render_data) {

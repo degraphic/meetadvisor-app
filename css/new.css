@@ -54,7 +54,7 @@
 }
 
 .overlay-modal-content {
-	border:1px solid #b43879;
+	border:1px solid #93234b;
 	vertical-align:middle;
 	display:inline-block;
 	line-height:1.2; /* on rétablit le line-height */
@@ -65,5 +65,16 @@
 	box-shadow: rgba(0,0,0,0.5) 0 1px 6px;
 }
 
-.new- 
+#overlay-close {
+	position: relative;
+	float: right;
+	z-index: 500;
+	
+}
+
+#overlay-content {
+	position: relative;
+	top: -18px;
+	min-height: 129px;
+}
 

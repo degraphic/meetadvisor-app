@@ -67,7 +67,7 @@ MeetAdvisorApi.prototype = {
 		});
     },
 
-	UpdateUser : function (login,password) {
+	UpdateUser : function (id, login, password, sex, token) {
         // TODO
 		var wsUrl = this.server_address_location + "/User.json.svc/UpdateUser";
         var ur = new User();
@@ -83,7 +83,8 @@ MeetAdvisorApi.prototype = {
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
-						ur.login(login, data.User.is_female);
+						ur.login(id, login, sex, token, password);
+						alert("Mise à jour: OK");
 						location.hash = "#";
 					}
 					else {

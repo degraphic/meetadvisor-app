@@ -1,43 +1,38 @@
-<div class="content-wrapper">
+<div class="spacer-top-large">
+	
+	<span class="title title-black">Mes</span><span class="title title-pink">Infos</span>
+	<br />
+	<br />
+	
+	<form id="loginForm" method="post">
 
-	<div class="spacer-top-large spacer-bottom-large">
+		<div data-role="fields-group">
+			
+			<div data-role="field-contain">
+				<label for="login">&nbsp;Email :</label>
+				<input type="email" id="login" name="login" value="ton@email.com" autocorrect="off" autocapitalize="off" />
+			</div>
+			
+			<div data-role="field-contain">
+				<label for="pwd">&nbsp;Mot de pass :</label>
+				<input type="password" id="pwd" name="pwd" value="" autocorrect="off" autocapitalize="off" />
+			</div>
+			
+		</div>
 		
-		<span class="title title-black">Mes</span><span class="title title-pink">Infos</span>
-		<br />
-		<br />
+		<div class="spacer-top">
+			<input type="checkbox" name="newsletter" id="newsletter" value="y" />
+			<label for="newsletter">
+				Abonnement newsletter
+			</label>
+		</div>
 		
-		<form id="loginForm" method="post">
+		<br/>
+		
+		<div class="buttons-action-container">
+			<button type="button" class="button blue block" name="submit" id="submit">Enregistrer</button>
+		</div>
 
-			<div data-role="fields-group">
-				
-				<div data-role="field-contain">
-					<label for="login">&nbsp;Email :</label>
-					<input type="email" id="login" name="login" value="ton@email.com" autocorrect="off" autocapitalize="off" />
-				</div>
-				
-				<div data-role="field-contain">
-					<label for="pwd">&nbsp;Mot de pass :</label>
-					<input type="password" id="pwd" name="pwd" value="" autocorrect="off" autocapitalize="off" />
-				</div>
-				
-			</div>
-			
-			<div class="spacer-top">
-				<input type="checkbox" name="newsletter" id="newsletter" value="y" />
-				<label for="newsletter">
-					Abonnement newsletter
-				</label>
-			</div>
-			
-			<br/><br/>
-			
-			<div class="buttons-action-container">
-				<button type="button" class="button blue block" name="submit" id="submit">Enregistrer</button>
-			</div>
+	</form>
 
-		</form>
-	
-	</div>
-	
-	
 </div>
