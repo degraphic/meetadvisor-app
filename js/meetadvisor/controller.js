@@ -166,7 +166,6 @@ MeetAdvisorController.prototype = {
 				mapContainer: document.getElementById('meetspot-map')
 			};
 			msMap.init(render_data.request_params, false);
-
 		});
 
     },

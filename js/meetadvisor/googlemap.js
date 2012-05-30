@@ -37,7 +37,7 @@ GoogleMap.prototype = {
 		var that = this;
 		
 		$.getJSON('https://www.google.com/jsapi?callback=?', function () {		
-			google.load('maps', 3.4, {
+			google.load('maps', 3.9, {
 				callback: function () {
 					that.gMapInit(instance);
 				},
@@ -52,9 +52,9 @@ GoogleMap.prototype = {
 	},
 	
 	gMapInit: function (that) {
-		// Manage geolocated coordonates
-		var geolocatedLat = "40.730885";
-		var geolocatedLng = "-73.997383";
+		// Manage geolocated coordonates : 48;2 is Paris
+		var geolocatedLat = 48.85872551801016;
+		var geolocatedLng = 2.3372126802368243;
 		
 		if (this.isGpsDevice()) {
 			// TODO RETRIEVE GPS LOCATION		
@@ -65,7 +65,7 @@ GoogleMap.prototype = {
 		
 		// Define map options
 		var mapOptions = {
-            zoom: 14,
+            zoom: 12,
             center: new google.maps.LatLng(geolocatedLat, geolocatedLng),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
@@ -85,13 +85,14 @@ GoogleMap.prototype = {
 	
 	gMapSetPosition: function (lat, lng) {
         this.getMap().setCenter(new google.maps.LatLng(lat, lng));
+		var test = this.getMap().getCenter();
+		console.log("position:" + test.lat() + " " + test.lng());
     },
 	
 	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, mkgImage) {
 		
 		// Store instance
 		var that = this;
-		//var ico = new google.maps.MarkerImage(imgUrl);
 
         this.gMapMarker = new google.maps.Marker({
             map: that.getMap(),
@@ -102,13 +103,21 @@ GoogleMap.prototype = {
 			parent: maParent
         });
 		
-		var icon = new google.maps.MarkerImage("http://domain/path/beach_flag.png", null, null, new google.maps.Point(0, 32));
-		
-
 		// some test
 		google.maps.event.addListener(this.gMapMarker, 'click', clickEvent);
 
 	},
+	
+	gMapCreateInfoWindow: function (content, pos) {
+		var window = new google.maps.InfoWindow();
+
+		window.setContent(content);
+		window.setPosition(pos);
+		//window.open(this.map);
+		
+		return (window);		
+	},
+	
 	
 	isGoogleClientLocation: function() {
 	
@@ -122,15 +131,6 @@ GoogleMap.prototype = {
 			}
 		}
 
-	},
-	
-	setInfoWindow: function (point, message) {
-		//var point = new google.maps.LatLng(lat, lng);
-		var coordInfoWindow = new google.maps.InfoWindow();
-		
-        coordInfoWindow.setContent(message);
-        coordInfoWindow.setPosition(point);
-        coordInfoWindow.open(this.map);
 	},
 	
 	test : function () {

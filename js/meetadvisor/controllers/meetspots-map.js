@@ -47,11 +47,20 @@ MeetspotsMap.prototype = {
 	},
 	
 	onMarkerClick: function (evt) {
+		// handler called in GoogleMap
+		// this.parent = this
+	
+	
 		meetadvisor.current_venue = this.data;
+		
 		var content = '<h4>' + this.data.name + '</h4>';
 		content += '<br/>';
 		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
 		content += '<a class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
+		
+		this.parent.gmap.gMapCreateInfoWindow(content, evt.latLng);
+		
+		
 		var coordInfoWindow = new google.maps.InfoWindow();
 
 		coordInfoWindow.setContent(content);
@@ -63,10 +72,7 @@ MeetspotsMap.prototype = {
 			this.parent.last_infoWindow.close();
 		} 
 		this.parent.last_infoWindow = coordInfoWindow;
-		
-		
 	},
-
 }
 
 
