@@ -60,11 +60,19 @@ MeetspotsMap.prototype = {
 		
 		this.parent.gmap.gMapCreateInfoWindow(content, evt.latLng);
 		
+
+		
 		
 		var coordInfoWindow = new google.maps.InfoWindow();
 
 		coordInfoWindow.setContent(content);
+		
+		console.log("evt !" + evt.latLng.lat() + "  " +  evt.latLng.lng());
+		
 		coordInfoWindow.setPosition(evt.latLng);
+		this.parent.gmap.location = evt.latLng;
+		console.log("click !" + this.parent.gmap.position.lat() + "  " +  this.parent.gmap.position.lng());
+		
 		coordInfoWindow.open(this.map);
 		
 		// only one info window at a time !

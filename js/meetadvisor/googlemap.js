@@ -2,8 +2,7 @@ var GoogleMap = function GoogleMap() {};
 
 GoogleMap.prototype = {
 
-	lat: null,
-	lng: null,
+	position: null,
 	parent: null,
 	target: null,
 	onReady: null,
@@ -53,20 +52,18 @@ GoogleMap.prototype = {
 	
 	gMapInit: function (that) {
 		// Manage geolocated coordonates : 48;2 is Paris
-		var geolocatedLat = 48.85872551801016;
-		var geolocatedLng = 2.3372126802368243;
+		this.position = new google.maps.LatLng(48.85872551801016, 2.3372126802368243);
 		
 		if (this.isGpsDevice()) {
 			// TODO RETRIEVE GPS LOCATION		
 		} else if (this.isGoogleClientLocation()) {
-			geolocatedLat = google.loader.ClientLocation.latitude;
-			geolocatedLng = google.loader.ClientLocation.longitude;		
+			this.position = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);
 		}
 		
 		// Define map options
 		var mapOptions = {
             zoom: 12,
-            center: new google.maps.LatLng(geolocatedLat, geolocatedLng),
+            center: this.position,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             zoomControl: true,
@@ -77,18 +74,23 @@ GoogleMap.prototype = {
         this.setMap(new google.maps.Map(that.settings.mapContainer, mapOptions));
 
 		// Set map position & marker with geolocated data
-		this.gMapSetPosition(geolocatedLat, geolocatedLng);
+		this.map.setCenter(this.position);
 		
+		google.maps.event.addListener(this.map, 'mouseup', function() {
+			that.gmap.position = that.gmap.getMap().getCenter();
+			console.log("center changed: " + that.gmap.position.lat() + " " + that.gmap.position.lng());
+		});
+
+		// resize handler		
+		$(window).resize(function() {
+				that.gmap.getMap().setCenter(that.gmap.position);
+			console.log("resize !" + that.gmap.position.lat() + that.gmap.position.lng());
+		});
+			
 		// fire the ready event !
 		this.onReady(that);
     },
-	
-	gMapSetPosition: function (lat, lng) {
-        this.getMap().setCenter(new google.maps.LatLng(lat, lng));
-		var test = this.getMap().getCenter();
-		console.log("position:" + test.lat() + " " + test.lng());
-    },
-	
+
 	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, mkgImage) {
 		
 		// Store instance
@@ -131,10 +133,6 @@ GoogleMap.prototype = {
 			}
 		}
 
-	},
-	
-	test : function () {
-		alert("googlemap");
 	},
 	
 	/* GETTERS - SETTERS */

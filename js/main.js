@@ -17,7 +17,9 @@ $(document).ready(function () {
 
 function start(u, meetadvisor) {
 
-    $(window).hashchange(function () { meetadvisor.navigate(location.hash) });
+    $(window).hashchange(function () { 
+		meetadvisor.navigate(location.hash) 
+		});
     meetadvisor.navigate(location.hash);
 }
 

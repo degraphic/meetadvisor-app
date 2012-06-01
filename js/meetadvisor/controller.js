@@ -159,9 +159,11 @@ MeetAdvisorController.prototype = {
 		render_data.addPartial('header', 'header/meetspots-map');
 		//render_data.addPartial('footer', 'footer/tab-bar');
 
-		meetadvisor.render(render_data, function() {
 		
+		
+		meetadvisor.render(render_data, function() {
 			var msMap = new MeetspotsMap();
+			
 			msMap.settings = { 
 				mapContainer: document.getElementById('meetspot-map')
 			};
