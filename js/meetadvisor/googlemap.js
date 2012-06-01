@@ -76,21 +76,27 @@ GoogleMap.prototype = {
 		// Set map position & marker with geolocated data
 		this.map.setCenter(this.position);
 		
-		google.maps.event.addListener(this.map, 'mouseup', function() {
-			that.gmap.position = that.gmap.getMap().getCenter();
-			console.log("center changed: " + that.gmap.position.lat() + " " + that.gmap.position.lng());
-		});
+		// save center after move
+		google.maps.event.addListener(this.map, 'mouseup', this.onMouseUp);
 
 		// resize handler		
-		$(window).resize(function() {
-				that.gmap.getMap().setCenter(that.gmap.position);
-			console.log("resize !" + that.gmap.position.lat() + that.gmap.position.lng());
-		});
+		$(window).resize(this.onResize);
 			
 		// fire the ready event !
 		this.onReady(that);
     },
 
+	onMouseUp: function(evt) {
+		that.gmap.position = that.gmap.getMap().getCenter();
+		console.log("center changed: " + that.gmap.position.lat() + " " + that.gmap.position.lng());
+	},
+	
+	onResize: function () {
+		that.gmap.getMap().setCenter(that.gmap.position);
+		console.log("resize !" + that.gmap.position.lat() + " " + that.gmap.position.lng());
+	},
+	
+	
 	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, mkgImage) {
 		
 		// Store instance
