@@ -77,26 +77,21 @@ GoogleMap.prototype = {
 		this.map.setCenter(this.position);
 		
 		// save center after move
-		google.maps.event.addListener(this.map, 'mouseup', this.onMouseUp);
+		google.maps.event.addListener(this.map, 'mouseup', function() {
+			that.gmap.position = that.gmap.getMap().getCenter();
+			console.log("center changed: " + that.gmap.position.lat() + " " + that.gmap.position.lng());
+		});
 
 		// resize handler		
-		$(window).resize(this.onResize);
+		$(window).resize(function () {
+			that.gmap.getMap().setCenter(that.gmap.position);
+			console.log("resize !" + that.gmap.position.lat() + " " + that.gmap.position.lng());
+		});
 			
 		// fire the ready event !
 		this.onReady(that);
     },
 
-	onMouseUp: function(evt) {
-		that.gmap.position = that.gmap.getMap().getCenter();
-		console.log("center changed: " + that.gmap.position.lat() + " " + that.gmap.position.lng());
-	},
-	
-	onResize: function () {
-		that.gmap.getMap().setCenter(that.gmap.position);
-		console.log("resize !" + that.gmap.position.lat() + " " + that.gmap.position.lng());
-	},
-	
-	
 	gMapSetMarker: function (lat, lng, clickEvent, maData, maParent, mkgImage) {
 		
 		// Store instance
@@ -117,13 +112,15 @@ GoogleMap.prototype = {
 	},
 	
 	gMapCreateInfoWindow: function (content, pos) {
-		var window = new google.maps.InfoWindow();
-
-		window.setContent(content);
-		window.setPosition(pos);
-		//window.open(this.map);
+		var coordInfoWindow = new google.maps.InfoWindow();
+		coordInfoWindow.setContent(content);
+		coordInfoWindow.setPosition(pos);
+		this.position = pos;
+		console.log("click: center changed" + this.position.lat() + "  " +  this.position.lng());
 		
-		return (window);		
+		coordInfoWindow.open(this.map);
+	
+		return (coordInfoWindow);		
 	},
 	
 	
