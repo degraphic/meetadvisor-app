@@ -57,7 +57,7 @@ MeetspotsMap.prototype = {
 		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
 		content += '<a class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
-		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(content, evt.latLng);
+		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
 		coordInfoWindow.open(this.map);
 		
 		// only one info window at a time !

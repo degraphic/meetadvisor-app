@@ -1,6 +1,6 @@
 /**
  * @name InfoBox
- * @version 1.1.11 [January 9, 2012]
+ * @version 1.1.9 [October 2, 2011]
  * @author Gary Little (inspired by proof-of-concept code from Pamela Fox of Google)
  * @copyright Copyright 2010 Gary Little [gary at luxcentral.com]
  * @fileoverview InfoBox extends the Google Maps JavaScript API V3 <tt>OverlayView</tt> class.
@@ -9,6 +9,14 @@
  *  additional properties for advanced styling. An InfoBox can also be used as a map label.
  *  <p>
  *  An InfoBox also fires the same events as a <tt>google.maps.InfoWindow</tt>.
+ *  <p>
+ *  Browsers tested:
+ *  <p>
+ *  Mac -- Safari (4.0.4), Firefox (3.6), Opera (10.10), Chrome (4.0.249.43), OmniWeb (5.10.1)
+ *  <br>
+ *  Win -- Safari, Firefox, Opera, Chrome (3.0.195.38), Internet Explorer (8.0.6001.18702)
+ *  <br>
+ *  iPod Touch/iPhone -- Safari (3.1.2)
  */
 
 /*!
@@ -61,10 +69,11 @@
  * @property {string} pane The pane where the InfoBox is to appear (default is "floatPane").
  *  Set the pane to "mapPane" if the InfoBox is being used as a map label.
  *  Valid pane names are the property names for the <tt>google.maps.MapPanes</tt> object.
- * @property {boolean} enableEventPropagation Propagate mousedown, mousemove, mouseover, mouseout,
- *  mouseup, click, dblclick, touchstart, touchend, touchmove, and contextmenu events in the InfoBox
- *  (default is <tt>false</tt> to mimic the behavior of a <tt>google.maps.InfoWindow</tt>). Set
- *  this property to <tt>true</tt> if the InfoBox is being used as a map label.
+ * @property {boolean} enableEventPropagation Propagate mousedown, click, dblclick,
+ *  and contextmenu events in the InfoBox (default is <tt>false</tt> to mimic the behavior
+ *  of a <tt>google.maps.InfoWindow</tt>). Set this property to <tt>true</tt> if the InfoBox
+ *  is being used as a map label. iPhone note: This property setting has no effect; events are
+ *  always propagated.
  */
 
 /**
@@ -105,9 +114,11 @@ function InfoBox(opt_opts) {
 
   this.div_ = null;
   this.closeListener_ = null;
+  this.eventListener1_ = null;
+  this.eventListener2_ = null;
+  this.eventListener3_ = null;
   this.moveListener_ = null;
   this.contextListener_ = null;
-  this.eventListeners_ = null;
   this.fixedWidthSet_ = null;
 }
 
@@ -121,8 +132,6 @@ InfoBox.prototype = new google.maps.OverlayView();
  */
 InfoBox.prototype.createInfoBoxDiv_ = function () {
 
-  var i;
-  var events;
   var bw;
   var me = this;
 
@@ -130,7 +139,9 @@ InfoBox.prototype.createInfoBoxDiv_ = function () {
   //
   var cancelHandler = function (e) {
     e.cancelBubble = true;
+
     if (e.stopPropagation) {
+
       e.stopPropagation();
     }
   };
@@ -196,24 +207,14 @@ InfoBox.prototype.createInfoBoxDiv_ = function () {
 
     if (!this.enableEventPropagation_) {
 
-      this.eventListeners_ = [];
-
       // Cancel event propagation.
       //
-      // Note: mousemove not included (to resolve Issue 152)
-      events = ["mousedown", "mouseover", "mouseout", "mouseup",
-      "click", "dblclick", "touchstart", "touchend", "touchmove"];
-
-      for (i = 0; i < events.length; i++) {
-
-        this.eventListeners_.push(google.maps.event.addDomListener(this.div_, events[i], cancelHandler));
-      }
-      
-      // Workaround for Google bug that causes the cursor to change to a pointer
-      // when the mouse moves over a marker underneath InfoBox.
-      this.eventListeners_.push(google.maps.event.addDomListener(this.div_, "mouseover", function (e) {
+      this.eventListener1_ = google.maps.event.addDomListener(this.div_, "mousedown", cancelHandler);
+      this.eventListener2_ = google.maps.event.addDomListener(this.div_, "click", cancelHandler);
+      this.eventListener3_ = google.maps.event.addDomListener(this.div_, "dblclick", cancelHandler);
+      this.eventListener4_ = google.maps.event.addDomListener(this.div_, "mouseover", function (e) {
         this.style.cursor = "default";
-      }));
+      });
     }
 
     this.contextListener_ = google.maps.event.addDomListener(this.div_, "contextmenu", ignoreHandler);
@@ -287,14 +288,14 @@ InfoBox.prototype.getCloseClickHandler_ = function () {
       e.stopPropagation();
     }
 
+    me.close();
+
     /**
      * This event is fired when the InfoBox's close box is clicked.
      * @name InfoBox#closeclick
      * @event
      */
     google.maps.event.trigger(me, "closeclick");
-
-    me.close();
   };
 };
 
@@ -737,21 +738,22 @@ InfoBox.prototype.open = function (map, anchor) {
  */
 InfoBox.prototype.close = function () {
 
-  var i;
-
   if (this.closeListener_) {
 
     google.maps.event.removeListener(this.closeListener_);
     this.closeListener_ = null;
   }
 
-  if (this.eventListeners_) {
-    
-    for (i = 0; i < this.eventListeners_.length; i++) {
+  if (this.eventListener1_) {
 
-      google.maps.event.removeListener(this.eventListeners_[i]);
-    }
-    this.eventListeners_ = null;
+    google.maps.event.removeListener(this.eventListener1_);
+    google.maps.event.removeListener(this.eventListener2_);
+    google.maps.event.removeListener(this.eventListener3_);
+    google.maps.event.removeListener(this.eventListener4_);
+    this.eventListener1_ = null;
+    this.eventListener2_ = null;
+    this.eventListener3_ = null;
+    this.eventListener4_ = null;
   }
 
   if (this.moveListener_) {
