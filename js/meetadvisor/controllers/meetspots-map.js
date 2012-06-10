@@ -58,7 +58,6 @@ MeetspotsMap.prototype = {
 		content += '<a class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
 		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
-		coordInfoWindow.open(this.map);
 		
 		// only one info window at a time !
 		if (this.parent.last_infoWindow != null) {

@@ -118,41 +118,29 @@ GoogleMap.prototype = {
 		coordInfoWindow.setPosition(pos);
 		this.position = pos;
 		console.log("click: center changed" + this.position.lat() + "  " +  this.position.lng());
-		coordInfoWindow.open(this.map);
+		//coordInfoWindow.open(this.map);
 		
 		// v2
-		// var boxText = document.createElement("div");
-		// boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;";
-		// boxText.innerHTML = "City Hall, Sechelt<br>British Columbia<br>Canada";
-		// var myOptions = {
-			 // content: boxText
-			// ,disableAutoPan: false
-			// ,maxWidth: 0
-			// ,pixelOffset: new google.maps.Size(-140, 0)
-			// ,zIndex: null
-			// ,boxStyle: { 
-			  // background: "url('tipbox.gif') no-repeat"
-			  // ,opacity: 0.75
-			  // ,width: "280px"
-			 // }
-			// ,closeBoxMargin: "10px 2px 2px 2px"
-			// ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-			// ,infoBoxClearance: new google.maps.Size(1, 1)
-			// ,isHidden: false
-			// ,pane: "floatPane"
-			// ,enableEventPropagation: false
-		// };
-		// var ib = new InfoBox(myOptions);
-		// ib.open(this.map, this);
+		infoBubble2 = new InfoBubble({
+          content: '<div class="phoneytext">Some label</div>',
+          shadowStyle: 1,
+          padding: 0,
+          backgroundColor: 'rgb(57,57,57)',
+          borderRadius: 4,
+          arrowSize: 10,
+          borderWidth: 1,
+          borderColor: '#2c2c2c',
+          disableAutoPan: true,
+          hideCloseButton: true,
+          arrowPosition: 30,
+          backgroundClassName: 'phoney',
+          arrowStyle: 2
+        });
 		
-		//v3
-		// infobox = new InfoBox({ width: "280px" }); // initialize
-		// infobox.setContent(content);  // set content
-		// infobox.open(this.map, marker);   // open on the marker
-		// infobox.draw(); // to redraw if infobox size changed
-		// infobox.close();
-
+		//infoBubble.open(this.map, marker);
+        infoBubble2.open(this.map, marker);
 		
+	
 		
 		
 	
