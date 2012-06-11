@@ -122,27 +122,15 @@ GoogleMap.prototype = {
 		
 		// v2
 		infoBubble2 = new InfoBubble({
-          content: '<div class="phoneytext">Some label</div>',
-          shadowStyle: 1,
-          padding: 0,
-          backgroundColor: 'rgb(57,57,57)',
-          borderRadius: 4,
-          arrowSize: 10,
+          content: '<div class="phoneytext">' + content + '</div>',
+		  padding: 0,
+		  backgroundColor: 'rgb(57,57,57)',
           borderWidth: 1,
-          borderColor: '#2c2c2c',
-          disableAutoPan: true,
-          hideCloseButton: true,
-          arrowPosition: 30,
           backgroundClassName: 'phoney',
-          arrowStyle: 2
+          borderColor: '#2c2c2c',
+          hideCloseButton: true,
         });
-		
-		//infoBubble.open(this.map, marker);
         infoBubble2.open(this.map, marker);
-		
-	
-		
-		
 	
 		return (coordInfoWindow);		
 	},

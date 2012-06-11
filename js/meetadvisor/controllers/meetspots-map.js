@@ -52,10 +52,11 @@ MeetspotsMap.prototype = {
 	
 		meetadvisor.current_venue = this.data;
 		
-		var content = '<h4>' + this.data.name + '</h4>';
-		content += '<br/>';
-		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/>';
-		content += '<a class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
+		var content = '<div class="infobulleTitle">' + this.data.name + '</div>';
+		content += '<div class="infobulleArrow"><img src="/img/icons/arrow.png" alt="an arrow" /></div>';
+		content += '<div class="infobulleAdresse">32, rue Albert Thomas 75010 Paris </div>';
+		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/><br/>';
+		content += '<a id="infobulleAction" class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
 		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
 		
