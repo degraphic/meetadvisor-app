@@ -2,35 +2,66 @@
 	width: 224px;
 }
 
-.infobulleTitle {
-	 font-size: 16px;
-	 font: 900 18px/18px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
-}
 
-.infobulleAdresse {
-	font-size: 12px;
-}
+
+
 
 .phoney {
-	background: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgb(112,112,112)),color-stop(0.51, rgb(94,94,94)),color-stop(0.52, rgb(57,57,57)));
-	background: -moz-linear-gradient(center top,rgb(112,112,112) 0%,rgb(94,94,94) 51%,rgb(57,57,57) 52%);
-	color: white;
-
+	
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Chrome10+,Safari5.1+ */	
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+	
+	
+	color: #555;
 }
 
 .phoneytext {
-	text-shadow: 0 -1px 0 #000;
+	//text-shadow: 0 -1px 0 #000;
 	color: #fff;
 	font-family: Helvetica Neue, Helvetica, arial;
 	font-size: 18px;
 	line-height: 25px;
 	padding: 4px 45px 4px 15px;
-	font-weight: bold;
-	background: url(../img/icons/arrow.png) 95% 50% no-repeat;
+	//font-weight: bold;
+	//background: url(../img/icons/arrow.png) 95% 50% no-repeat;
 	font-size: 12px;
 }
 
 .infobulleArrow {
-	position: relative;
-	float: right;
+	right: 10px;
+	top: 20px;
+	float: right;	
+}
+
+
+.infobulleTitle {
+
+}
+
+
+.infobulleName {
+	 font-size: 16px;
+	 color: #555;	
+	 	float: left;
+		text-shadow: 0 -1px 0 #000;
+}
+
+
+.infobulleType  {
+	color: #ff0277;
+	font-size: 12px;
+	float: left;
+	margin-left: 5px;
+}
+
+.infobulleAdresse a {
+	clear: both;
+	font-size: 12px;
+	color: #2671c6;
 }

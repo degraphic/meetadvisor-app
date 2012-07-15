@@ -113,10 +113,10 @@ GoogleMap.prototype = {
 	
 	gMapCreateInfoWindow: function (marker, content, pos) {
 	    // v1
-		var coordInfoWindow = new google.maps.InfoWindow();
-		coordInfoWindow.setContent(content);
-		coordInfoWindow.setPosition(pos);
-		this.position = pos;
+		// var coordInfoWindow = new google.maps.InfoWindow();
+		// coordInfoWindow.setContent(content);
+		// coordInfoWindow.setPosition(pos);
+		// this.position = pos;
 		console.log("click: center changed" + this.position.lat() + "  " +  this.position.lng());
 		//coordInfoWindow.open(this.map);
 		
@@ -132,7 +132,7 @@ GoogleMap.prototype = {
         });
         infoBubble2.open(this.map, marker);
 	
-		return (coordInfoWindow);		
+		return (infoBubble2);		
 	},
 	
 	

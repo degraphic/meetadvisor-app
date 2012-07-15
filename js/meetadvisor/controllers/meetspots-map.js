@@ -1,8 +1,7 @@
-var MeetspotsMap = function MeetspotsMap() {};
+﻿var MeetspotsMap = function MeetspotsMap() {};
 
 MeetspotsMap.prototype = {
 	
-	//map: null,
 	gmap: null,
 	last_infoWindow: null,
 
@@ -52,11 +51,12 @@ MeetspotsMap.prototype = {
 	
 		meetadvisor.current_venue = this.data;
 		
-		var content = '<div class="infobulleTitle">' + this.data.name + '</div>';
-		content += '<div class="infobulleArrow"><img src="/img/icons/arrow.png" alt="an arrow" /></div>';
-		content += '<div class="infobulleAdresse">32, rue Albert Thomas 75010 Paris </div>';
-		content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/><br/>';
-		content += '<a id="infobulleAction" class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
+		var content = '<div class="infobulleTitle"><div class="infobulleName">' + this.data.name + '</div><div class="infobulleType">(bar étudiant)</div></div>';
+		content += '<br /><div class="infobulleArrow"><a href="#meetspotsMap/popup/place/id/'+ this.data.id +'"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></a></div>';
+		content += '<div class="infobulleAdresse"><a href="https://maps.google.com/maps?hl=en&q=32,+rue+Albert+Thomas+75010+Paris&ie=UTF-8" target="_blank">32, rue Albert Thomas 75010 Paris</a></div>';
+
+		//content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/><br/>';
+		//content += '<a id="infobulleAction" class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
 		
 		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
 		
