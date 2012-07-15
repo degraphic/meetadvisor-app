@@ -12,7 +12,9 @@ MeetAdvisorCheckIn.prototype = {
 				location.hash = "#";
 			});
 			
-			$("#logout").click(function() {	
+			$("#logout").click(function() {
+				var uo = new UiOverlay();
+				uo.hide();			
 				location.hash = "#logout";
 			});
 
