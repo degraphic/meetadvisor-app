@@ -1,4 +1,4 @@
-var UiOverlay = function UiOverlay() { this.init() };
+﻿var UiOverlay = function UiOverlay() { this.init() };
 
 UiOverlay.prototype = {
 

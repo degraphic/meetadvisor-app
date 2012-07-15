@@ -1,4 +1,4 @@
-var Place = function Place() {};
+﻿var Place = function Place() {};
 
 Place.prototype = {
 	

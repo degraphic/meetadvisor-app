@@ -1,4 +1,4 @@
-var User = function User() { this.init(); };
+﻿var User = function User() { this.init(); };
 
 User.prototype = {
 	

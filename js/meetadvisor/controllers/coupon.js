@@ -1,4 +1,4 @@
-var Coupon = function Coupon() {};
+﻿var Coupon = function Coupon() {};
 
 Coupon.prototype = {
 	

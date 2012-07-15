@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     meetadvisor = new MeetAdvisor();
     meetadvisor.init();
 

@@ -1,4 +1,4 @@
-var MeetAdvisorRenderData = function MeetAdvisorRenderData() { this.init(); };
+﻿var MeetAdvisorRenderData = function MeetAdvisorRenderData() { this.init(); };
 
 MeetAdvisorRenderData.prototype = {
 	template: null,

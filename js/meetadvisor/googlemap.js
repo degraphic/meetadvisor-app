@@ -1,4 +1,4 @@
-var GoogleMap = function GoogleMap() {};
+﻿var GoogleMap = function GoogleMap() {};
 
 GoogleMap.prototype = {
 

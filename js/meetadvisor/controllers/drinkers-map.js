@@ -1,4 +1,4 @@
-var DrinkersMap = function DrinkersMap() {};
+﻿var DrinkersMap = function DrinkersMap() {};
 
 DrinkersMap.prototype = {
 	

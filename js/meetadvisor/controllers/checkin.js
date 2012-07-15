@@ -1,4 +1,4 @@
-var MeetAdvisorCheckIn = function MeetAdvisorCheckIn() {};
+﻿var MeetAdvisorCheckIn = function MeetAdvisorCheckIn() {};
 
 MeetAdvisorCheckIn.prototype = {
 	

@@ -1,4 +1,4 @@
-var MeetAdvisorController = function MeetAdvisorController() {};
+﻿var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
 	// Page DrinkersMap

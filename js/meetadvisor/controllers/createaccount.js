@@ -1,4 +1,4 @@
-var MeetAdvisorCreateAccount = function MeetAdvisorCreateAccount() {};
+﻿var MeetAdvisorCreateAccount = function MeetAdvisorCreateAccount() {};
 
 MeetAdvisorCreateAccount.prototype = {
 	

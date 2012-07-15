@@ -1,4 +1,4 @@
-var MeetAdvisorVenue = function MeetAdvisorVenue(data, drinknb) { this.init(data, drinknb); };
+﻿var MeetAdvisorVenue = function MeetAdvisorVenue(data, drinknb) { this.init(data, drinknb); };
 
 MeetAdvisorVenue.prototype = {
 
