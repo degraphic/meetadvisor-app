@@ -3,8 +3,8 @@
 MeetAdvisorApi.prototype = {
 
 	// properties
-	server_address_location : "http://api.meet-advisor.com",
-    //server_address_location : "http://localhost",
+	server_address_location : "http://meetadvisor.cloudapp.net",
+    //server_address_location : "http://192.168.0.16",
 	
 	// methods
 
