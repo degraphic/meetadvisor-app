@@ -124,7 +124,7 @@ GoogleMap.prototype = {
 		infoBubble2 = new InfoBubble({
           content: '<div class="phoneytext">' + content + '</div>',
 		  padding: 0,
-		  backgroundColor: 'rgb(57,57,57)',
+		  backgroundColor: '#f5f5f5',
           borderWidth: 1,
           backgroundClassName: 'phoney',
           borderColor: '#2c2c2c',
