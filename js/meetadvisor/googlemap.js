@@ -128,6 +128,7 @@ GoogleMap.prototype = {
           borderWidth: 1,
           backgroundClassName: 'phoney',
           borderColor: '#2c2c2c',
+		  borderRadius: '0px',
           hideCloseButton: true,
         });
         infoBubble2.open(this.map, marker);

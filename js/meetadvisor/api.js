@@ -42,9 +42,8 @@ MeetAdvisorApi.prototype = {
 	
 	loginWithToken : function (token, callback) {
         // TODO
+		document.getElementById('overlay-loading').style.display = 'block';	
 		var wsUrl = this.server_address_location + "/User.json.svc/LoginWithToken/" + token;
-
-
 		$.ajax({
 			url: this.server_address_location 
 				+ "/User.json.svc/LoginWithToken/" + token,
@@ -52,8 +51,10 @@ MeetAdvisorApi.prototype = {
 			error:function (xhr, ajaxOptions, thrownError){
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
+				document.getElementById('overlay-loading').style.display = 'none';
 			}
 		}).done(function(data) {
+					document.getElementById('overlay-loading').style.display = 'none';
 					data = jQuery.parseJSON(data);
 					console.log(data)
 					var ur = new User();
@@ -62,9 +63,9 @@ MeetAdvisorApi.prototype = {
                         callback();
 					}
 					else {
-						alert("Login error");
+						alert("Login error !");
 						ur.logout(true);
-						location.hash = "#logout";
+						location = "/";
 					}
 		});
     },
@@ -90,7 +91,7 @@ MeetAdvisorApi.prototype = {
 						location.hash = "#";
 					}
 					else {
-						alert("Login error");
+						alert("Login error !!");
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
