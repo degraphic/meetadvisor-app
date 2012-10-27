@@ -17,6 +17,7 @@ MeetAdvisorLogin.prototype = {
 		// });
 		
 		$("#loginForm").submit(function () {
+			document.getElementById('overlay-loading').style.display = 'block';
 			meetadvisor.api.login($("#login").val(),$("#pwd").val());
 			return false;
 		});

@@ -20,6 +20,7 @@ MeetAdvisorApi.prototype = {
 				data: JSON.stringify(jsonObjects),
 				dataType: 'json',
 				success: function(data) {
+					document.getElementById('overlay-loading').style.display = 'none';
 					data = jQuery.parseJSON(data);
 					console.log(data)
 					if (data.Result == true) {
@@ -32,6 +33,7 @@ MeetAdvisorApi.prototype = {
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
+					document.getElementById('overlay-loading').style.display = 'none';
 					console.log('API: login error ', xhr.status);
 					console.log('API: login error ', thrownError);
 				}
