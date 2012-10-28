@@ -127,7 +127,7 @@ GoogleMap.prototype = {
 		  backgroundColor: '#f5f5f5',
           borderWidth: 1,
           backgroundClassName: 'phoney',
-          borderColor: '#2c2c2c',
+          borderColor: '#aaaaaa',
 		  borderRadius: '0px',
           hideCloseButton: true,
         });

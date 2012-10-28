@@ -56,6 +56,7 @@ input[type="radio"] {
 
 input[type="submit"] {
 	padding: 5px 0;
+	height: 29px;
 }
 
 input, select, textarea {
