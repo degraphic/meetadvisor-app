@@ -51,9 +51,18 @@ MeetspotsMap.prototype = {
 	
 		meetadvisor.current_venue = this.data;
 		
-		var content = '<div class="infobulleTitle"><div class="infobulleName">' + this.data.name + '</div><div class="infobulleType">(bar étudiant)</div></div>';
-		content += '<br /><div class="infobulleArrow"><a href="#meetspotsMap/popup/place/id/'+ this.data.id +'"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></a></div>';
-		content += '<div class="infobulleAdresse"><a href="https://maps.google.com/maps?hl=en&q=32,+rue+Albert+Thomas+75010+Paris&ie=UTF-8" target="_blank">32, rue Albert Thomas 75010 Paris</a></div>';
+		var content = '<div class="infobulleTitle">';
+		content += '<div class="infobulleImage"><img src="img/bar' + ((Math.random() * 100) << 0) % 3 +'.png" width="40" height="32" alt="un bar" /></div>';
+		content += '<div class="infobulleName">' + this.data.name + '</div>';
+		content += '</div>';
+		content += '<div class="infobulleAdresse">' + this.data.location_address + '</div>';
+		content += '<div class="infobulleAdresse">' + this.data.location_city + '</div>';
+		//content += '<div class="infobulleArrow"><a href="#meetspotsMap/popup/place/id/'+ this.data.id +'"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></a></div>';
+		content += '<div class="infobulleButton"><button class="button action-cancel block" onclick="location.hash = \'#meetspotsMap/popup/place/id/'+ this.data.id +'\';">';
+		content += '<div class="infobulleButtonText">Plus d\'infos</div>';
+		content += '<div class="infobulleArrow"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></div>';
+		content += '</button></div>';
+
 
 		//content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/><br/>';
 		//content += '<a id="infobulleAction" class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';

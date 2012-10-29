@@ -195,19 +195,19 @@ footer .tab-bar .item-profile {
 
 /******************* TITLES *******************/
 h1 {
-	font-family: Lobster, Helvetica, Verdana, sans-serif;	
-	font-size: 25px;
-	font-weight: bold;
-	color: #FCFCFC;
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 39px;
+	word-spacing: -1px;
+	margin: 10px 3px 20px;
+	text-transform: uppercase;
 }
 
 h2 {
-	padding: 10px 0 10px 5px;
-	font-family: Lobster, Helvetica, Verdana, sans-serif;	
-	font-size: 25px;
-	text-align: center;
-	color: #fcfcfc;
-	text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 30px;
+	word-spacing: -1px;
+	margin: 10px 3px 20px;
+	font-weight: 900;
 }
 
 h3 {
@@ -215,7 +215,6 @@ h3 {
 	font-family: Lobster, Helvetica, Verdana, sans-serif;	
 	font-size: 23px;
 	font-weight: bold;
-	color: #d94391;
 	text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
 	
 }
@@ -223,9 +222,9 @@ h3 {
 h4 {
 	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 	font-size: 18px;
-	color: black;
 	word-spacing: -1px;
-	margin-bottom: 15px;
+	margin: 10px 3px 20px;
+	font-weight: 900;
 }
 
 /**************************** INPUTS ****************************/
@@ -286,3 +285,10 @@ a {
 ::-webkit-scrollbar-corner {
 	background-color: transparent;
 }
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: whiteSmoke;
+}
+
