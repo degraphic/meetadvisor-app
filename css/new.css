@@ -57,7 +57,7 @@
 	border:1px solid #93234b;
 	vertical-align:middle;
 	display:inline-block;
-	line-height:1.2; /* on rétablit le line-height */
+	line-height:1.2; /* on r?tablit le line-height */
 	text-align:left; /* ... et l'alignement du texte */
 	border-radius: 4px;
 	padding: 10px;
@@ -74,7 +74,6 @@
 
 #overlay-content {
 	position: relative;
-	top: -18px;
 	min-height: 129px;
 }
 

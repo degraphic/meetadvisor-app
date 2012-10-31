@@ -1,4 +1,4 @@
-﻿var MeetspotsMap = function MeetspotsMap() {};
+var MeetspotsMap = function MeetspotsMap() {};
 
 MeetspotsMap.prototype = {
 	
@@ -46,9 +46,6 @@ MeetspotsMap.prototype = {
 	},
 	
 	onMarkerClick: function (evt) {
-		// handler called in GoogleMap
-		// this.parent = this
-	
 		meetadvisor.current_venue = this.data;
 		
 		var content = '<div class="infobulleTitle">';
@@ -57,16 +54,11 @@ MeetspotsMap.prototype = {
 		content += '</div>';
 		content += '<div class="infobulleAdresse">' + this.data.location_address + '</div>';
 		content += '<div class="infobulleAdresse">' + this.data.location_city + '</div>';
-		//content += '<div class="infobulleArrow"><a href="#meetspotsMap/popup/place/id/'+ this.data.id +'"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></a></div>';
 		content += '<div class="infobulleButton"><button class="button action-cancel block" onclick="location.hash = \'#meetspotsMap/popup/place/id/'+ this.data.id +'\';">';
 		content += '<div class="infobulleButtonText">Plus d\'infos</div>';
 		content += '<div class="infobulleArrow"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></div>';
 		content += '</button></div>';
 
-
-		//content += ' Distance: 900 metres<br/>Reduc: happy hour toute la nuit pour les filles<br/><br/>';
-		//content += '<a id="infobulleAction" class="button blue" href="#meetspotsMap/popup/place/id/'+ this.data.id +'">PLUS D INFOS</a></buttons>';
-		
 		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
 		
 		// only one info window at a time !

@@ -1,10 +1,24 @@
-﻿<div id="place" class="place">
-	<img width="50" height="50" src="./img/icons/default-avatar.png"> <br />
-	<div class="name">{{name}}</div><br />
-	{{ambiance}}<br />
-	{{description}}<br />
-	adresse : {{location_address}} {{location_city}}<a href="http://maps.google.fr/maps?q={{location_address_urlencoded}}&hl=en">map</a><br />
-	<div class="name">Offre :</div><br />
-	Happy hour toute la nuit pour les filles <br />
-	<a class="button block" href="#meetspotsMap/popup/coupon/id/{{id}}">DEMANDER UN TICKET<a/>
+﻿<div>
+	<div>
+		<div class="float-left infobulleImage"><img src="img/bar1.png" width="40" height="32" alt="un bar" /></div>
+		<div class="float-left infobulleName">{{name}}</div>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div>
+		<div class="float-left tag tag1">lieu de rencontre</div><div class="float-left tag tag2">accueillant</div>
+	</div>
+	<div class="clear">
+		<div class="float-left tag tag3">on y danse</div><div class="float-left tag tag4">happy hour</div>
+	</div>
+	<div class="clear">
+		<div class="float-left tag tag5">age 20-30 ans</div><div class="float-left tag tag6">ouvert toute la nuit</div>
+	</div>
+	<br />
+	<div class="clear">
+		<br />
+		<button class="button blue block" onclick="location.hash = '#meetspotsMap/popup/coupon/id/{{id}}';">Voir les reductions dans ce bar</button>
+	</div>
+	<button class="button pink block" onclick="location.hash = '#meetspotsMap/popup/coupon/id/{{id}}';">Laisser un coeur ici</button>
 </div>
