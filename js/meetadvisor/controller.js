@@ -41,8 +41,29 @@ MeetAdvisorController.prototype = {
 		console.log("controller: place");
         render_data.page.file = "place";
 
-		var maPlace = new Place();
-		maPlace.render(render_data);
+        if (meetadvisor.current_venue == null) {
+        	console.log("place->complicated:before rendering");
+			meetadvisor.current_venue = render_data;
+			meetadvisor.api.getPlaceInfo(render_data.request_params["id"], function (data) {
+				var render_data = meetadvisor.current_venue;
+
+				meetadvisor.current_venue = data;
+
+				meetadvisor.render(render_data, function() {
+        			console.log("place->complicated:after rendering");
+					var maPlace = new Place();
+					maPlace.init();
+				});
+			}, render_data);
+		} else { 
+        	console.log("place->simple:before rendering");
+			render_data.data = meetadvisor.current_venue;
+			meetadvisor.render(render_data, function() {
+	        	console.log("place->simple:after rendering");
+				var maPlace = new Place();
+				maPlace.init();
+			});
+		}
 	},
 	
 	// Page profile

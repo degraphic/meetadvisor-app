@@ -2,9 +2,6 @@
 
 User.prototype = {
 	
-	
-	
-	
 	//  PRIVATE
 	init : function () {
 		console.log("user: init");
@@ -16,6 +13,7 @@ User.prototype = {
 	login: function (id, mail, sex, token, password) {
 		// TODO, these are default values
 		window.localStorage.setItem("mail", mail);
+		window.localStorage.setItem("login", mail);
 		window.localStorage.setItem("id", id);
 		window.localStorage.setItem("isFemale", sex);
 		window.localStorage.setItem("token", token);
