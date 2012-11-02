@@ -1,4 +1,4 @@
-﻿var MeetAdvisorController = function MeetAdvisorController() {};
+var MeetAdvisorController = function MeetAdvisorController() {};
 
 MeetAdvisorController.prototype = {
 	// Page DrinkersMap
@@ -46,9 +46,7 @@ MeetAdvisorController.prototype = {
 			meetadvisor.current_venue = render_data;
 			meetadvisor.api.getPlaceInfo(render_data.request_params["id"], function (data) {
 				var render_data = meetadvisor.current_venue;
-
 				meetadvisor.current_venue = data;
-
 				meetadvisor.render(render_data, function() {
         			console.log("place->complicated:after rendering");
 					var maPlace = new Place();

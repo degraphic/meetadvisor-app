@@ -27,7 +27,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#C55F91', EndColorStr='#9E396D');
     border: 1px solid #721442;
     color: #fff;
-    text-shadow: #721442 0 -1px 1px;
+    text-shadow: #440722 0 -1px 1px;
 }
 
 .button.pink[disabled] {
@@ -40,7 +40,18 @@
     background-image: linear-gradient(top, #c55f91, #9e396d);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#C55F91', EndColorStr='#9E396D');
     border: 1px solid #721442;
-    color: #fff;
-    text-shadow: #721442 0 -1px 1px;
+    color: #bb6c93;
+    text-shadow: #440722 0 -1px 1px;
+}
+
+#checkInText {
+    margin-left: 49px;
+    margin-right: 50px;
+}
+
+#checkInCheck {
+    display: none;
+    width: 14px;
+    height: 11px;
 }
 
