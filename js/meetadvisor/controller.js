@@ -31,16 +31,16 @@ MeetAdvisorController.prototype = {
 	coupon: function (render_data) {
 		console.log("controller: coupon");
 		render_data.page.file = "coupon";
-		
 		var cp = new Coupon();
 		cp.render(render_data);
+		$('#overlay-close').attr('style','display: none !important');
 	},
 	
 	// Page place
 	place: function (render_data) {
 		console.log("controller: place");
         render_data.page.file = "place";
-
+		$('#overlay-close').attr('style','display: block');
         if (meetadvisor.current_venue == null) {
         	console.log("place->complicated:before rendering");
 			meetadvisor.current_venue = render_data;
