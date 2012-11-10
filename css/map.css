@@ -1,0 +1,14 @@
+.map-marker {
+	width: 80px;
+}
+
+.map-marker-picto {
+	width: 22px;
+	height: 23px;
+	margin: auto;
+}
+
+.map-marker-name {
+	text-shadow: 1px 1px 0 white, -1px -1px 0 white;
+	text-align: center;
+}

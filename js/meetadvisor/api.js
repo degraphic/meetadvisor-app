@@ -21,7 +21,7 @@ MeetAdvisorApi.prototype = {
 				dataType: 'json',
 				success: function(data) {
 					document.getElementById('overlay-loading').style.display = 'none';
-					data = jQuery.parseJSON(data);
+					//data = jQuery.parseJSON(data);
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
@@ -55,7 +55,7 @@ MeetAdvisorApi.prototype = {
 			}
 		}).done(function(data) {
 					document.getElementById('overlay-loading').style.display = 'none';
-					data = jQuery.parseJSON(data);
+					//data = jQuery.parseJSON(data);
 					console.log(data)
 					var ur = new User();
 					if (data.Result == true) {
@@ -83,7 +83,7 @@ MeetAdvisorApi.prototype = {
 				data: JSON.stringify(jsonObjects),
 				dataType: 'json',
 				success: function(data) {
-					data = jQuery.parseJSON(data);
+					//data = jQuery.parseJSON(data);
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
@@ -116,7 +116,7 @@ MeetAdvisorApi.prototype = {
 			data: JSON.stringify(jsonObjects),
 			dataType: 'json',
 			success: function(data) {
-				data = jQuery.parseJSON(data);
+				//data = jQuery.parseJSON(data);
 				if (data.Result == true) {
 					var ur = new User();
 					ur.create(login, isfemale)
@@ -145,7 +145,7 @@ MeetAdvisorApi.prototype = {
 				console.log('API: venue error', thrownError);
 			}
 		}).done(function(data) { 		
-			data = jQuery.parseJSON(data);
+			//data = jQuery.parseJSON(data);
 			meetadvisor.venues = this.data;
 			// Manage data - wrapper
 			var wrappedData = new Array();
@@ -190,7 +190,7 @@ MeetAdvisorApi.prototype = {
 			}
 		}).done(function(data) {
 			document.getElementById('overlay-loading').style.display = 'none'; 		
-			data = jQuery.parseJSON(data);
+			//data = jQuery.parseJSON(data);
 			callback(data);
 		});
 	},
@@ -203,7 +203,7 @@ MeetAdvisorApi.prototype = {
 			url: wsUrl,
 			dataType: 'json',
 		}).done(function(data) { 		
-			data = jQuery.parseJSON(data);
+			//data = jQuery.parseJSON(data);
 			// Manage data - wrapper
 			//debugger;
 			var wrappedData = new Array();
@@ -231,7 +231,7 @@ MeetAdvisorApi.prototype = {
 			}
 		}).done(function(data) { 
 			document.getElementById('overlay-loading').style.display = 'none';
-			data = jQuery.parseJSON(data);
+			//data = jQuery.parseJSON(data);
 			// Manage data - wrapper
 			//debugger;
 			var wrappedData = new Array();
@@ -258,7 +258,7 @@ MeetAdvisorApi.prototype = {
 			}
 		}).done(function(data) {
 			document.getElementById('overlay-loading').style.display = 'none';
-			data = jQuery.parseJSON(data);
+			//data = jQuery.parseJSON(data);
 			callback(data.Venue[0]);
 		});
 	

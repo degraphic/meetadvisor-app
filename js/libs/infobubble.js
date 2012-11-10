@@ -1,4 +1,4 @@
-// ==ClosureCompiler==
+2// ==ClosureCompiler==
 // @compilation_level ADVANCED_OPTIMIZATIONS
 // @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/maps/google_maps_api_v3.js
 // ==/ClosureCompiler==
@@ -88,6 +88,10 @@ function InfoBubble(opt_options) {
 
   if (options['arrowStyle'] == undefined) {
     options['arrowStyle'] = this.ARROW_STYLE_;
+  }
+
+  if (options['height'] == undefined) {
+    options['height'] = 0;
   }
 
   this.buildDom_();
@@ -886,7 +890,7 @@ InfoBubble.prototype.draw = function() {
   }
 
   // Adjust for the height of the info bubble
-  var top = pos.y - (height + arrowSize);
+  var top = pos.y - (height + arrowSize) - this.get('height') - 5;
 
   if (anchorHeight) {
     // If there is an anchor then include the height

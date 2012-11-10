@@ -97,21 +97,34 @@ GoogleMap.prototype = {
 		// Store instance
 		var that = this;
 
-        this.gMapMarker = new google.maps.Marker({
-            map: that.getMap(),
-			icon: mkgImage,
-            position: new google.maps.LatLng(lat, lng),
-            animation: google.maps.Animation.DROP,
-			data: maData,
-			parent: maParent
-        });
+   //      this.gMapMarker = new google.maps.Marker({
+   //          map: that.getMap(),
+   //          position: new google.maps.LatLng(lat, lng),
+			// icon: mkgImage,
+   //          animation: google.maps.Animation.DROP,
+			// data: maData,
+			// parent: maParent,
+
+   //      });
+
+        this.gMapMarker = new RichMarker({
+          map: that.getMap(),
+          position: new google.maps.LatLng(lat, lng),
+          draggable: false,
+          flat: true,
+          data: maData,
+          parent: maParent,
+          anchor: RichMarkerPosition.BOTTOM,
+          content: '<div class="map-marker"><div class="map-marker-picto"><img width="22" height="23" src="' + mkgImage 
+          + '"/></div><div class="map-marker-name">' + maData.name + '</div></div>'
+          });
+
 		
-		// some test
 		google.maps.event.addListener(this.gMapMarker, 'click', clickEvent);
 
 	},
 	
-	gMapCreateInfoWindow: function (marker, content, pos) {
+	gMapCreateInfoWindow: function (marker, content, pos, hght) {
 	    // v1
 		// var coordInfoWindow = new google.maps.InfoWindow();
 		// coordInfoWindow.setContent(content);
@@ -130,6 +143,7 @@ GoogleMap.prototype = {
           borderColor: '#aaaaaa',
 		  borderRadius: '0px',
           hideCloseButton: true,
+          height: hght,
         });
         infoBubble2.open(this.map, marker);
 	

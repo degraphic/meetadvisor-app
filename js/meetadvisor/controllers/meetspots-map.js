@@ -40,7 +40,7 @@ MeetspotsMap.prototype = {
 		
 		meetadvisor.api.VenuesAndDrinkerCount(function (data) {
 			$.each(data, function(index, venue) {
-				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, tab[venue.ambiance]);
+				that.gmap.gMapSetMarker(venue.getLat(), venue.getLng(), that.onMarkerClick, venue, that, "img/barMapPicto.png");
 			});
 		});
 	},
@@ -59,7 +59,8 @@ MeetspotsMap.prototype = {
 		content += '<div class="infobulleArrow"><img src="img/icons/arrow.png" width=29" height="29" alt="an arrow" /></div>';
 		content += '</button></div>';
 
-		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
+		//var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, evt.latLng);
+		var coordInfoWindow = this.parent.gmap.gMapCreateInfoWindow(this, content, google.maps.LatLng(this.data.location_lat, this.data.location_lng), evt.height);
 		
 		// only one info window at a time !
 		if (this.parent.last_infoWindow != null) {
