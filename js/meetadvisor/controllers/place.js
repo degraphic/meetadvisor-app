@@ -13,5 +13,6 @@ Place.prototype = {
 				});
 			}
 		});
+		meetadvisor.loader.completed();
 	},
 };

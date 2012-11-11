@@ -4,12 +4,11 @@ MeetAdvisorApi.prototype = {
 
 	// properties
 	server_address_location : "http://meetadvisor.cloudapp.net",
-    //server_address_location : "http://192.168.0.16",
 	
 	// methods
-
 	login : function (mail,password) {
-        // TODO
+		meetadvisor.loader.loading();
+
 		var wsUrl = this.server_address_location + "/User.json.svc/Login";
 
 		var jsonObjects= {"mail":mail,"password":password}
@@ -20,8 +19,7 @@ MeetAdvisorApi.prototype = {
 				data: JSON.stringify(jsonObjects),
 				dataType: 'json',
 				success: function(data) {
-					document.getElementById('overlay-loading').style.display = 'none';
-					//data = jQuery.parseJSON(data);
+					meetadvisor.loader.completed();
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
@@ -33,7 +31,7 @@ MeetAdvisorApi.prototype = {
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
-					document.getElementById('overlay-loading').style.display = 'none';
+					meetadvisor.loader.completed();
 					console.log('API: login error ', xhr.status);
 					console.log('API: login error ', thrownError);
 				}
@@ -41,21 +39,19 @@ MeetAdvisorApi.prototype = {
     },
 	
 	loginWithToken : function (token, callback) {
-        // TODO
-		document.getElementById('overlay-loading').style.display = 'block';	
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/User.json.svc/LoginWithToken/" + token;
 		$.ajax({
 			url: this.server_address_location 
 				+ "/User.json.svc/LoginWithToken/" + token,
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
-				document.getElementById('overlay-loading').style.display = 'none';
 			}
 		}).done(function(data) {
-					document.getElementById('overlay-loading').style.display = 'none';
-					//data = jQuery.parseJSON(data);
+					meetadvisor.loader.completed();
 					console.log(data)
 					var ur = new User();
 					if (data.Result == true) {
@@ -72,7 +68,7 @@ MeetAdvisorApi.prototype = {
     },
 
 	UpdateUser : function (id, login, password, sex, token) {
-        // TODO
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/User.json.svc/UpdateUser";
         var ur = new User();
 		var jsonObjects= {"id":ur.id(),"mail":login,"password":password}
@@ -83,7 +79,7 @@ MeetAdvisorApi.prototype = {
 				data: JSON.stringify(jsonObjects),
 				dataType: 'json',
 				success: function(data) {
-					//data = jQuery.parseJSON(data);
+					meetadvisor.loader.completed();
 					console.log(data)
 					if (data.Result == true) {
 						var ur = new User();
@@ -96,6 +92,7 @@ MeetAdvisorApi.prototype = {
 					}
 				},
 				error:function (xhr, ajaxOptions, thrownError){
+					meetadvisor.loader.completed();
 					console.log('API: login error ', xhr.status);
 					console.log('API: login error ', thrownError);
 				}
@@ -103,11 +100,9 @@ MeetAdvisorApi.prototype = {
     },
 
 	register: function(login, password, mail, uid, isfemale) {
-
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/User.json.svc/Register";
-		
         isfemale = (isfemale ? "true" : "false")
-
 		var jsonObjects= {"mail":mail, "uid":uid, "login":login, "password":password, "is_female":isfemale,"age":"0", "token":"lol"}
 
 		$.ajax({
@@ -116,7 +111,7 @@ MeetAdvisorApi.prototype = {
 			data: JSON.stringify(jsonObjects),
 			dataType: 'json',
 			success: function(data) {
-				//data = jQuery.parseJSON(data);
+				meetadvisor.loader.completed();
 				if (data.Result == true) {
 					var ur = new User();
 					ur.create(login, isfemale)
@@ -129,6 +124,7 @@ MeetAdvisorApi.prototype = {
 				}
 			},
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: register error', xhr.status);
 				console.log('API: register error', thrownError);
 			}
@@ -136,133 +132,117 @@ MeetAdvisorApi.prototype = {
 	},
 
     venue: function(x, y, callback) {
+		meetadvisor.loader.loading();
 		$.ajax({
 			url: this.server_address_location 
 				+ "/Venue.json.svc/VenueByRange/" + x + "/" + y + "/0",
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
+			},
+			success:function(data) {
+				meetadvisor.loader.completed();
+				meetadvisor.venues = this.data;
+				var wrappedData = new Array();
+				$.each(data.Venue, function(index, value) { 
+					wrappedData.push(new MeetAdvisorVenue(value));
+				});
+				callback(wrappedData);
 			}
-		}).done(function(data) { 		
-			//data = jQuery.parseJSON(data);
-			meetadvisor.venues = this.data;
-			// Manage data - wrapper
-			var wrappedData = new Array();
-
-			$.each(data.Venue, function(index, value) { 
-				wrappedData.push(new MeetAdvisorVenue(value));
-			});
-
-			callback(wrappedData);
-
 		});
     },
 
 	validateCoupon: function (barid, uid) {
-		document.getElementById('overlay-loading').style.display = 'block';	
+		meetadvisor.loader.loading();
 		$.ajax({
 			url: this.server_address_location 
 				+ "/Venue.json.svc/CouponValidated/" + barid + "/" + uid,
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
-				document.getElementById('overlay-loading').style.display = 'none';
+			},
+			success:function(data) {
+				meetadvisor.loader.completed();
 			}
-		}).done(function(data) { 
-			document.getElementById('overlay-loading').style.display = 'none';
-			// TODO : check validation 
 		});
 	},
 
 	// clone de ValidateCoupon mais avec une callback	
 	checkIn: function (barid, uid, callback) {
-		document.getElementById('overlay-loading').style.display = 'block';
+		meetadvisor.loader.loading();
 		$.ajax({
 			url: this.server_address_location 
 				+ "/Venue.json.svc/CouponValidated/" + barid + "/" + uid,
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
-				document.getElementById('overlay-loading').style.display = 'none';
+			},
+			success:function(data) {
+				meetadvisor.loader.completed();
+				callback(data);
 			}
-		}).done(function(data) {
-			document.getElementById('overlay-loading').style.display = 'none'; 		
-			//data = jQuery.parseJSON(data);
-			callback(data);
 		});
 	},
 
 	venueByDrinkers: function(callback) {
-
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenueByDrinkers/" + 60 * 4 + "/0";
-
 		$.ajax({
 			url: wsUrl,
 			dataType: 'json',
-		}).done(function(data) { 		
-			//data = jQuery.parseJSON(data);
-			// Manage data - wrapper
-			//debugger;
+		}).done(function(data) {
+			meetadvisor.loader.completed(); 		
 			var wrappedData = new Array();
 			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value));
 			});
-
 			callback(wrappedData);
-
 		});
     },
 
 
     VenuesAndDrinkerCount: function(callback) {
-		document.getElementById('overlay-loading').style.display = 'block';
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/Venue.json.svc" + "/VenuesAndDrinkerCount/" + 60 * 4;
-
 		$.ajax({
 			url: wsUrl,
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.loading();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
-				document.getElementById('overlay-loading').style.display = 'none';
 			}
-		}).done(function(data) { 
-			document.getElementById('overlay-loading').style.display = 'none';
-			//data = jQuery.parseJSON(data);
-			// Manage data - wrapper
-			//debugger;
+		}).done(function(data) {
+			meetadvisor.loader.completed();
 			var wrappedData = new Array();
 			$.each(data.Venue, function(index, value) { 
 				wrappedData.push(new MeetAdvisorVenue(value.venue, value.count));
 			});
-
 			callback(wrappedData);
-
 		});
     },
 
 	getPlaceInfo: function (id, callback) {
-		document.getElementById('overlay-loading').style.display = 'block';
+		meetadvisor.loader.loading();
 		var wsUrl = this.server_address_location + "/Venue.json.svc/VenueById/" + id;
-		
 		$.ajax({
 			url: wsUrl,
 			dataType: 'json',
 			error:function (xhr, ajaxOptions, thrownError){
+				meetadvisor.loader.completed();
 				console.log('API: venue error', xhr.status);
 				console.log('API: venue error', thrownError);
-				document.getElementById('overlay-loading').style.display = 'none';
 			}
 		}).done(function(data) {
-			document.getElementById('overlay-loading').style.display = 'none';
-			//data = jQuery.parseJSON(data);
+			meetadvisor.loader.completed();
 			callback(data.Venue[0]);
 		});
-	
-	
 	},
 
 };

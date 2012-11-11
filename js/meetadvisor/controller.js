@@ -39,6 +39,7 @@ MeetAdvisorController.prototype = {
 	// Page place
 	place: function (render_data) {
 		console.log("controller: place");
+		meetadvisor.loader.loading();
         render_data.page.file = "place";
 		$('#overlay-close').attr('style','display: block');
         if (meetadvisor.current_venue == null) {

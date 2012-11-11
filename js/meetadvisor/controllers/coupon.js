@@ -8,6 +8,7 @@ Coupon.prototype = {
 	
 	render: function(render_data) {
 		var u = new User();
+		
 		meetadvisor.api.validateCoupon(render_data.request_params["id"], u.getUid());
 		if (meetadvisor.current_venue == null) {
 			this.complicated(render_data);

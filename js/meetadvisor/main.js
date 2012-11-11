@@ -45,6 +45,7 @@ MeetAdvisor.prototype = {
 	user: null,
 	current_venue: null,
 	venues: null,
+	loader: null,
 
 	init: function () {
 		jQuery.support.cors = true;
@@ -52,6 +53,7 @@ MeetAdvisor.prototype = {
 		this.controller = new MeetAdvisorController();
 		this.valid_pages = MEET_ADVISOR_VALID_PAGES;
 		this.user = new User();
+		this.loader = new Loader();
 	},
 
 	navigate: function (uri) {
@@ -109,7 +111,7 @@ MeetAdvisor.prototype = {
 		
 		// run the standard controller or the update controller
         if (this.current_page != this.last_page) {
-            this.loader_overlay(true);
+            meetadvisor.loader.loading();
 			this.controller[this.current_page](render_data);
         }
         else if (this.controller[this.current_page + '__update'])
@@ -228,13 +230,9 @@ MeetAdvisor.prototype = {
         if (callback)
             callback();
         if (!dont_remove_overlay)
-            this.loader_overlay(false);
+            meetadvisor.loader.completed();
     },
 
-    loader_overlay: function(is_active) {
-        document.getElementById('overlay-loading').style.display = is_active ? 'block' : 'none';
-    },
-	
 	popup: function(data) {
 		
 		console.log(data);
